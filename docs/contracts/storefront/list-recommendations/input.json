@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "path": "/storefront/recommendations",
+  "query": {
+    "context": "HOME"
+  }
+}

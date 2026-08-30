@@ -1,0 +1,8 @@
+{
+  "status": 200,
+  "body": {
+    "id": 1,
+    "code": "TRO-000001",
+    "status": "TROCA_ACEITA"
+  }
+}

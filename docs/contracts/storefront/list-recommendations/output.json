@@ -1,0 +1,20 @@
+{
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "code": "LIB-0001",
+      "title": "Clean Code",
+      "authors": [
+        "Robert C. Martin"
+      ],
+      "categories": [
+        "Engenharia de software"
+      ],
+      "price": 41.6,
+      "availableQuantity": 20,
+      "available": true,
+      "recommendationReason": "Selecionado para o seu perfil"
+    }
+  ]
+}

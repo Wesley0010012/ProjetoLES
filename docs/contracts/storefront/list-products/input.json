@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/storefront/products",
+  "query": {
+    "query": "clean",
+    "category": "Engenharia de software"
+  }
+}

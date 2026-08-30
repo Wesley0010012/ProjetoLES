@@ -1,0 +1,10 @@
+{
+  "method": "PATCH",
+  "path": "/admin/exchanges/{exchangeId}/status",
+  "pathParams": {
+    "exchangeId": 1
+  },
+  "body": {
+    "status": "TROCA_ACEITA"
+  }
+}

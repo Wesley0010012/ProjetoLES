@@ -1,0 +1,23 @@
+{
+  "status": 200,
+  "body": {
+    "startDate": "2026-02-01",
+    "endDate": "2026-08-31",
+    "revenue": 52800,
+    "soldUnits": 659,
+    "categories": [
+      {
+        "name": "Engenharia de software",
+        "quantity": 219,
+        "revenue": 18420,
+        "growthPercentage": 16.8
+      },
+      {
+        "name": "Programação",
+        "quantity": 171,
+        "revenue": 13680,
+        "growthPercentage": 12.3
+      }
+    ]
+  }
+}

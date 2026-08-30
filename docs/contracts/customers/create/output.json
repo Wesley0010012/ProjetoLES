@@ -1,0 +1,18 @@
+{
+  "status": 201,
+  "body": {
+    "id": 1,
+    "code": "CLI-000001",
+    "name": "Henry Townshend",
+    "gender": "MAN",
+    "birthDate": "1990-05-15",
+    "document": "52998224725",
+    "phone": {
+      "type": "MOBILE",
+      "ddd": "11",
+      "number": "987654321"
+    },
+    "email": "henry@libra.com.br",
+    "active": true
+  }
+}

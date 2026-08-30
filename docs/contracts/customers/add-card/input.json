@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "path": "/customer/me/cards",
+  "body": {
+    "number": "4111111111114242",
+    "printedName": "HENRY TOWNSHEND",
+    "brand": "VISA",
+    "securityCode": "123",
+    "preferred": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/customer/exchanges",
+  "body": {
+    "orderId": 1,
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 1
+      }
+    ]
+  }
+}

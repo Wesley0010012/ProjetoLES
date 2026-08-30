@@ -1,0 +1,8 @@
+{
+  "method": "POST",
+  "path": "/customer/cart/items",
+  "body": {
+    "productId": 1,
+    "quantity": 2
+  }
+}

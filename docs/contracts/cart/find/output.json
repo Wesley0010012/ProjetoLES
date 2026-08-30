@@ -1,0 +1,18 @@
+{
+  "status": 200,
+  "body": {
+    "id": 1,
+    "items": [
+      {
+        "productId": 1,
+        "code": "LIB-0001",
+        "title": "Clean Code",
+        "quantity": 2,
+        "unitPrice": 41.6,
+        "total": 83.2
+      }
+    ],
+    "subtotal": 83.2,
+    "estimatedFreight": 12
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "body": {
+    "id": 1,
+    "name": "Casa",
+    "street": "dos Compiladores",
+    "number": "304",
+    "city": "São Paulo",
+    "state": "SP",
+    "billing": true,
+    "delivery": true
+  }
+}

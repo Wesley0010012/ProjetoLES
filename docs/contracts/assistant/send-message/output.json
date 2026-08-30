@@ -1,0 +1,15 @@
+{
+  "status": 200,
+  "body": {
+    "answer": "Recomendo Domain-Driven Design.",
+    "products": [
+      {
+        "id": 2,
+        "title": "Domain-Driven Design",
+        "price": 49.4,
+        "available": true
+      }
+    ],
+    "provider": "assistant"
+  }
+}
