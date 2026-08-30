@@ -5,6 +5,7 @@
     "exchangeId": 1
   },
   "body": {
-    "status": "TROCA_ACEITA"
+    "status": "TROCA_ACEITA",
+    "observation": "Solicitação aprovada após conferência dos itens e do motivo informado."
   }
 }

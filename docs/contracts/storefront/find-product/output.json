@@ -18,6 +18,19 @@
     "isbn": "9780132350884",
     "synopsis": "Princípios para escrever código limpo.",
     "numberOfPages": 464,
+    "dimensions": {
+      "height": 21,
+      "width": 14,
+      "weight": 0.42,
+      "depth": 2.1
+    },
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    },
+    "barcode": "7890000000001",
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780132350884-L.jpg",
     "price": 41.6,
     "availableQuantity": 20,
     "available": true

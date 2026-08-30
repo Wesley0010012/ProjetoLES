@@ -14,8 +14,9 @@
         "number": "302",
         "city": "São Paulo",
         "state": "SP",
-        "billing": true,
-        "delivery": true
+        "billing": false,
+        "delivery": false,
+        "primary": true
       }
     ],
     "cards": [
@@ -24,6 +25,7 @@
         "lastFourDigits": "4242",
         "printedName": "HENRY TOWNSHEND",
         "brand": "VISA",
+        "description": "Cartão pessoal",
         "preferred": true
       }
     ]

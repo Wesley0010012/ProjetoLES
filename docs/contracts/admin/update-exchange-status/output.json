@@ -3,6 +3,7 @@
   "body": {
     "id": 1,
     "code": "TRO-000001",
-    "status": "TROCA_ACEITA"
+    "status": "TROCA_ACEITA",
+    "reviewObservation": "Solicitação aprovada após conferência dos itens e do motivo informado."
   }
 }

@@ -6,31 +6,38 @@
       "points": [
         {
           "date": "2026-02-01",
-          "quantity": 18
+          "quantity": 18,
+          "profit": 432.9
         },
         {
           "date": "2026-03-01",
-          "quantity": 24
+          "quantity": 24,
+          "profit": 577.2
         },
         {
           "date": "2026-04-01",
-          "quantity": 21
+          "quantity": 21,
+          "profit": 505.05
         },
         {
           "date": "2026-05-01",
-          "quantity": 31
+          "quantity": 31,
+          "profit": 745.55
         },
         {
           "date": "2026-06-01",
-          "quantity": 35
+          "quantity": 35,
+          "profit": 841.75
         },
         {
           "date": "2026-07-01",
-          "quantity": 42
+          "quantity": 42,
+          "profit": 1010.1
         },
         {
           "date": "2026-08-01",
-          "quantity": 48
+          "quantity": 48,
+          "profit": 1154.4
         }
       ]
     }

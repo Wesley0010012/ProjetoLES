@@ -1,0 +1,7 @@
+import { clearAuthenticationCookie } from "./authentication-cookie";
+
+export function clearAuthentication(): void {
+  sessionStorage.removeItem("libra.authentication");
+  localStorage.removeItem("libra.authentication");
+  clearAuthenticationCookie();
+}
