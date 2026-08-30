@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "path": "/customer/exchanges/{exchangeId}/dispatch",
+  "pathParams": {
+    "exchangeId": 1
+  },
+  "body": {
+    "trackingCode": "BR123456789"
+  }
+}

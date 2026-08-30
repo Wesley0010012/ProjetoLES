@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "path": "/customer/exchanges",
+  "body": {
+    "saleId": 1,
+    "reason": "O exemplar chegou com páginas soltas e marcas na capa.",
+    "items": [
+      {
+        "bookId": 1,
+        "quantity": 1
+      }
+    ]
+  }
+}

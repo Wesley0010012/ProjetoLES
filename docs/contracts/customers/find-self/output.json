@@ -1,0 +1,33 @@
+{
+  "status": 200,
+  "body": {
+    "id": 1,
+    "code": "CLI-000001",
+    "name": "Henry Townshend",
+    "email": "henry@libra.com.br",
+    "active": true,
+    "addresses": [
+      {
+        "id": 1,
+        "name": "Casa",
+        "street": "dos Compiladores",
+        "number": "302",
+        "city": "São Paulo",
+        "state": "SP",
+        "billing": false,
+        "delivery": false,
+        "primary": true
+      }
+    ],
+    "cards": [
+      {
+        "id": 1,
+        "lastFourDigits": "4242",
+        "printedName": "HENRY TOWNSHEND",
+        "brand": "VISA",
+        "description": "Cartão pessoal",
+        "preferred": true
+      }
+    ]
+  }
+}

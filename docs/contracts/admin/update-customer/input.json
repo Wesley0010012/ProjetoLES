@@ -1,0 +1,19 @@
+{
+  "method": "PUT",
+  "path": "/admin/customers/{customerId}",
+  "pathParams": {
+    "customerId": 1
+  },
+  "body": {
+    "name": "Henry Townshend",
+    "gender": "MAN",
+    "birthDate": "1990-05-15",
+    "document": "52998224725",
+    "phone": {
+      "type": "MOBILE",
+      "ddd": "11",
+      "number": "999999999"
+    },
+    "email": "henry@libra.com.br"
+  }
+}

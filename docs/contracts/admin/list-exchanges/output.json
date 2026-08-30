@@ -1,0 +1,24 @@
+{
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "code": "TRO-000001",
+      "orderId": 1,
+      "status": "TROCA_SOLICITADA",
+      "requestedAt": "2026-08-23T12:00:00Z",
+      "reason": "O exemplar chegou com páginas soltas e marcas na capa.",
+      "reviewObservation": null,
+      "items": [
+        {
+          "bookId": 1,
+          "title": "Clean Code",
+          "quantity": 1,
+          "unitPrice": 41.6
+        }
+      ],
+      "coupon": null,
+      "total": 41.6
+    }
+  ]
+}

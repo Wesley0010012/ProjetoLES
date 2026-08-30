@@ -1,0 +1,18 @@
+{
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "code": "CLI-000001",
+      "name": "Henry Townshend",
+      "document": "52998224725",
+      "phone": {
+        "type": "MOBILE",
+        "ddd": "11",
+        "number": "987654321"
+      },
+      "email": "henry@libra.com.br",
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "code": "LIB-0001",
+      "title": "Clean Code",
+      "authors": [
+        "Robert C. Martin"
+      ],
+      "categories": [
+        "Engenharia de software"
+      ],
+      "editors": [
+        "Prentice Hall"
+      ],
+      "year": 2008,
+      "edition": "1ª edição",
+      "isbn": "9780132350884",
+      "numberOfPages": 464,
+      "coverImage": "https://covers.openlibrary.org/b/isbn/9780132350884-L.jpg",
+      "price": 41.6,
+      "availableQuantity": 20,
+      "available": true
+    }
+  ]
+}

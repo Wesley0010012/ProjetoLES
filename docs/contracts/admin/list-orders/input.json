@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/admin/orders",
+  "query": {
+    "query": "VEN-000001",
+    "status": "EM_ABERTO"
+  }
+}

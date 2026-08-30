@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "code": "VEN-000001",
+      "customer": {
+        "id": 1,
+        "code": "CLI-000001",
+        "name": "Henry Townshend"
+      },
+      "status": "EM_ABERTO",
+      "saleDate": "2026-08-23T12:00:00Z",
+      "freight": 12,
+      "total": 95.2,
+      "items": [
+        {
+          "productId": 1,
+          "title": "Clean Code",
+          "quantity": 2,
+          "unitPrice": 41.6,
+          "total": 83.2
+        }
+      ]
+    }
+  ]
+}

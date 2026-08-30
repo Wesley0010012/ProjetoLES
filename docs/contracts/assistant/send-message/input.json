@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/assistant/messages",
+  "body": {
+    "message": "Recomende um livro sobre arquitetura",
+    "history": [
+      {
+        "role": "user",
+        "content": "Gosto de engenharia de software"
+      }
+    ]
+  }
+}

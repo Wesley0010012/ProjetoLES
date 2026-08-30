@@ -1,0 +1,21 @@
+{
+  "method": "PUT",
+  "path": "/customer/me/addresses/{addressId}",
+  "pathParams": {
+    "addressId": 1
+  },
+  "body": {
+    "name": "Casa",
+    "residenceType": "Apartamento",
+    "streetType": "Rua",
+    "street": "dos Compiladores",
+    "number": "304",
+    "district": "Centro",
+    "zipCode": "01001000",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil",
+    "billing": true,
+    "delivery": true
+  }
+}

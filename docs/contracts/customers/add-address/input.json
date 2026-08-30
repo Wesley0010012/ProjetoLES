@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/customer/me/addresses",
+  "body": {
+    "name": "Trabalho",
+    "residenceType": "Comercial",
+    "streetType": "Avenida",
+    "street": "Paulista",
+    "number": "1000",
+    "district": "Bela Vista",
+    "zipCode": "01310100",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil",
+    "billing": false,
+    "delivery": true
+  }
+}

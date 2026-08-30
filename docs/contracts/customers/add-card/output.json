@@ -1,0 +1,10 @@
+{
+  "status": 201,
+  "body": {
+    "id": 1,
+    "lastFourDigits": "4242",
+    "printedName": "HENRY TOWNSHEND",
+    "brand": "VISA",
+    "preferred": true
+  }
+}
