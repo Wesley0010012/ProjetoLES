@@ -1,0 +1,9 @@
+{
+  "status": 201,
+  "body": {
+    "id": 5,
+    "code": "VEN-000005",
+    "status": "EM_ABERTO",
+    "total": 83.2
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "path": "/customer/cart/items/{productId}",
+  "pathParams": {
+    "productId": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "body": {
+    "id": 1,
+    "code": "CLI-000001",
+    "name": "Henry Townshend",
+    "email": "henry@libra.com.br",
+    "active": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "method": "PATCH",
+  "path": "/admin/orders/{orderId}/status",
+  "pathParams": {
+    "orderId": 1
+  },
+  "body": {
+    "status": "EM_PROCESSAMENTO"
+  }
+}

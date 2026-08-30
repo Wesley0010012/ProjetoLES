@@ -1,0 +1,38 @@
+{
+  "status": 200,
+  "body": [
+    {
+      "name": "Engenharia de software",
+      "points": [
+        {
+          "date": "2026-02-01",
+          "quantity": 18
+        },
+        {
+          "date": "2026-03-01",
+          "quantity": 24
+        },
+        {
+          "date": "2026-04-01",
+          "quantity": 21
+        },
+        {
+          "date": "2026-05-01",
+          "quantity": 31
+        },
+        {
+          "date": "2026-06-01",
+          "quantity": 35
+        },
+        {
+          "date": "2026-07-01",
+          "quantity": 42
+        },
+        {
+          "date": "2026-08-01",
+          "quantity": 48
+        }
+      ]
+    }
+  ]
+}

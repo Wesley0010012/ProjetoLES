@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/admin/customers",
+  "query": {
+    "query": "Henry",
+    "active": true
+  }
+}

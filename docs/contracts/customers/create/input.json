@@ -1,0 +1,30 @@
+{
+  "method": "POST",
+  "path": "/customers",
+  "body": {
+    "name": "Henry Townshend",
+    "gender": "MAN",
+    "birthDate": "1990-05-15",
+    "document": "52998224725",
+    "phone": {
+      "type": "MOBILE",
+      "ddd": "11",
+      "number": "987654321"
+    },
+    "email": "henry@libra.com.br",
+    "address": {
+      "name": "Casa",
+      "residenceType": "Apartamento",
+      "streetType": "Rua",
+      "street": "dos Compiladores",
+      "number": "302",
+      "district": "Centro",
+      "zipCode": "01001000",
+      "city": "São Paulo",
+      "state": "SP",
+      "country": "Brasil",
+      "billing": true,
+      "delivery": true
+    }
+  }
+}

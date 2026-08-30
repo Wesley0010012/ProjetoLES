@@ -1,0 +1,13 @@
+{
+  "status": 201,
+  "body": {
+    "id": 2,
+    "name": "Trabalho",
+    "street": "Paulista",
+    "number": "1000",
+    "city": "São Paulo",
+    "state": "SP",
+    "billing": false,
+    "delivery": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": 409,
+  "body": {
+    "code": "INVALID_STATUS_TRANSITION",
+    "message": "A transição de status solicitada não é permitida."
+  }
+}

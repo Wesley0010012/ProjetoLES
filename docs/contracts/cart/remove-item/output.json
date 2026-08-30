@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "body": {
+    "id": 1,
+    "items": [],
+    "subtotal": 0,
+    "estimatedFreight": 12
+  }
+}

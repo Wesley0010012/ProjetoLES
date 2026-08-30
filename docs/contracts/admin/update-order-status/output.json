@@ -1,0 +1,8 @@
+{
+  "status": 200,
+  "body": {
+    "id": 1,
+    "code": "VEN-000001",
+    "status": "EM_PROCESSAMENTO"
+  }
+}

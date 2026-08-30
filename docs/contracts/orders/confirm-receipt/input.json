@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/customer/orders/{orderId}/receipt",
+  "pathParams": {
+    "orderId": 1
+  }
+}

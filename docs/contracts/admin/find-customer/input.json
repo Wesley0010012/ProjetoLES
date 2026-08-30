@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "path": "/admin/customers/{customerId}",
+  "pathParams": {
+    "customerId": 1
+  }
+}

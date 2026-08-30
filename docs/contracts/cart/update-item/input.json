@@ -1,0 +1,10 @@
+{
+  "method": "PUT",
+  "path": "/customer/cart/items/{productId}",
+  "pathParams": {
+    "productId": 1
+  },
+  "body": {
+    "quantity": 3
+  }
+}

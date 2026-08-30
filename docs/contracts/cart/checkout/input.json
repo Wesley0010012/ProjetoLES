@@ -1,0 +1,21 @@
+{
+  "method": "POST",
+  "path": "/customer/checkout",
+  "body": {
+    "addressId": 1,
+    "couponCodes": [
+      "LIBRA10",
+      "TROCA-000001"
+    ],
+    "cardPayments": [
+      {
+        "cardId": 1,
+        "amount": 40
+      },
+      {
+        "cardId": 2,
+        "amount": 43.2
+      }
+    ]
+  }
+}

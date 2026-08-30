@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "path": "/storefront/products/{productId}",
+  "pathParams": {
+    "productId": 1
+  }
+}

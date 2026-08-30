@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "body": [
+    {
+      "code": "LIBRA10",
+      "type": "PROMOTIONAL",
+      "discountType": "PERCENTAGE",
+      "value": 10,
+      "active": true,
+      "used": false
+    },
+    {
+      "code": "TROCA-000001",
+      "type": "EXCHANGE",
+      "discountType": "FIXED",
+      "value": 41.6,
+      "active": true,
+      "used": false
+    }
+  ]
+}
