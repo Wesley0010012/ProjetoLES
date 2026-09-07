@@ -1,5 +1,7 @@
 "use client";
 
+import { PasswordStrengthRule } from "@/domain/rules/password-strength-rule";
+import { validatePassword } from "@/domain/rules/validate-password";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
@@ -21,12 +23,7 @@ export function SignUpForm({ makeSignUp }: SignUpFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [password, setPassword] = useState("");
-  const passwordRules = [
-    { label: "8 caracteres", valid: password.length >= 8 },
-    { label: "Maiúscula", valid: /[A-Z]/.test(password) },
-    { label: "Minúscula", valid: /[a-z]/.test(password) },
-    { label: "Caractere especial", valid: /[^A-Za-z0-9]/.test(password) },
-  ];
+  const passwordRules = new PasswordStrengthRule().requirements(password);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,6 +33,10 @@ export function SignUpForm({ makeSignUp }: SignUpFormProps) {
     const form = new FormData(event.currentTarget);
 
     try {
+      validatePassword(
+        String(form.get("password") ?? ""),
+        String(form.get("passwordConfirmation") ?? ""),
+      );
       const authentication = await makeSignUp.execute({
         email: String(form.get("email") ?? ""),
         password: String(form.get("password") ?? ""),
@@ -46,6 +47,10 @@ export function SignUpForm({ makeSignUp }: SignUpFormProps) {
         "libra.authentication",
         JSON.stringify({
           token: authentication.token,
+          userId: authentication.userId,
+          email: String(form.get("email") ?? "")
+            .trim()
+            .toLowerCase(),
           expiresAt: authentication.expiresAt.toISOString(),
           type: AccessType.USER,
         }),

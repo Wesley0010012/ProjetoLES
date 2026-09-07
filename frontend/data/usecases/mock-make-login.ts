@@ -2,6 +2,7 @@ import { AccessType } from "@/domain/models/access-type";
 import type { MakeLogin, MakeLoginParams } from "@/domain/usecases/make-login";
 
 type MockAccount = {
+  id: number;
   email: string;
   password: string;
   type: AccessType;
@@ -9,11 +10,13 @@ type MockAccount = {
 
 const MOCK_ACCOUNTS: MockAccount[] = [
   {
+    id: 1,
     email: "henry.townshend@libra.com.br",
     password: "Cliente@123",
     type: AccessType.USER,
   },
   {
+    id: 2,
     email: "operador@libra.com.br",
     password: "Operador@123",
     type: AccessType.OPERATOR,
@@ -36,6 +39,7 @@ export class MockMakeLogin implements MakeLogin {
     }
 
     return {
+      userId: account.id,
       token: `mock-${account.type.toLowerCase()}-${Date.now()}`,
       expiresAt: new Date(Date.now() + 60 * 60 * 1000),
     };

@@ -1,3 +1,4 @@
+import { updateMockPassword } from "@/data/repositories/mock-password-history-repository";
 import type {
   Customer,
   CustomerAddress,
@@ -117,6 +118,11 @@ export class MockCustomerGateway implements CustomerGateway {
   public async create(payload: CustomerPayload): Promise<Customer> {
     const customers = this.customers();
     const id = Math.max(0, ...customers.map((item) => item.id)) + 1;
+    updateMockPassword(
+      payload.email,
+      payload.password ?? "",
+      payload.passwordConfirmation ?? "",
+    );
     const customer = this.toCustomer(id, payload);
     customers.push(customer);
     this.save(customers);
@@ -127,6 +133,13 @@ export class MockCustomerGateway implements CustomerGateway {
     const customers = this.customers();
     const index = customers.findIndex((item) => item.id === id);
     if (index < 0) throw new Error("Cliente não encontrado.");
+    if (payload.password !== undefined || payload.passwordConfirmation !== undefined) {
+      updateMockPassword(
+        customers[index].email,
+        payload.password ?? "",
+        payload.passwordConfirmation ?? "",
+      );
+    }
     const customer = {
       ...this.toCustomer(id, payload),
       code: customers[index].code,

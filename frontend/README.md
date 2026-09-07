@@ -1,36 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Front-end Libra
 
-## Getting Started
+## Executar com o backend
 
-First, run the development server:
+1. Em `backend`, execute `npm run start:dev` (porta 3001).
+2. Em `frontend`, execute `npm run dev` (porta 3000).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+`NEXT_PUBLIC_API_URL` configura a URL do backend (padrão `http://localhost:3001`). `FRONTEND_URL` no backend configura a origem permitida pelo CORS (padrão `http://localhost:3000`).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Cadastro e alteração de senha de usuários sempre chamam o backend, mesmo com `NEXT_PUBLIC_USE_MOCK=true`. O cadastro chama `POST /users`, define a senha via `PATCH /users/:id/password` e guarda o ID retornado na sessão mockada. A tela de alteração envia apenas `password` e `passwordConfirmation`, sem senha atual. As regras de força e confirmação dão retorno imediato no formulário; o histórico é validado pelo backend e seus erros aparecem na tela.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Login e logout continuam mockados. Os acessos de demonstração representam o cliente de ID 1 e o atendente de ID 2. Sessões antigas sem ID precisam de novo login. Os demais módulos continuam seguindo `NEXT_PUBLIC_USE_MOCK`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Os dados do backend ficam em memória e são reiniciados com o processo. A senha alterada não muda as credenciais fixas do login de demonstração.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Validação: `npm run test:password`, `npm run lint`, `npm run build`.

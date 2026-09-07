@@ -1,15 +1,21 @@
+import { RemoteUsersGateway } from "./remote-users-gateway";
+import { validatePassword } from "@/domain/rules/validate-password";
 import type { MakeSignUp, MakeSignUpParams } from "@/domain/usecases/make-sign-up";
 
 export class MockMakeSignUp implements MakeSignUp {
+  public constructor(private readonly users: RemoteUsersGateway) {}
+
   public async execute(params: MakeSignUpParams) {
-    await new Promise((resolve) => setTimeout(resolve, 650));
-
-    if (params.password !== params.passwordConfirmation) {
-      throw new Error("A senha e a confirmação devem ser iguais.");
-    }
-
+    validatePassword(params.password, params.passwordConfirmation);
+    const user = await this.users.create(params.email.trim().toLowerCase(), "USER");
+    await this.users.updatePassword(
+      user.id,
+      params.password,
+      params.passwordConfirmation,
+    );
     return {
-      token: `mock-user-${Date.now()}`,
+      userId: user.id,
+      token: `mock-user-${user.id}-${Date.now()}`,
       expiresAt: new Date(Date.now() + 60 * 60 * 1000),
     };
   }

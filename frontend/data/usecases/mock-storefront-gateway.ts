@@ -626,8 +626,7 @@ let profile: SelfProfile = {
   ],
 };
 let active = true;
-const passwordHistoryLimit = 3;
-let passwordHistory = ["Libra@123!", "Anterior@123!", "Leitura@123!"];
+
 let orders: CustomerOrder[] = [
   {
     id: 1,
@@ -906,21 +905,6 @@ export class MockStorefrontGateway implements StorefrontGateway {
         preferred: removedWasPreferred ? index === 0 : card.preferred,
       })),
     };
-  }
-  public async changePassword(
-    currentPassword: string,
-    password: string,
-    passwordConfirmation: string,
-  ): Promise<void> {
-    if (password !== passwordConfirmation)
-      throw new Error("A confirmação deve ser igual à nova senha.");
-    if (currentPassword && currentPassword !== passwordHistory[0])
-      throw new Error("A senha atual está incorreta.");
-    if (passwordHistory.slice(0, passwordHistoryLimit).includes(password))
-      throw new Error(
-        `Esta senha já foi utilizada entre as últimas ${passwordHistoryLimit}. Escolha uma senha diferente.`,
-      );
-    passwordHistory = [password, ...passwordHistory].slice(0, passwordHistoryLimit);
   }
   public async cart(): Promise<CustomerCart> {
     return cart;

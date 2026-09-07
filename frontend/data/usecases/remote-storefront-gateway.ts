@@ -84,16 +84,6 @@ export class RemoteStorefrontGateway implements StorefrontGateway {
   public async deleteCard(id: number): Promise<void> {
     await this.authRequest(`/customer/me/cards/${id}`, { method: "DELETE" });
   }
-  public async changePassword(
-    currentPassword: string,
-    password: string,
-    passwordConfirmation: string,
-  ): Promise<void> {
-    await this.authRequest("/customer/me/password", {
-      method: "POST",
-      body: JSON.stringify({ currentPassword, password, passwordConfirmation }),
-    });
-  }
   public cart(): Promise<CustomerCart> {
     return this.authRequest("/customer/cart");
   }
