@@ -25,6 +25,8 @@ const PT_BR_MESSAGES: Record<MessageKeyEnum, string> = {
     'Esta conta não possui acesso à área solicitada.',
   [MessageKeyEnum.PASSWORDS_DO_NOT_MATCH]:
     'A senha e a confirmação devem ser iguais.',
+  [MessageKeyEnum.PASSWORD_ALREADY_USED]:
+    'A nova senha não pode repetir nenhuma das três últimas senhas.',
   [MessageKeyEnum.WEAK_PASSWORD]:
     'A senha deve ter ao menos 8 caracteres, incluindo letra maiúscula, minúscula e caractere especial.',
   [MessageKeyEnum.EMAIL_ALREADY_USED]: 'O e-mail {email} já está cadastrado.',
