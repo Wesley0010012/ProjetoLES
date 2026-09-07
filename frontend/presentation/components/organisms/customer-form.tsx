@@ -1,5 +1,6 @@
 "use client";
 
+import { validatePassword } from "@/domain/rules/validate-password";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
@@ -58,6 +59,9 @@ export function CustomerForm({ customerId }: { customerId?: number }) {
     };
 
     try {
+      const confirmation = String(form.get("passwordConfirmation") ?? "");
+      if (!customerId || password || confirmation)
+        validatePassword(password, confirmation);
       if (customerId) {
         await gateway.update(customerId, payload);
       } else {

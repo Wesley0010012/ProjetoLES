@@ -24,11 +24,6 @@ export interface StorefrontGateway {
   addCard(payload: Record<string, unknown>): Promise<void>;
   updateCard(id: number, payload: Record<string, unknown>): Promise<void>;
   deleteCard(id: number): Promise<void>;
-  changePassword(
-    currentPassword: string,
-    password: string,
-    passwordConfirmation: string,
-  ): Promise<void>;
   cart(): Promise<CustomerCart>;
   addToCart(bookId: number, quantity: number): Promise<CustomerCart>;
   updateCart(bookId: number, quantity: number): Promise<CustomerCart>;

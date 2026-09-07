@@ -1,5 +1,8 @@
 "use client";
 
+import { PasswordStrengthRule } from "@/domain/rules/password-strength-rule";
+import { validatePassword } from "@/domain/rules/validate-password";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState, type FormEvent } from "react";
@@ -8,7 +11,7 @@ import { ArrowLeft, Check, KeyRound, Loader2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { makeStorefrontGateway } from "@/main/factories/make-storefront-gateway";
+import { makeUsersGateway } from "@/main/factories/make-users-gateway";
 import { BrandMark } from "@/presentation/components/atoms/brand-mark";
 
 export function ChangePassword({
@@ -19,7 +22,7 @@ export function ChangePassword({
   returnTo?: string;
 }) {
   const router = useRouter();
-  const gateway = useMemo(() => makeStorefrontGateway(), []);
+  const gateway = useMemo(() => makeUsersGateway(), []);
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<{
@@ -27,39 +30,17 @@ export function ChangePassword({
     message: string;
   } | null>(null);
   const backPath = safeReturnPath(returnTo);
-  const rules = [
-    ["8 caracteres", password.length >= 8],
-    ["Letra maiúscula", /[A-Z]/.test(password)],
-    ["Letra minúscula", /[a-z]/.test(password)],
-    ["Caractere especial", /[^A-Za-z0-9]/.test(password)],
-  ] as const;
+  const rules = new PasswordStrengthRule().requirements(password);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const confirmation = String(form.get("passwordConfirmation") ?? "");
-    if (!rules.every(([, valid]) => valid)) {
-      setFeedback({
-        type: "error",
-        message: "A nova senha não atende a todos os requisitos.",
-      });
-      return;
-    }
-    if (password !== confirmation) {
-      setFeedback({
-        type: "error",
-        message: "A confirmação deve ser igual à nova senha.",
-      });
-      return;
-    }
     setLoading(true);
     setFeedback(null);
     try {
-      await gateway.changePassword(
-        String(form.get("currentPassword") ?? ""),
-        password,
-        confirmation,
-      );
+      validatePassword(password, confirmation);
+      await gateway.changePassword(password, confirmation);
       router.replace(backPath);
     } catch (cause) {
       setFeedback({
@@ -99,16 +80,9 @@ export function ChangePassword({
         <p className="mt-2 text-sm leading-6 text-muted-foreground">
           {recovery
             ? "Defina uma nova senha para recuperar o acesso à sua conta."
-            : "Confirme sua senha atual e escolha uma nova senha segura."}
+            : "Escolha uma nova senha e confirme abaixo."}
         </p>
         <form onSubmit={submit} className="mt-7 grid gap-5">
-          {!recovery && (
-            <PasswordField
-              name="currentPassword"
-              label="Senha atual"
-              autoComplete="current-password"
-            />
-          )}
           <label className="grid gap-2 text-sm">
             <Label htmlFor="new-password">Nova senha</Label>
             <Input
@@ -122,7 +96,7 @@ export function ChangePassword({
             />
           </label>
           <div className="grid grid-cols-2 gap-2 rounded-xl border bg-white/50 p-3">
-            {rules.map(([label, valid]) => (
+            {rules.map(({ label, valid }) => (
               <span
                 key={label}
                 className={`flex items-center gap-1.5 text-[11px] ${valid ? "font-medium text-[#18794e]" : "text-muted-foreground"}`}
@@ -139,7 +113,7 @@ export function ChangePassword({
               <span className="grid size-4 place-items-center rounded-full border border-primary/25 bg-primary/5 text-primary">
                 <Check className="size-2.5" />
               </span>
-              A senha não pode ter sido utilizada anteriormente
+              A nova senha não pode repetir nenhuma das três últimas senhas.
             </span>
           </div>
           <PasswordField

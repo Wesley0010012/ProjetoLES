@@ -56,6 +56,10 @@ export function LoginForm({
         "libra.authentication",
         JSON.stringify({
           token: authentication.token,
+          userId: authentication.userId,
+          email: String(form.get("email") ?? "")
+            .trim()
+            .toLowerCase(),
           expiresAt: authentication.expiresAt.toISOString(),
           type: accessType,
         }),
