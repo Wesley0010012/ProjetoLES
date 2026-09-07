@@ -1,0 +1,7 @@
+export enum GenderEnum {
+  MAN = 'MAN',
+  WOMAN = 'WOMAN',
+  NON_BINARY = 'NON_BINARY',
+  SELF_DESCRIBED = 'SELF_DESCRIBED',
+  NOT_INFORMED = 'NOT_INFORMED',
+}
