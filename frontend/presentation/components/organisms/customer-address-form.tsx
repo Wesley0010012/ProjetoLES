@@ -1,4 +1,7 @@
 "use client";
+import { AddressTypeFields } from "@/presentation/components/molecules/address-type-fields";
+import { useCustomerOptions } from "@/main/connectors/use-customer-options";
+import { CustomerAddressTypeEnum } from "@/domain/models/customer";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Save } from "lucide-react";
@@ -16,16 +19,28 @@ export function CustomerAddressForm({
   returnTo?: string;
 }) {
   const router = useRouter();
+  const options = useCustomerOptions();
   const gateway = useMemo(() => makeStorefrontGateway(), []);
   const [profile, setProfile] = useState<SelfProfile | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
-    if (addressId) gateway.profile().then(setProfile);
+    if (addressId)
+      gateway
+        .profile()
+        .then(setProfile)
+        .catch((cause) =>
+          setError(
+            cause instanceof Error
+              ? cause.message
+              : "Não foi possível carregar o perfil.",
+          ),
+        );
   }, [addressId, gateway]);
   const address = profile?.addresses?.find((item) => item.id === addressId);
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (options.loading || options.error) return;
     setSaving(true);
     setError("");
     const form = new FormData(event.currentTarget);
@@ -41,8 +56,10 @@ export function CustomerAddressForm({
       state: text(form, "state"),
       country: text(form, "country"),
       observations: text(form, "observations"),
-      billing: form.get("billing") === "on",
-      delivery: form.get("delivery") === "on",
+      type:
+        address?.type === CustomerAddressTypeEnum.Primary
+          ? CustomerAddressTypeEnum.Primary
+          : text(form, "type"),
     };
     try {
       if (addressId) await gateway.updateAddress(addressId, payload);
@@ -55,6 +72,8 @@ export function CustomerAddressForm({
       setSaving(false);
     }
   }
+  if (addressId && !profile && !error)
+    return <div className="p-8">Carregando endereço...</div>;
   if (addressId && profile && !address)
     return <div className="p-8 text-center">Endereço não encontrado.</div>;
   return (
@@ -79,47 +98,57 @@ export function CustomerAddressForm({
           {error}
         </p>
       )}
+      {options.error && (
+        <p role="alert" className="mb-4 text-sm text-destructive">
+          {options.error}{" "}
+          <button type="button" onClick={options.retry} className="underline">
+            Tentar novamente
+          </button>
+        </p>
+      )}
       <form
         onSubmit={submit}
         className="liquid-glass grid gap-4 rounded-3xl p-5 sm:grid-cols-2 sm:p-7"
       >
         <Field name="name" label="Identificação" defaultValue={address?.name} />
-        <Field name="residenceType" label="Tipo de residência" defaultValue="Casa" />
-        <Field name="streetType" label="Tipo de logradouro" defaultValue="Rua" />
+        <AddressTypeFields
+          options={options}
+          residenceType={address?.residenceType}
+          streetType={address?.streetType}
+          disabled={options.loading || Boolean(options.error)}
+        />
         <Field name="street" label="Logradouro" defaultValue={address?.street} />
         <Field name="number" label="Número" defaultValue={address?.number} />
-        <Field name="district" label="Bairro" />
-        <Field name="zipCode" label="CEP" />
+        <Field name="district" label="Bairro" defaultValue={address?.district} />
+        <Field name="zipCode" label="CEP" defaultValue={address?.zipCode} />
         <Field name="city" label="Cidade" defaultValue={address?.city} />
         <Field name="state" label="Estado" defaultValue={address?.state} />
-        <Field name="country" label="País" defaultValue="Brasil" />
-        <Field name="observations" label="Observações" />
-        <div className="flex flex-wrap gap-5 rounded-xl border bg-white/50 p-4 sm:col-span-2">
-          <label className="text-sm">
-            <input
-              type="checkbox"
-              name="billing"
-              defaultChecked={address?.billing}
-              disabled={address?.primary}
-            />{" "}
-            Cobrança
-          </label>
-          <label className="text-sm">
-            <input
-              type="checkbox"
-              name="delivery"
-              defaultChecked={address?.delivery}
-              disabled={address?.primary}
-            />{" "}
-            Entrega
-          </label>
-          {address?.primary && (
-            <span className="text-xs text-muted-foreground">
-              O endereço principal permanece exclusivamente residencial.
-            </span>
-          )}
-        </div>
-        <Button disabled={saving} className="h-11 sm:col-span-2">
+        <Field name="country" label="País" defaultValue={address?.country ?? "Brasil"} />
+        <Field
+          name="observations"
+          label="Observações"
+          defaultValue={address?.observations}
+          required={false}
+        />
+        <label className="grid gap-2 text-sm">
+          Tipo de endereço
+          <select
+            name="type"
+            defaultValue={address?.type ?? CustomerAddressTypeEnum.Delivery}
+            disabled={address?.type === CustomerAddressTypeEnum.Primary}
+          >
+            <option value={CustomerAddressTypeEnum.Billing}>Cobrança</option>
+            <option value={CustomerAddressTypeEnum.Delivery}>Entrega</option>
+            {address?.type === CustomerAddressTypeEnum.Primary && (
+              <option value={CustomerAddressTypeEnum.Primary}>Principal</option>
+            )}
+          </select>
+        </label>
+        <Button
+          type="submit"
+          disabled={saving || options.loading || Boolean(options.error)}
+          className="h-11 sm:col-span-2"
+        >
           {saving ? <Loader2 className="animate-spin" /> : <Save />}
           {addressId ? "Salvar alterações" : "Criar endereço"}
         </Button>
