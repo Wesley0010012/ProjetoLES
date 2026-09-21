@@ -1,0 +1,3702 @@
+[
+  {
+    "id": 1,
+    "code": "LIB-0001",
+    "title": "Clean Code",
+    "authors": [
+      "Robert C. Martin"
+    ],
+    "categories": [
+      "Engenharia de software",
+      "Boas práticas",
+      "Programação"
+    ],
+    "editors": [
+      "Prentice Hall"
+    ],
+    "year": 2008,
+    "edition": "1ª edição",
+    "isbn": "9780132350884",
+    "synopsis": "Princípios, padrões e práticas para escrever código limpo, legível e sustentável.",
+    "numberOfPages": 464,
+    "dimensions": {
+      "height": 21,
+      "width": 14,
+      "weight": 0.42,
+      "depth": 2.1
+    },
+    "price": 41.6,
+    "availableQuantity": 20,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780132350884-L.jpg",
+    "barcode": "7890000000001",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 2,
+    "code": "LIB-0002",
+    "title": "Domain-Driven Design",
+    "authors": [
+      "Eric Evans"
+    ],
+    "categories": [
+      "Arquitetura de software",
+      "Engenharia de software"
+    ],
+    "editors": [
+      "Addison-Wesley"
+    ],
+    "year": 2003,
+    "edition": "1ª edição",
+    "isbn": "9780321125217",
+    "synopsis": "Uma abordagem estratégica para modelar domínios complexos e alinhar software ao negócio.",
+    "numberOfPages": 560,
+    "dimensions": {
+      "height": 21,
+      "width": 14,
+      "weight": 0.48,
+      "depth": 2.4
+    },
+    "price": 49.4,
+    "availableQuantity": 15,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780321125217-L.jpg",
+    "barcode": "7890000000002",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 3,
+    "code": "LIB-0003",
+    "title": "The Pragmatic Programmer",
+    "authors": [
+      "Andrew Hunt e David Thomas"
+    ],
+    "categories": [
+      "Programação",
+      "Boas práticas",
+      "Engenharia de software"
+    ],
+    "editors": [
+      "Pearson"
+    ],
+    "year": 2019,
+    "edition": "20ª edição comemorativa",
+    "isbn": "9780135957059",
+    "synopsis": "Técnicas práticas para evoluir como profissional e construir software com responsabilidade.",
+    "numberOfPages": 352,
+    "dimensions": {
+      "height": 20.8,
+      "width": 13.6,
+      "weight": 0.36,
+      "depth": 1.8
+    },
+    "price": 28.8,
+    "availableQuantity": 12,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780135957059-L.jpg",
+    "barcode": "7890000000003",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 4,
+    "code": "LIB-0004",
+    "title": "Refactoring",
+    "authors": [
+      "Martin Fowler"
+    ],
+    "categories": [
+      "Engenharia de software",
+      "Boas práticas"
+    ],
+    "editors": [
+      "Addison-Wesley"
+    ],
+    "year": 2018,
+    "edition": "2ª edição",
+    "isbn": "9780134757599",
+    "synopsis": "Técnicas para melhorar a estrutura interna de sistemas sem alterar seu comportamento externo.",
+    "numberOfPages": 448,
+    "dimensions": {
+      "height": 23,
+      "width": 17,
+      "weight": 0.61,
+      "depth": 2.3
+    },
+    "price": 54.9,
+    "availableQuantity": 9,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780134757599-L.jpg",
+    "barcode": "7890000000004",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 5,
+    "code": "LIB-0005",
+    "title": "Design Patterns",
+    "authors": [
+      "Erich Gamma",
+      "Richard Helm",
+      "Ralph Johnson",
+      "John Vlissides"
+    ],
+    "categories": [
+      "Arquitetura de software",
+      "Engenharia de software"
+    ],
+    "editors": [
+      "Addison-Wesley"
+    ],
+    "year": 1994,
+    "edition": "1ª edição",
+    "isbn": "9780201633610",
+    "synopsis": "Soluções reutilizáveis para problemas recorrentes no projeto de software orientado a objetos.",
+    "numberOfPages": 416,
+    "dimensions": {
+      "height": 24,
+      "width": 18,
+      "weight": 0.72,
+      "depth": 2.5
+    },
+    "price": 62.5,
+    "availableQuantity": 8,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780201633610-L.jpg",
+    "barcode": "7890000000005",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 6,
+    "code": "LIB-0006",
+    "title": "Working Effectively with Legacy Code",
+    "authors": [
+      "Michael Feathers"
+    ],
+    "categories": [
+      "Engenharia de software",
+      "Testes",
+      "Boas práticas"
+    ],
+    "editors": [
+      "Prentice Hall"
+    ],
+    "year": 2004,
+    "edition": "1ª edição",
+    "isbn": "9780131177055",
+    "synopsis": "Estratégias seguras para testar, compreender e modificar sistemas legados.",
+    "numberOfPages": 456,
+    "dimensions": {
+      "height": 23,
+      "width": 17,
+      "weight": 0.64,
+      "depth": 2.4
+    },
+    "price": 47.9,
+    "availableQuantity": 6,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780131177055-L.jpg",
+    "barcode": "7890000000006",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 7,
+    "code": "LIB-0007",
+    "title": "Test-Driven Development",
+    "authors": [
+      "Kent Beck"
+    ],
+    "categories": [
+      "Testes",
+      "Programação",
+      "Boas práticas"
+    ],
+    "editors": [
+      "Addison-Wesley"
+    ],
+    "year": 2002,
+    "edition": "1ª edição",
+    "isbn": "9780321146533",
+    "synopsis": "Desenvolvimento guiado por testes apresentado por meio de exemplos progressivos e práticos.",
+    "numberOfPages": 240,
+    "dimensions": {
+      "height": 23,
+      "width": 17,
+      "weight": 0.38,
+      "depth": 1.5
+    },
+    "price": 36.9,
+    "availableQuantity": 14,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780321146533-L.jpg",
+    "barcode": "7890000000007",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 8,
+    "code": "LIB-0008",
+    "title": "Building Microservices",
+    "authors": [
+      "Sam Newman"
+    ],
+    "categories": [
+      "Arquitetura de software",
+      "Sistemas distribuídos"
+    ],
+    "editors": [
+      "O'Reilly Media"
+    ],
+    "year": 2021,
+    "edition": "2ª edição",
+    "isbn": "9781492034025",
+    "synopsis": "Princípios e decisões para projetar, implantar e evoluir arquiteturas baseadas em microsserviços.",
+    "numberOfPages": 612,
+    "dimensions": {
+      "height": 23.5,
+      "width": 17.8,
+      "weight": 0.82,
+      "depth": 3.1
+    },
+    "price": 58.4,
+    "availableQuantity": 11,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9781492034025-L.jpg",
+    "barcode": "7890000000008",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 9,
+    "code": "LIB-0009",
+    "title": "Clean Architecture",
+    "authors": [
+      "Robert C. Martin"
+    ],
+    "categories": [
+      "Arquitetura de software",
+      "Engenharia de software",
+      "Boas práticas"
+    ],
+    "editors": [
+      "Prentice Hall"
+    ],
+    "year": 2017,
+    "edition": "1ª edição",
+    "isbn": "9780134494166",
+    "synopsis": "Fundamentos para organizar sistemas independentes de frameworks, interfaces e detalhes externos.",
+    "numberOfPages": 432,
+    "dimensions": {
+      "height": 23,
+      "width": 17,
+      "weight": 0.59,
+      "depth": 2.2
+    },
+    "price": 45.8,
+    "availableQuantity": 16,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780134494166-L.jpg",
+    "barcode": "7890000000009",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 10,
+    "code": "LIB-0010",
+    "title": "Patterns of Enterprise Application Architecture",
+    "authors": [
+      "Martin Fowler"
+    ],
+    "categories": [
+      "Arquitetura de software",
+      "Sistemas corporativos"
+    ],
+    "editors": [
+      "Addison-Wesley"
+    ],
+    "year": 2002,
+    "edition": "1ª edição",
+    "isbn": "9780321127426",
+    "synopsis": "Catálogo de padrões para estruturar aplicações corporativas e suas camadas de persistência e domínio.",
+    "numberOfPages": 560,
+    "dimensions": {
+      "height": 24,
+      "width": 18,
+      "weight": 0.79,
+      "depth": 2.9
+    },
+    "price": 64.2,
+    "availableQuantity": 5,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9780321127426-L.jpg",
+    "barcode": "7890000000010",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 11,
+    "code": "LIB-0011",
+    "title": "Release It!",
+    "authors": [
+      "Michael T. Nygard"
+    ],
+    "categories": [
+      "Sistemas distribuídos",
+      "DevOps",
+      "Arquitetura de software"
+    ],
+    "editors": [
+      "Pragmatic Bookshelf"
+    ],
+    "year": 2018,
+    "edition": "2ª edição",
+    "isbn": "9781680502398",
+    "synopsis": "Padrões de estabilidade e resiliência para sistemas preparados para produção.",
+    "numberOfPages": 376,
+    "dimensions": {
+      "height": 23,
+      "width": 18,
+      "weight": 0.55,
+      "depth": 2
+    },
+    "price": 42.7,
+    "availableQuantity": 7,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9781680502398-L.jpg",
+    "barcode": "7890000000011",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 12,
+    "code": "LIB-0012",
+    "title": "Accelerate",
+    "authors": [
+      "Nicole Forsgren",
+      "Jez Humble",
+      "Gene Kim"
+    ],
+    "categories": [
+      "DevOps",
+      "Engenharia de software",
+      "Gestão de tecnologia"
+    ],
+    "editors": [
+      "IT Revolution"
+    ],
+    "year": 2018,
+    "edition": "1ª edição",
+    "isbn": "9781942788331",
+    "synopsis": "Pesquisa sobre práticas técnicas e organizacionais associadas ao desempenho de equipes de tecnologia.",
+    "numberOfPages": 288,
+    "dimensions": {
+      "height": 22.8,
+      "width": 15.2,
+      "weight": 0.43,
+      "depth": 1.7
+    },
+    "price": 39.6,
+    "availableQuantity": 10,
+    "available": true,
+    "coverImage": "https://covers.openlibrary.org/b/isbn/9781942788331-L.jpg",
+    "barcode": "7890000000012",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 13,
+    "code": "LIB-0013",
+    "title": "Bobby Fischer Teaches Chess",
+    "authors": [
+      "Bobby Fischer"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1966,
+    "edition": "1ª edição",
+    "isbn": "0701516097",
+    "synopsis": "Bobby Fischer Teaches Chess, de Bobby Fischer, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 2.15
+    },
+    "price": 56.9,
+    "availableQuantity": 18,
+    "available": true,
+    "originalCoverId": 7376530,
+    "coverImage": "https://covers.openlibrary.org/b/id/7376530-L.jpg",
+    "barcode": "7890000000013",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 14,
+    "code": "LIB-0014",
+    "title": "Modern Chess Openings",
+    "authors": [
+      "John Herbert White"
+    ],
+    "categories": [
+      "Aberturas de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1911,
+    "edition": "1ª edição",
+    "isbn": "0679141065",
+    "synopsis": "Modern Chess Openings, de John Herbert White, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 2.4
+    },
+    "price": 62.3,
+    "availableQuantity": 19,
+    "available": true,
+    "originalCoverId": 4067980,
+    "coverImage": "https://covers.openlibrary.org/b/id/4067980-L.jpg",
+    "barcode": "7890000000014",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 15,
+    "code": "LIB-0015",
+    "title": "How to Reassess Your Chess",
+    "authors": [
+      "Jeremy Silman"
+    ],
+    "categories": [
+      "Xadrez Posicional",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1991,
+    "edition": "1ª edição",
+    "isbn": "9781890085001",
+    "synopsis": "How to Reassess Your Chess, de Jeremy Silman, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.4
+    },
+    "price": 67.7,
+    "availableQuantity": 20,
+    "available": true,
+    "originalCoverId": 938081,
+    "coverImage": "https://covers.openlibrary.org/b/id/938081-L.jpg",
+    "barcode": "7890000000015",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 16,
+    "code": "LIB-0016",
+    "title": "The Art of Learning",
+    "authors": [
+      "Josh Waitzkin"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 2007,
+    "edition": "1ª edição",
+    "isbn": "1416538860",
+    "synopsis": "The Art of Learning, de Josh Waitzkin, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.65
+    },
+    "price": 29.9,
+    "availableQuantity": 21,
+    "available": true,
+    "originalCoverId": 475008,
+    "coverImage": "https://covers.openlibrary.org/b/id/475008-L.jpg",
+    "barcode": "7890000000016",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 17,
+    "code": "LIB-0017",
+    "title": "My System",
+    "authors": [
+      "Aron Nimzowitsch"
+    ],
+    "categories": [
+      "Xadrez Posicional",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1925,
+    "edition": "1ª edição",
+    "isbn": "9781607964520",
+    "synopsis": "My System, de Aron Nimzowitsch, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.9
+    },
+    "price": 35.3,
+    "availableQuantity": 22,
+    "available": true,
+    "originalCoverId": 15023018,
+    "coverImage": "https://covers.openlibrary.org/b/id/15023018-L.jpg",
+    "barcode": "7890000000017",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 18,
+    "code": "LIB-0018",
+    "title": "The Amateur's Mind",
+    "authors": [
+      "Jeremy Silman"
+    ],
+    "categories": [
+      "Xadrez Posicional",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1995,
+    "edition": "1ª edição",
+    "isbn": "1890085022",
+    "synopsis": "The Amateur's Mind, de Jeremy Silman, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 2.15
+    },
+    "price": 40.7,
+    "availableQuantity": 23,
+    "available": true,
+    "originalCoverId": 938083,
+    "coverImage": "https://covers.openlibrary.org/b/id/938083-L.jpg",
+    "barcode": "7890000000018",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 19,
+    "code": "LIB-0019",
+    "title": "Begin Chess",
+    "authors": [
+      "David B. Pritchard"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1973,
+    "edition": "1ª edição",
+    "isbn": "0716007487",
+    "synopsis": "Begin Chess, de David B. Pritchard, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 2.4
+    },
+    "price": 46.1,
+    "availableQuantity": 24,
+    "available": true,
+    "originalCoverId": 1236519,
+    "coverImage": "https://covers.openlibrary.org/b/id/1236519-L.jpg",
+    "barcode": "7890000000019",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 20,
+    "code": "LIB-0020",
+    "title": "My 60 Memorable Games",
+    "authors": [
+      "Bobby Fischer"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1969,
+    "edition": "1ª edição",
+    "isbn": "1849948496",
+    "synopsis": "My 60 Memorable Games, de Bobby Fischer, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.4
+    },
+    "price": 51.5,
+    "availableQuantity": 25,
+    "available": true,
+    "originalCoverId": 3364419,
+    "coverImage": "https://covers.openlibrary.org/b/id/3364419-L.jpg",
+    "barcode": "7890000000020",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 21,
+    "code": "LIB-0021",
+    "title": "Chess Master vs. Chess Amateur",
+    "authors": [
+      "Max Euwe"
+    ],
+    "categories": [
+      "Xadrez Posicional",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1963,
+    "edition": "1ª edição",
+    "isbn": "2228886955",
+    "synopsis": "Chess Master vs. Chess Amateur, de Max Euwe, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.65
+    },
+    "price": 56.9,
+    "availableQuantity": 5,
+    "available": true,
+    "originalCoverId": 9320211,
+    "coverImage": "https://covers.openlibrary.org/b/id/9320211-L.jpg",
+    "barcode": "7890000000021",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 22,
+    "code": "LIB-0022",
+    "title": "Logical Chess, Move by Move",
+    "authors": [
+      "Irving Chernev"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1957,
+    "edition": "1ª edição",
+    "isbn": "9780713484649",
+    "synopsis": "Logical Chess, Move by Move, de Irving Chernev, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.9
+    },
+    "price": 62.3,
+    "availableQuantity": 6,
+    "available": true,
+    "originalCoverId": 6877988,
+    "coverImage": "https://covers.openlibrary.org/b/id/6877988-L.jpg",
+    "barcode": "7890000000022",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 23,
+    "code": "LIB-0023",
+    "title": "The Soviet Chess Primer",
+    "authors": [
+      "Ilya Maizelis"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 2014,
+    "edition": "1ª edição",
+    "isbn": "9781784831448",
+    "synopsis": "The Soviet Chess Primer, de Ilya Maizelis, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 2.15
+    },
+    "price": 67.7,
+    "availableQuantity": 7,
+    "available": true,
+    "originalCoverId": 11149566,
+    "coverImage": "https://covers.openlibrary.org/b/id/11149566-L.jpg",
+    "barcode": "7890000000023",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 24,
+    "code": "LIB-0024",
+    "title": "Silman's Complete Endgame Course",
+    "authors": [
+      "Jeremy Silman"
+    ],
+    "categories": [
+      "Finais de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 2007,
+    "edition": "1ª edição",
+    "isbn": "1890085103",
+    "synopsis": "Silman's Complete Endgame Course, de Jeremy Silman, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 2.4
+    },
+    "price": 29.9,
+    "availableQuantity": 8,
+    "available": true,
+    "originalCoverId": 938090,
+    "coverImage": "https://covers.openlibrary.org/b/id/938090-L.jpg",
+    "barcode": "7890000000024",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 25,
+    "code": "LIB-0025",
+    "title": "Chess for Dummies",
+    "authors": [
+      "James Eade"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1996,
+    "edition": "1ª edição",
+    "isbn": "9780470389416",
+    "synopsis": "Chess for Dummies, de James Eade, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.4
+    },
+    "price": 35.3,
+    "availableQuantity": 9,
+    "available": true,
+    "originalCoverId": 521598,
+    "coverImage": "https://covers.openlibrary.org/b/id/521598-L.jpg",
+    "barcode": "7890000000025",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 26,
+    "code": "LIB-0026",
+    "title": "Chess Fundamentals",
+    "authors": [
+      "José Raúl Capablanca"
+    ],
+    "categories": [
+      "Finais de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1921,
+    "edition": "1ª edição",
+    "isbn": "9781544608372",
+    "synopsis": "Chess Fundamentals, de José Raúl Capablanca, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.65
+    },
+    "price": 40.7,
+    "availableQuantity": 10,
+    "available": true,
+    "originalCoverId": 7313798,
+    "coverImage": "https://covers.openlibrary.org/b/id/7313798-L.jpg",
+    "barcode": "7890000000026",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 27,
+    "code": "LIB-0027",
+    "title": "Play Winning Chess",
+    "authors": [
+      "Yasser Seirawan"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1990,
+    "edition": "1ª edição",
+    "isbn": "1857443314",
+    "synopsis": "Play Winning Chess, de Yasser Seirawan, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.9
+    },
+    "price": 46.1,
+    "availableQuantity": 11,
+    "available": true,
+    "originalCoverId": 1304686,
+    "coverImage": "https://covers.openlibrary.org/b/id/1304686-L.jpg",
+    "barcode": "7890000000027",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 28,
+    "code": "LIB-0028",
+    "title": "Win at Chess",
+    "authors": [
+      "Fred Reinfeld"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1945,
+    "edition": "1ª edição",
+    "isbn": "0486204383",
+    "synopsis": "Win at Chess, de Fred Reinfeld, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 2.15
+    },
+    "price": 51.5,
+    "availableQuantity": 12,
+    "available": true,
+    "originalCoverId": 313298,
+    "coverImage": "https://covers.openlibrary.org/b/id/313298-L.jpg",
+    "barcode": "7890000000028",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 29,
+    "code": "LIB-0029",
+    "title": "Chess",
+    "authors": [
+      "Laszlo Polgar"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1995,
+    "edition": "1ª edição",
+    "isbn": "3829005075",
+    "synopsis": "Chess, de Laszlo Polgar, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 2.4
+    },
+    "price": 56.9,
+    "availableQuantity": 13,
+    "available": true,
+    "originalCoverId": 931396,
+    "coverImage": "https://covers.openlibrary.org/b/id/931396-L.jpg",
+    "barcode": "7890000000029",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 30,
+    "code": "LIB-0030",
+    "title": "The Art of Attack in Chess",
+    "authors": [
+      "Vladimir Vuković"
+    ],
+    "categories": [
+      "Estratégia de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1965,
+    "edition": "1ª edição",
+    "isbn": "9781857444001",
+    "synopsis": "The Art of Attack in Chess, de Vladimir Vuković, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.4
+    },
+    "price": 62.3,
+    "availableQuantity": 14,
+    "available": true,
+    "originalCoverId": 909565,
+    "coverImage": "https://covers.openlibrary.org/b/id/909565-L.jpg",
+    "barcode": "7890000000030",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 31,
+    "code": "LIB-0031",
+    "title": "The Queen's Gambit",
+    "authors": [
+      "Walter S. Tevis"
+    ],
+    "categories": [
+      "Aberturas de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 1983,
+    "edition": "1ª edição",
+    "isbn": "1399601482",
+    "synopsis": "The Queen's Gambit, de Walter S. Tevis, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.65
+    },
+    "price": 67.7,
+    "availableQuantity": 15,
+    "available": true,
+    "originalCoverId": 9319360,
+    "coverImage": "https://covers.openlibrary.org/b/id/9319360-L.jpg",
+    "barcode": "7890000000031",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 32,
+    "code": "LIB-0032",
+    "title": "Discovering Chess Openings",
+    "authors": [
+      "John Emms"
+    ],
+    "categories": [
+      "Aberturas de Xadrez",
+      "Xadrez"
+    ],
+    "editors": [
+      "Editora Gambito"
+    ],
+    "year": 2006,
+    "edition": "1ª edição",
+    "isbn": "8425520355",
+    "synopsis": "Discovering Chess Openings, de John Emms, é uma obra de referência na categoria xadrez.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.9
+    },
+    "price": 29.9,
+    "availableQuantity": 16,
+    "available": true,
+    "originalCoverId": 2056972,
+    "coverImage": "https://covers.openlibrary.org/b/id/2056972-L.jpg",
+    "barcode": "7890000000032",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 33,
+    "code": "LIB-0033",
+    "title": "Misery",
+    "authors": [
+      "Stephen King"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1978,
+    "edition": "1ª edição",
+    "isbn": "0606395687",
+    "synopsis": "Misery, de Stephen King, é uma obra de referência na categoria terror.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 2.15
+    },
+    "price": 35.3,
+    "availableQuantity": 17,
+    "available": true,
+    "originalCoverId": 8259296,
+    "coverImage": "https://covers.openlibrary.org/b/id/8259296-L.jpg",
+    "barcode": "7890000000033",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 34,
+    "code": "LIB-0034",
+    "title": "The Shining",
+    "authors": [
+      "Stephen King"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1977,
+    "edition": "1ª edição",
+    "isbn": "9780451193889",
+    "synopsis": "The Shining, de Stephen King, é uma obra de referência na categoria terror.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 2.4
+    },
+    "price": 40.7,
+    "availableQuantity": 18,
+    "available": true,
+    "originalCoverId": 12376585,
+    "coverImage": "https://covers.openlibrary.org/b/id/12376585-L.jpg",
+    "barcode": "7890000000034",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 35,
+    "code": "LIB-0035",
+    "title": "The Exorcist",
+    "authors": [
+      "William Peter Blatty"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1971,
+    "edition": "1ª edição",
+    "isbn": "9788412198867",
+    "synopsis": "The Exorcist, de William Peter Blatty, é uma obra de referência na categoria terror.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.4
+    },
+    "price": 46.1,
+    "availableQuantity": 19,
+    "available": true,
+    "originalCoverId": 12715730,
+    "coverImage": "https://covers.openlibrary.org/b/id/12715730-L.jpg",
+    "barcode": "7890000000035",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 36,
+    "code": "LIB-0036",
+    "title": "Cujo",
+    "authors": [
+      "Stephen King"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1981,
+    "edition": "1ª edição",
+    "isbn": "9780751504408",
+    "synopsis": "Cujo, de Stephen King, é uma obra de referência na categoria terror.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.65
+    },
+    "price": 51.5,
+    "availableQuantity": 20,
+    "available": true,
+    "originalCoverId": 8570003,
+    "coverImage": "https://covers.openlibrary.org/b/id/8570003-L.jpg",
+    "barcode": "7890000000036",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 37,
+    "code": "LIB-0037",
+    "title": "The Hellbound Heart",
+    "authors": [
+      "Clive Barker"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1991,
+    "edition": "1ª edição",
+    "isbn": "0061452882",
+    "synopsis": "The Hellbound Heart, de Clive Barker, é uma obra de referência na categoria terror.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.9
+    },
+    "price": 56.9,
+    "availableQuantity": 21,
+    "available": true,
+    "originalCoverId": 1726053,
+    "coverImage": "https://covers.openlibrary.org/b/id/1726053-L.jpg",
+    "barcode": "7890000000037",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 38,
+    "code": "LIB-0038",
+    "title": "The Long Walk",
+    "authors": [
+      "Stephen King"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1979,
+    "edition": "1ª edição",
+    "isbn": "9788556511614",
+    "synopsis": "The Long Walk, de Stephen King, é uma obra de referência na categoria terror.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 2.15
+    },
+    "price": 62.3,
+    "availableQuantity": 22,
+    "available": true,
+    "originalCoverId": 14653609,
+    "coverImage": "https://covers.openlibrary.org/b/id/14653609-L.jpg",
+    "barcode": "7890000000038",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 39,
+    "code": "LIB-0039",
+    "title": "It",
+    "authors": [
+      "Stephen King"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1986,
+    "edition": "1ª edição",
+    "isbn": "9784167148072",
+    "synopsis": "It, de Stephen King, é uma obra de referência na categoria terror.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 2.4
+    },
+    "price": 67.7,
+    "availableQuantity": 23,
+    "available": true,
+    "originalCoverId": 8569284,
+    "coverImage": "https://covers.openlibrary.org/b/id/8569284-L.jpg",
+    "barcode": "7890000000039",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 40,
+    "code": "LIB-0040",
+    "title": "Christine",
+    "authors": [
+      "Stephen King"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1983,
+    "edition": "1ª edição",
+    "isbn": "9789752112575",
+    "synopsis": "Christine, de Stephen King, é uma obra de referência na categoria terror.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.4
+    },
+    "price": 29.9,
+    "availableQuantity": 24,
+    "available": true,
+    "originalCoverId": 14655985,
+    "coverImage": "https://covers.openlibrary.org/b/id/14655985-L.jpg",
+    "barcode": "7890000000040",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 41,
+    "code": "LIB-0041",
+    "title": "Four Past Midnight",
+    "authors": [
+      "Stephen King"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1990,
+    "edition": "1ª edição",
+    "isbn": "2277236705",
+    "synopsis": "Four Past Midnight, de Stephen King, é uma obra de referência na categoria terror.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.65
+    },
+    "price": 35.3,
+    "availableQuantity": 25,
+    "available": true,
+    "originalCoverId": 8413143,
+    "coverImage": "https://covers.openlibrary.org/b/id/8413143-L.jpg",
+    "barcode": "7890000000041",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 42,
+    "code": "LIB-0042",
+    "title": "Fear Street: The Knife",
+    "authors": [
+      "R. L. Stine"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1991,
+    "edition": "1ª edição",
+    "isbn": "9783785533529",
+    "synopsis": "Fear Street: The Knife, de R. L. Stine, é uma obra de referência na categoria terror.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.9
+    },
+    "price": 40.7,
+    "availableQuantity": 5,
+    "available": true,
+    "originalCoverId": 2547647,
+    "coverImage": "https://covers.openlibrary.org/b/id/2547647-L.jpg",
+    "barcode": "7890000000042",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 43,
+    "code": "LIB-0043",
+    "title": "The Great God Pan",
+    "authors": [
+      "Arthur Machen"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1894,
+    "edition": "1ª edição",
+    "isbn": "1727724860",
+    "synopsis": "The Great God Pan, de Arthur Machen, é uma obra de referência na categoria terror.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 2.15
+    },
+    "price": 46.1,
+    "availableQuantity": 6,
+    "available": true,
+    "originalCoverId": 921610,
+    "coverImage": "https://covers.openlibrary.org/b/id/921610-L.jpg",
+    "barcode": "7890000000043",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 44,
+    "code": "LIB-0044",
+    "title": "House of Leaves",
+    "authors": [
+      "Mark Z. Danielewski"
+    ],
+    "categories": [
+      "Terror",
+      "Terror"
+    ],
+    "editors": [
+      "Noite Editorial"
+    ],
+    "year": 1998,
+    "edition": "1ª edição",
+    "isbn": "9786055159719",
+    "synopsis": "House of Leaves, de Mark Z. Danielewski, é uma obra de referência na categoria terror.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 2.4
+    },
+    "price": 51.5,
+    "availableQuantity": 7,
+    "available": true,
+    "originalCoverId": 6450442,
+    "coverImage": "https://covers.openlibrary.org/b/id/6450442-L.jpg",
+    "barcode": "7890000000044",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 45,
+    "code": "LIB-0045",
+    "title": "Twisted Games",
+    "authors": [
+      "Ana Huang"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2021,
+    "edition": "1ª edição",
+    "isbn": "9780349434315",
+    "synopsis": "Twisted Games, de Ana Huang, é uma obra de referência na categoria romance.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.4
+    },
+    "price": 56.9,
+    "availableQuantity": 8,
+    "available": true,
+    "originalCoverId": 12821465,
+    "coverImage": "https://covers.openlibrary.org/b/id/12821465-L.jpg",
+    "barcode": "7890000000045",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 46,
+    "code": "LIB-0046",
+    "title": "Twisted Love",
+    "authors": [
+      "Ana Huang"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2021,
+    "edition": "1ª edição",
+    "isbn": "9788408260509",
+    "synopsis": "Twisted Love, de Ana Huang, é uma obra de referência na categoria romance.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.65
+    },
+    "price": 62.3,
+    "availableQuantity": 9,
+    "available": true,
+    "originalCoverId": 12940491,
+    "coverImage": "https://covers.openlibrary.org/b/id/12940491-L.jpg",
+    "barcode": "7890000000046",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 47,
+    "code": "LIB-0047",
+    "title": "Twisted Hate",
+    "authors": [
+      "Ana Huang"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2022,
+    "edition": "1ª edição",
+    "isbn": "9781728274881",
+    "synopsis": "Twisted Hate, de Ana Huang, é uma obra de referência na categoria romance.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.9
+    },
+    "price": 67.7,
+    "availableQuantity": 10,
+    "available": true,
+    "originalCoverId": 12928487,
+    "coverImage": "https://covers.openlibrary.org/b/id/12928487-L.jpg",
+    "barcode": "7890000000047",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 48,
+    "code": "LIB-0048",
+    "title": "Corrupt",
+    "authors": [
+      "Penelope Douglas"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2015,
+    "edition": "1ª edição",
+    "isbn": "6073911203",
+    "synopsis": "Corrupt, de Penelope Douglas, é uma obra de referência na categoria romance.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 2.15
+    },
+    "price": 29.9,
+    "availableQuantity": 11,
+    "available": true,
+    "originalCoverId": 10226443,
+    "coverImage": "https://covers.openlibrary.org/b/id/10226443-L.jpg",
+    "barcode": "7890000000048",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 49,
+    "code": "LIB-0049",
+    "title": "Punk 57",
+    "authors": [
+      "Penelope Douglas"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2016,
+    "edition": "1ª edição",
+    "isbn": "9780593641996",
+    "synopsis": "Punk 57, de Penelope Douglas, é uma obra de referência na categoria romance.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 2.4
+    },
+    "price": 35.3,
+    "availableQuantity": 12,
+    "available": true,
+    "originalCoverId": 10107803,
+    "coverImage": "https://covers.openlibrary.org/b/id/10107803-L.jpg",
+    "barcode": "7890000000049",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 50,
+    "code": "LIB-0050",
+    "title": "It Starts with Us",
+    "authors": [
+      "Colleen Hoover"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2022,
+    "edition": "1ª edição",
+    "isbn": "8408267191",
+    "synopsis": "It Starts with Us, de Colleen Hoover, é uma obra de referência na categoria romance.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.4
+    },
+    "price": 40.7,
+    "availableQuantity": 13,
+    "available": true,
+    "originalCoverId": 12749873,
+    "coverImage": "https://covers.openlibrary.org/b/id/12749873-L.jpg",
+    "barcode": "7890000000050",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 51,
+    "code": "LIB-0051",
+    "title": "The Sweetest Oblivion",
+    "authors": [
+      "Danielle Lori"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2018,
+    "edition": "1ª edição",
+    "isbn": "1721284443",
+    "synopsis": "The Sweetest Oblivion, de Danielle Lori, é uma obra de referência na categoria romance.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.65
+    },
+    "price": 46.1,
+    "availableQuantity": 14,
+    "available": true,
+    "originalCoverId": 10831263,
+    "coverImage": "https://covers.openlibrary.org/b/id/10831263-L.jpg",
+    "barcode": "7890000000051",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 52,
+    "code": "LIB-0052",
+    "title": "The Fine Print",
+    "authors": [
+      "Lauren Asher"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2021,
+    "edition": "1ª edição",
+    "isbn": "1737507714",
+    "synopsis": "The Fine Print, de Lauren Asher, é uma obra de referência na categoria romance.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.9
+    },
+    "price": 51.5,
+    "availableQuantity": 15,
+    "available": true,
+    "originalCoverId": 14319054,
+    "coverImage": "https://covers.openlibrary.org/b/id/14319054-L.jpg",
+    "barcode": "7890000000052",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 53,
+    "code": "LIB-0053",
+    "title": "Twisted Lies",
+    "authors": [
+      "Ana Huang"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2022,
+    "edition": "1ª edição",
+    "isbn": "034943428X",
+    "synopsis": "Twisted Lies, de Ana Huang, é uma obra de referência na categoria romance.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 2.15
+    },
+    "price": 56.9,
+    "availableQuantity": 16,
+    "available": true,
+    "originalCoverId": 14425197,
+    "coverImage": "https://covers.openlibrary.org/b/id/14425197-L.jpg",
+    "barcode": "7890000000053",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 54,
+    "code": "LIB-0054",
+    "title": "Heated Rivalry",
+    "authors": [
+      "Rachel Reid"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2019,
+    "edition": "1ª edição",
+    "isbn": "9781038986597",
+    "synopsis": "Heated Rivalry, de Rachel Reid, é uma obra de referência na categoria romance.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 2.4
+    },
+    "price": 62.3,
+    "availableQuantity": 17,
+    "available": true,
+    "originalCoverId": 15226452,
+    "coverImage": "https://covers.openlibrary.org/b/id/15226452-L.jpg",
+    "barcode": "7890000000054",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 55,
+    "code": "LIB-0055",
+    "title": "It Ends with Us",
+    "authors": [
+      "Colleen Hoover"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 2012,
+    "edition": "1ª edição",
+    "isbn": "3423432837",
+    "synopsis": "It Ends with Us, de Colleen Hoover, é uma obra de referência na categoria romance.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.4
+    },
+    "price": 67.7,
+    "availableQuantity": 18,
+    "available": true,
+    "originalCoverId": 10473609,
+    "coverImage": "https://covers.openlibrary.org/b/id/10473609-L.jpg",
+    "barcode": "7890000000055",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 56,
+    "code": "LIB-0056",
+    "title": "Breaking Point",
+    "authors": [
+      "Emma Darcy"
+    ],
+    "categories": [
+      "Romance",
+      "Romance"
+    ],
+    "editors": [
+      "Páginas do Coração"
+    ],
+    "year": 1992,
+    "edition": "1ª edição",
+    "isbn": "9780263134186",
+    "synopsis": "Breaking Point, de Emma Darcy, é uma obra de referência na categoria romance.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.65
+    },
+    "price": 29.9,
+    "availableQuantity": 19,
+    "available": true,
+    "originalCoverId": 10387434,
+    "coverImage": "https://covers.openlibrary.org/b/id/10387434-L.jpg",
+    "barcode": "7890000000056",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 57,
+    "code": "LIB-0057",
+    "title": "Quicksilver",
+    "authors": [
+      "Callie Hart"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 2024,
+    "edition": "1ª edição",
+    "isbn": "9781538775790",
+    "synopsis": "Quicksilver, de Callie Hart, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.9
+    },
+    "price": 35.3,
+    "availableQuantity": 20,
+    "available": true,
+    "originalCoverId": 15227615,
+    "coverImage": "https://covers.openlibrary.org/b/id/15227615-L.jpg",
+    "barcode": "7890000000057",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 58,
+    "code": "LIB-0058",
+    "title": "Alchemy",
+    "authors": [
+      "Stanislas Klossowski de Rola"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 1973,
+    "edition": "1ª edição",
+    "isbn": "9780500810033",
+    "synopsis": "Alchemy, de Stanislas Klossowski de Rola, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 2.15
+    },
+    "price": 40.7,
+    "availableQuantity": 21,
+    "available": true,
+    "originalCoverId": 317278,
+    "coverImage": "https://covers.openlibrary.org/b/id/317278-L.jpg",
+    "barcode": "7890000000058",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 59,
+    "code": "LIB-0059",
+    "title": "Alchemy",
+    "authors": [
+      "Eric John Holmyard"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 1957,
+    "edition": "1ª edição",
+    "isbn": "9780486262987",
+    "synopsis": "Alchemy, de Eric John Holmyard, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 2.4
+    },
+    "price": 46.1,
+    "availableQuantity": 22,
+    "available": true,
+    "originalCoverId": 310703,
+    "coverImage": "https://covers.openlibrary.org/b/id/310703-L.jpg",
+    "barcode": "7890000000059",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 60,
+    "code": "LIB-0060",
+    "title": "Dictionary of Occult, Hermetic and Alchemical Sigils",
+    "authors": [
+      "Fred Gettings"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 1981,
+    "edition": "1ª edição",
+    "isbn": "0710000952",
+    "synopsis": "Dictionary of Occult, Hermetic and Alchemical Sigils, de Fred Gettings, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.4
+    },
+    "price": 51.5,
+    "availableQuantity": 23,
+    "available": true,
+    "originalCoverId": 4365840,
+    "coverImage": "https://covers.openlibrary.org/b/id/4365840-L.jpg",
+    "barcode": "7890000000060",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 61,
+    "code": "LIB-0061",
+    "title": "Picatrix",
+    "authors": [
+      "Maslamah ibn Ahmad al-Majriti"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 1933,
+    "edition": "1ª edição",
+    "isbn": "9780966295009",
+    "synopsis": "Picatrix, de Maslamah ibn Ahmad al-Majriti, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.65
+    },
+    "price": 56.9,
+    "availableQuantity": 24,
+    "available": true,
+    "originalCoverId": 13867098,
+    "coverImage": "https://covers.openlibrary.org/b/id/13867098-L.jpg",
+    "barcode": "7890000000061",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 62,
+    "code": "LIB-0062",
+    "title": "A Discovery of Witches",
+    "authors": [
+      "Deborah Harkness"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 2011,
+    "edition": "1ª edição",
+    "isbn": "0670022411",
+    "synopsis": "A Discovery of Witches, de Deborah Harkness, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.9
+    },
+    "price": 62.3,
+    "availableQuantity": 25,
+    "available": true,
+    "originalCoverId": 6998669,
+    "coverImage": "https://covers.openlibrary.org/b/id/6998669-L.jpg",
+    "barcode": "7890000000062",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 63,
+    "code": "LIB-0063",
+    "title": "Real Alchemy",
+    "authors": [
+      "Robert Allen Bartlett"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 2006,
+    "edition": "1ª edição",
+    "isbn": "9781847284785",
+    "synopsis": "Real Alchemy, de Robert Allen Bartlett, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 2.15
+    },
+    "price": 67.7,
+    "availableQuantity": 5,
+    "available": true,
+    "originalCoverId": 897691,
+    "coverImage": "https://covers.openlibrary.org/b/id/897691-L.jpg",
+    "barcode": "7890000000063",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 64,
+    "code": "LIB-0064",
+    "title": "Alchemy: Science of the Cosmos",
+    "authors": [
+      "Titus Burckhardt"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 1960,
+    "edition": "1ª edição",
+    "isbn": "9783926253859",
+    "synopsis": "Alchemy: Science of the Cosmos, de Titus Burckhardt, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 2.4
+    },
+    "price": 29.9,
+    "availableQuantity": 6,
+    "available": true,
+    "originalCoverId": 935306,
+    "coverImage": "https://covers.openlibrary.org/b/id/935306-L.jpg",
+    "barcode": "7890000000064",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 65,
+    "code": "LIB-0065",
+    "title": "Fullmetal Alchemist 1",
+    "authors": [
+      "Hiromu Arakawa"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 2002,
+    "edition": "1ª edição",
+    "isbn": "9784757506206",
+    "synopsis": "Fullmetal Alchemist 1, de Hiromu Arakawa, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.4
+    },
+    "price": 35.3,
+    "availableQuantity": 7,
+    "available": true,
+    "originalCoverId": 863658,
+    "coverImage": "https://covers.openlibrary.org/b/id/863658-L.jpg",
+    "barcode": "7890000000065",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 66,
+    "code": "LIB-0066",
+    "title": "Alchemy & Mysticism",
+    "authors": [
+      "Alexander Roob"
+    ],
+    "categories": [
+      "Alquimia",
+      "Alquimia"
+    ],
+    "editors": [
+      "Hermes Press"
+    ],
+    "year": 1997,
+    "edition": "1ª edição",
+    "isbn": "3836549360",
+    "synopsis": "Alchemy & Mysticism, de Alexander Roob, é uma obra de referência na categoria alquimia.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.65
+    },
+    "price": 40.7,
+    "availableQuantity": 8,
+    "available": true,
+    "originalCoverId": 1030563,
+    "coverImage": "https://covers.openlibrary.org/b/id/1030563-L.jpg",
+    "barcode": "7890000000066",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 67,
+    "code": "LIB-0067",
+    "title": "Chemistry",
+    "authors": [
+      "Theodore L. Brown"
+    ],
+    "categories": [
+      "Química Geral",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1977,
+    "edition": "1ª edição",
+    "isbn": "0134557328",
+    "synopsis": "Chemistry, de Theodore L. Brown, é uma obra de referência na categoria química.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.9
+    },
+    "price": 46.1,
+    "availableQuantity": 9,
+    "available": true,
+    "originalCoverId": 9407725,
+    "coverImage": "https://covers.openlibrary.org/b/id/9407725-L.jpg",
+    "barcode": "7890000000067",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 68,
+    "code": "LIB-0068",
+    "title": "Introductory Chemistry",
+    "authors": [
+      "Steven S. Zumdahl"
+    ],
+    "categories": [
+      "Química Geral",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1990,
+    "edition": "1ª edição",
+    "isbn": "0618388036",
+    "synopsis": "Introductory Chemistry, de Steven S. Zumdahl, é uma obra de referência na categoria química.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 2.15
+    },
+    "price": 51.5,
+    "availableQuantity": 10,
+    "available": true,
+    "originalCoverId": 1333055,
+    "coverImage": "https://covers.openlibrary.org/b/id/1333055-L.jpg",
+    "barcode": "7890000000068",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 69,
+    "code": "LIB-0069",
+    "title": "General Chemistry",
+    "authors": [
+      "James E. Brady"
+    ],
+    "categories": [
+      "Química Geral",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1975,
+    "edition": "1ª edição",
+    "isbn": "9780471019107",
+    "synopsis": "General Chemistry, de James E. Brady, é uma obra de referência na categoria química.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 2.4
+    },
+    "price": 56.9,
+    "availableQuantity": 11,
+    "available": true,
+    "originalCoverId": 4089838,
+    "coverImage": "https://covers.openlibrary.org/b/id/4089838-L.jpg",
+    "barcode": "7890000000069",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 70,
+    "code": "LIB-0070",
+    "title": "Foundations of College Chemistry",
+    "authors": [
+      "Morris Hein"
+    ],
+    "categories": [
+      "Química Geral",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1967,
+    "edition": "1ª edição",
+    "isbn": "0471779911",
+    "synopsis": "Foundations of College Chemistry, de Morris Hein, é uma obra de referência na categoria química.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.4
+    },
+    "price": 62.3,
+    "availableQuantity": 12,
+    "available": true,
+    "originalCoverId": 6598795,
+    "coverImage": "https://covers.openlibrary.org/b/id/6598795-L.jpg",
+    "barcode": "7890000000070",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 71,
+    "code": "LIB-0071",
+    "title": "Physical Chemistry",
+    "authors": [
+      "Robert A. Alberty"
+    ],
+    "categories": [
+      "Química Geral",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1955,
+    "edition": "1ª edição",
+    "isbn": "9780471552208",
+    "synopsis": "Physical Chemistry, de Robert A. Alberty, é uma obra de referência na categoria química.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.65
+    },
+    "price": 67.7,
+    "availableQuantity": 13,
+    "available": true,
+    "originalCoverId": 3963744,
+    "coverImage": "https://covers.openlibrary.org/b/id/3963744-L.jpg",
+    "barcode": "7890000000071",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 72,
+    "code": "LIB-0072",
+    "title": "Industrial Chemicals",
+    "authors": [
+      "William Lawrence Faith"
+    ],
+    "categories": [
+      "Química Geral",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1975,
+    "edition": "1ª edição",
+    "isbn": "9780471549642",
+    "synopsis": "Industrial Chemicals, de William Lawrence Faith, é uma obra de referência na categoria química.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.9
+    },
+    "price": 29.9,
+    "availableQuantity": 14,
+    "available": true,
+    "originalCoverId": 4483483,
+    "coverImage": "https://covers.openlibrary.org/b/id/4483483-L.jpg",
+    "barcode": "7890000000072",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 73,
+    "code": "LIB-0073",
+    "title": "Chemistry: A Molecular Approach",
+    "authors": [
+      "Nivaldo J. Tro"
+    ],
+    "categories": [
+      "Química Orgânica",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1996,
+    "edition": "1ª edição",
+    "isbn": "1269441884",
+    "synopsis": "Chemistry: A Molecular Approach, de Nivaldo J. Tro, é uma obra de referência na categoria química.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 2.15
+    },
+    "price": 35.3,
+    "availableQuantity": 15,
+    "available": true,
+    "originalCoverId": 9640101,
+    "coverImage": "https://covers.openlibrary.org/b/id/9640101-L.jpg",
+    "barcode": "7890000000073",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 74,
+    "code": "LIB-0074",
+    "title": "Fundamentals of Analytical Chemistry",
+    "authors": [
+      "Douglas A. Skoog"
+    ],
+    "categories": [
+      "Química Analítica",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1963,
+    "edition": "1ª edição",
+    "isbn": "9780030894954",
+    "synopsis": "Fundamentals of Analytical Chemistry, de Douglas A. Skoog, é uma obra de referência na categoria química.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 2.4
+    },
+    "price": 40.7,
+    "availableQuantity": 16,
+    "available": true,
+    "originalCoverId": 7063702,
+    "coverImage": "https://covers.openlibrary.org/b/id/7063702-L.jpg",
+    "barcode": "7890000000074",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 75,
+    "code": "LIB-0075",
+    "title": "Operational Organic Chemistry",
+    "authors": [
+      "John W. Lehman"
+    ],
+    "categories": [
+      "Química Orgânica",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1981,
+    "edition": "1ª edição",
+    "isbn": "0205112552",
+    "synopsis": "Operational Organic Chemistry, de John W. Lehman, é uma obra de referência na categoria química.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.4
+    },
+    "price": 46.1,
+    "availableQuantity": 17,
+    "available": true,
+    "originalCoverId": 4128310,
+    "coverImage": "https://covers.openlibrary.org/b/id/4128310-L.jpg",
+    "barcode": "7890000000075",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 76,
+    "code": "LIB-0076",
+    "title": "Organic Chemistry",
+    "authors": [
+      "Ralph J. Fessenden"
+    ],
+    "categories": [
+      "Química Orgânica",
+      "Química"
+    ],
+    "editors": [
+      "Ciência Viva"
+    ],
+    "year": 1979,
+    "edition": "1ª edição",
+    "isbn": "0871507242",
+    "synopsis": "Organic Chemistry, de Ralph J. Fessenden, é uma obra de referência na categoria química.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.65
+    },
+    "price": 51.5,
+    "availableQuantity": 18,
+    "available": true,
+    "originalCoverId": 8577311,
+    "coverImage": "https://covers.openlibrary.org/b/id/8577311-L.jpg",
+    "barcode": "7890000000076",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 77,
+    "code": "LIB-0077",
+    "title": "Concepts of Physics",
+    "authors": [
+      "Harish Chandra Verma"
+    ],
+    "categories": [
+      "Física Aplicada",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1993,
+    "edition": "1ª edição",
+    "isbn": "9788177091878",
+    "synopsis": "Concepts of Physics, de Harish Chandra Verma, é uma obra de referência na categoria física.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.9
+    },
+    "price": 56.9,
+    "availableQuantity": 19,
+    "available": true,
+    "originalCoverId": 8631889,
+    "coverImage": "https://covers.openlibrary.org/b/id/8631889-L.jpg",
+    "barcode": "7890000000077",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 78,
+    "code": "LIB-0078",
+    "title": "Relativity",
+    "authors": [
+      "Albert Einstein"
+    ],
+    "categories": [
+      "Física Quântica",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1917,
+    "edition": "1ª edição",
+    "isbn": "1019377984",
+    "synopsis": "Relativity, de Albert Einstein, é uma obra de referência na categoria física.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 2.15
+    },
+    "price": 62.3,
+    "availableQuantity": 20,
+    "available": true,
+    "originalCoverId": 10478466,
+    "coverImage": "https://covers.openlibrary.org/b/id/10478466-L.jpg",
+    "barcode": "7890000000078",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 79,
+    "code": "LIB-0079",
+    "title": "Physics",
+    "authors": [
+      "Douglas C. Giancoli"
+    ],
+    "categories": [
+      "Física Aplicada",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1980,
+    "edition": "1ª edição",
+    "isbn": "9780130352569",
+    "synopsis": "Physics, de Douglas C. Giancoli, é uma obra de referência na categoria física.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 2.4
+    },
+    "price": 67.7,
+    "availableQuantity": 21,
+    "available": true,
+    "originalCoverId": 9153769,
+    "coverImage": "https://covers.openlibrary.org/b/id/9153769-L.jpg",
+    "barcode": "7890000000079",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 80,
+    "code": "LIB-0080",
+    "title": "Seven Brief Lessons on Physics",
+    "authors": [
+      "Carlo Rovelli"
+    ],
+    "categories": [
+      "Física Quântica",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 2014,
+    "edition": "1ª edição",
+    "isbn": "8716345878",
+    "synopsis": "Seven Brief Lessons on Physics, de Carlo Rovelli, é uma obra de referência na categoria física.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.4
+    },
+    "price": 29.9,
+    "availableQuantity": 22,
+    "available": true,
+    "originalCoverId": 7398110,
+    "coverImage": "https://covers.openlibrary.org/b/id/7398110-L.jpg",
+    "barcode": "7890000000080",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 81,
+    "code": "LIB-0081",
+    "title": "Modern Physics",
+    "authors": [
+      "Kenneth S. Krane"
+    ],
+    "categories": [
+      "Física Nuclear",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1983,
+    "edition": "1ª edição",
+    "isbn": "9781119495553",
+    "synopsis": "Modern Physics, de Kenneth S. Krane, é uma obra de referência na categoria física.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.65
+    },
+    "price": 35.3,
+    "availableQuantity": 23,
+    "available": true,
+    "originalCoverId": 10504052,
+    "coverImage": "https://covers.openlibrary.org/b/id/10504052-L.jpg",
+    "barcode": "7890000000081",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 82,
+    "code": "LIB-0082",
+    "title": "College Physics",
+    "authors": [
+      "Randall D. Knight"
+    ],
+    "categories": [
+      "Física Aplicada",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 2006,
+    "edition": "1ª edição",
+    "isbn": "032159634X",
+    "synopsis": "College Physics, de Randall D. Knight, é uma obra de referência na categoria física.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.9
+    },
+    "price": 40.7,
+    "availableQuantity": 24,
+    "available": true,
+    "originalCoverId": 5375397,
+    "coverImage": "https://covers.openlibrary.org/b/id/5375397-L.jpg",
+    "barcode": "7890000000082",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 83,
+    "code": "LIB-0083",
+    "title": "Fundamentals of Physics",
+    "authors": [
+      "David Halliday"
+    ],
+    "categories": [
+      "Física Aplicada",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1970,
+    "edition": "1ª edição",
+    "isbn": "9780471332350",
+    "synopsis": "Fundamentals of Physics, de David Halliday, é uma obra de referência na categoria física.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 2.15
+    },
+    "price": 46.1,
+    "availableQuantity": 25,
+    "available": true,
+    "originalCoverId": 1246724,
+    "coverImage": "https://covers.openlibrary.org/b/id/1246724-L.jpg",
+    "barcode": "7890000000083",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 84,
+    "code": "LIB-0084",
+    "title": "Physics for Scientists and Engineers",
+    "authors": [
+      "Paul A. Tipler"
+    ],
+    "categories": [
+      "Física Aplicada",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1990,
+    "edition": "1ª edição",
+    "isbn": "9780716708094",
+    "synopsis": "Physics for Scientists and Engineers, de Paul A. Tipler, é uma obra de referência na categoria física.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 2.4
+    },
+    "price": 51.5,
+    "availableQuantity": 5,
+    "available": true,
+    "originalCoverId": 1855030,
+    "coverImage": "https://covers.openlibrary.org/b/id/1855030-L.jpg",
+    "barcode": "7890000000084",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 85,
+    "code": "LIB-0085",
+    "title": "Conceptual Physics",
+    "authors": [
+      "Paul G. Hewitt"
+    ],
+    "categories": [
+      "Física Aplicada",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1971,
+    "edition": "1ª edição",
+    "isbn": "0805384421",
+    "synopsis": "Conceptual Physics, de Paul G. Hewitt, é uma obra de referência na categoria física.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.4
+    },
+    "price": 56.9,
+    "availableQuantity": 6,
+    "available": true,
+    "originalCoverId": 7065516,
+    "coverImage": "https://covers.openlibrary.org/b/id/7065516-L.jpg",
+    "barcode": "7890000000085",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 86,
+    "code": "LIB-0086",
+    "title": "Light, Magnetism, and Electricity",
+    "authors": [
+      "Isaac Asimov"
+    ],
+    "categories": [
+      "Física Nuclear",
+      "Física"
+    ],
+    "editors": [
+      "Horizonte Científico"
+    ],
+    "year": 1966,
+    "edition": "1ª edição",
+    "isbn": "9780451619426",
+    "synopsis": "Light, Magnetism, and Electricity, de Isaac Asimov, é uma obra de referência na categoria física.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.65
+    },
+    "price": 62.3,
+    "availableQuantity": 7,
+    "available": true,
+    "originalCoverId": 10655842,
+    "coverImage": "https://covers.openlibrary.org/b/id/10655842-L.jpg",
+    "barcode": "7890000000086",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 87,
+    "code": "LIB-0087",
+    "title": "Introductory Mathematical Analysis",
+    "authors": [
+      "Ernest F. Haeussler"
+    ],
+    "categories": [
+      "Matemática Aplicada",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 1973,
+    "edition": "1ª edição",
+    "isbn": "9780130338556",
+    "synopsis": "Introductory Mathematical Analysis, de Ernest F. Haeussler, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 1.9
+    },
+    "price": 67.7,
+    "availableQuantity": 8,
+    "available": true,
+    "originalCoverId": 10572268,
+    "coverImage": "https://covers.openlibrary.org/b/id/10572268-L.jpg",
+    "barcode": "7890000000087",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 88,
+    "code": "LIB-0088",
+    "title": "Discrete Mathematics with Applications",
+    "authors": [
+      "Susanna S. Epp"
+    ],
+    "categories": [
+      "Matemática Pura",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 1990,
+    "edition": "1ª edição",
+    "isbn": "0534359450",
+    "synopsis": "Discrete Mathematics with Applications, de Susanna S. Epp, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 2.15
+    },
+    "price": 29.9,
+    "availableQuantity": 9,
+    "available": true,
+    "originalCoverId": 9295752,
+    "coverImage": "https://covers.openlibrary.org/b/id/9295752-L.jpg",
+    "barcode": "7890000000088",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 89,
+    "code": "LIB-0089",
+    "title": "What Is Mathematics?",
+    "authors": [
+      "Richard Courant"
+    ],
+    "categories": [
+      "Matemática Pura",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 1941,
+    "edition": "1ª edição",
+    "isbn": "9788833912004",
+    "synopsis": "What Is Mathematics?, de Richard Courant, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 2.4
+    },
+    "price": 35.3,
+    "availableQuantity": 10,
+    "available": true,
+    "originalCoverId": 123325,
+    "coverImage": "https://covers.openlibrary.org/b/id/123325-L.jpg",
+    "barcode": "7890000000089",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 90,
+    "code": "LIB-0090",
+    "title": "Algorithms to Live By",
+    "authors": [
+      "Brian Christian"
+    ],
+    "categories": [
+      "Matemática Aplicada",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 2016,
+    "edition": "1ª edição",
+    "isbn": "0008166099",
+    "synopsis": "Algorithms to Live By, de Brian Christian, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.4
+    },
+    "price": 40.7,
+    "availableQuantity": 11,
+    "available": true,
+    "originalCoverId": 8042539,
+    "coverImage": "https://covers.openlibrary.org/b/id/8042539-L.jpg",
+    "barcode": "7890000000090",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 91,
+    "code": "LIB-0091",
+    "title": "Calculus",
+    "authors": [
+      "James Stewart"
+    ],
+    "categories": [
+      "Matemática Aplicada",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 1986,
+    "edition": "1ª edição",
+    "isbn": "9780840058188",
+    "synopsis": "Calculus, de James Stewart, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.65
+    },
+    "price": 46.1,
+    "availableQuantity": 12,
+    "available": true,
+    "originalCoverId": 364094,
+    "coverImage": "https://covers.openlibrary.org/b/id/364094-L.jpg",
+    "barcode": "7890000000091",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 92,
+    "code": "LIB-0092",
+    "title": "How to Lie with Statistics",
+    "authors": [
+      "Darrell Huff"
+    ],
+    "categories": [
+      "Matemática Pura",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 1954,
+    "edition": "1ª edição",
+    "isbn": "9780393094268",
+    "synopsis": "How to Lie with Statistics, de Darrell Huff, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 244,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 1.9
+    },
+    "price": 51.5,
+    "availableQuantity": 13,
+    "available": true,
+    "originalCoverId": 13115835,
+    "coverImage": "https://covers.openlibrary.org/b/id/13115835-L.jpg",
+    "barcode": "7890000000092",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 93,
+    "code": "LIB-0093",
+    "title": "How to Solve It",
+    "authors": [
+      "George Pólya"
+    ],
+    "categories": [
+      "Matemática Pura",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 1945,
+    "edition": "1ª edição",
+    "isbn": "9788087888650",
+    "synopsis": "How to Solve It, de George Pólya, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 276,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 2.15
+    },
+    "price": 56.9,
+    "availableQuantity": 14,
+    "available": true,
+    "originalCoverId": 8404335,
+    "coverImage": "https://covers.openlibrary.org/b/id/8404335-L.jpg",
+    "barcode": "7890000000093",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 94,
+    "code": "LIB-0094",
+    "title": "Hands-On Machine Learning",
+    "authors": [
+      "Aurélien Géron"
+    ],
+    "categories": [
+      "Matemática Aplicada",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 2019,
+    "edition": "1ª edição",
+    "isbn": "9781098122461",
+    "synopsis": "Hands-On Machine Learning, de Aurélien Géron, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 308,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 2.4
+    },
+    "price": 62.3,
+    "availableQuantity": 15,
+    "available": true,
+    "originalCoverId": 9388208,
+    "coverImage": "https://covers.openlibrary.org/b/id/9388208-L.jpg",
+    "barcode": "7890000000094",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 95,
+    "code": "LIB-0095",
+    "title": "Humble Pi",
+    "authors": [
+      "Matt Parker"
+    ],
+    "categories": [
+      "Matemática Pura",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 2019,
+    "edition": "1ª edição",
+    "isbn": "8491991913",
+    "synopsis": "Humble Pi, de Matt Parker, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 340,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.6499999999999999,
+      "depth": 1.4
+    },
+    "price": 67.7,
+    "availableQuantity": 16,
+    "available": true,
+    "originalCoverId": 10530378,
+    "coverImage": "https://covers.openlibrary.org/b/id/10530378-L.jpg",
+    "barcode": "7890000000095",
+    "precificationGroup": {
+      "id": 2,
+      "name": "Especializada",
+      "profitMarginPercentage": 40
+    }
+  },
+  {
+    "id": 96,
+    "code": "LIB-0096",
+    "title": "Applied Mathematics",
+    "authors": [
+      "Frank S. Budnick"
+    ],
+    "categories": [
+      "Matemática Aplicada",
+      "Matemática"
+    ],
+    "editors": [
+      "Soma Editorial"
+    ],
+    "year": 1979,
+    "edition": "1ª edição",
+    "isbn": "0071125809",
+    "synopsis": "Applied Mathematics, de Frank S. Budnick, é uma obra de referência na categoria matemática.",
+    "numberOfPages": 372,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.35,
+      "depth": 1.65
+    },
+    "price": 29.9,
+    "availableQuantity": 17,
+    "available": true,
+    "originalCoverId": 9935503,
+    "coverImage": "https://covers.openlibrary.org/b/id/9935503-L.jpg",
+    "barcode": "7890000000096",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 97,
+    "code": "LIB-0097",
+    "title": "Automate the Boring Stuff with Python",
+    "authors": [
+      "Al Sweigart"
+    ],
+    "categories": [
+      "Programação",
+      "Programação"
+    ],
+    "editors": [
+      "Código Aberto"
+    ],
+    "year": 2015,
+    "edition": "1ª edição",
+    "isbn": "1718503407",
+    "synopsis": "Automate the Boring Stuff with Python, de Al Sweigart, é uma obra de referência na categoria programação.",
+    "numberOfPages": 404,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.41,
+      "depth": 1.9
+    },
+    "price": 35.3,
+    "availableQuantity": 18,
+    "available": true,
+    "originalCoverId": 7363640,
+    "coverImage": "https://covers.openlibrary.org/b/id/7363640-L.jpg",
+    "barcode": "7890000000097",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 98,
+    "code": "LIB-0098",
+    "title": "The C Programming Language",
+    "authors": [
+      "Brian W. Kernighan"
+    ],
+    "categories": [
+      "Programação",
+      "Programação"
+    ],
+    "editors": [
+      "Código Aberto"
+    ],
+    "year": 1978,
+    "edition": "1ª edição",
+    "isbn": "9780131107502",
+    "synopsis": "The C Programming Language, de Brian W. Kernighan, é uma obra de referência na categoria programação.",
+    "numberOfPages": 436,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.47,
+      "depth": 2.15
+    },
+    "price": 40.7,
+    "availableQuantity": 19,
+    "available": true,
+    "originalCoverId": 6684943,
+    "coverImage": "https://covers.openlibrary.org/b/id/6684943-L.jpg",
+    "barcode": "7890000000098",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 99,
+    "code": "LIB-0099",
+    "title": "The Mythical Man-Month",
+    "authors": [
+      "Frederick P. Brooks"
+    ],
+    "categories": [
+      "Programação",
+      "Programação"
+    ],
+    "editors": [
+      "Código Aberto"
+    ],
+    "year": 1974,
+    "edition": "1ª edição",
+    "isbn": "9780201006506",
+    "synopsis": "The Mythical Man-Month, de Frederick P. Brooks, é uma obra de referência na categoria programação.",
+    "numberOfPages": 180,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.53,
+      "depth": 2.4
+    },
+    "price": 46.1,
+    "availableQuantity": 20,
+    "available": true,
+    "originalCoverId": 6915361,
+    "coverImage": "https://covers.openlibrary.org/b/id/6915361-L.jpg",
+    "barcode": "7890000000099",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  },
+  {
+    "id": 100,
+    "code": "LIB-0100",
+    "title": "Structure and Interpretation of Computer Programs",
+    "authors": [
+      "Harold Abelson"
+    ],
+    "categories": [
+      "Programação",
+      "Programação"
+    ],
+    "editors": [
+      "Código Aberto"
+    ],
+    "year": 1985,
+    "edition": "1ª edição",
+    "isbn": "9787111135104",
+    "synopsis": "Structure and Interpretation of Computer Programs, de Harold Abelson, é uma obra de referência na categoria programação.",
+    "numberOfPages": 212,
+    "dimensions": {
+      "height": 23,
+      "width": 16,
+      "weight": 0.59,
+      "depth": 1.4
+    },
+    "price": 51.5,
+    "availableQuantity": 21,
+    "available": true,
+    "originalCoverId": 149338,
+    "coverImage": "https://covers.openlibrary.org/b/id/149338-L.jpg",
+    "barcode": "7890000000100",
+    "precificationGroup": {
+      "id": 1,
+      "name": "Padrão",
+      "profitMarginPercentage": 35
+    }
+  }
+]
