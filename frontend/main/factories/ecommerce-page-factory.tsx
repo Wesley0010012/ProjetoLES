@@ -14,7 +14,7 @@ export function EcommercePageFactory() {
 
   useEffect(() => {
     async function load() {
-      setRecommendations(await gateway.publicRecommendations("HOME"));
+      setRecommendations((await gateway.products()).slice(0, 6));
     }
     void load();
   }, [gateway]);
