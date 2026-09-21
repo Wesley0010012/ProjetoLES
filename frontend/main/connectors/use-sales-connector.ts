@@ -5,6 +5,17 @@ import { makeSalesGateway } from "@/main/factories/make-sales-gateway";
 
 export function useSalesConnector() {
   const gateway = useMemo(() => makeSalesGateway(), []);
+  const [salesPage, setSalesPage] = useState(1);
+  const [exchangesPage, setExchangesPage] = useState(1);
+  const [salesPagination, setSalesPagination] = useState({
+    totalEntities: 0,
+    totalPages: 0,
+  });
+  const [exchangesPagination, setExchangesPagination] = useState({
+    totalEntities: 0,
+    totalPages: 0,
+  });
+  const pageSize = 20;
   const [sales, setSales] = useState<Sale[]>([]);
   const [exchanges, setExchanges] = useState<Exchange[]>([]);
   const [loading, setLoading] = useState(true);
@@ -17,34 +28,83 @@ export function useSalesConnector() {
   } | null>(null);
   const [reviewObservation, setReviewObservation] = useState("");
   useEffect(() => {
-    Promise.all([gateway.list(), gateway.exchanges()])
+    let cancelled = false;
+    Promise.all([
+      gateway.listPage(salesPage, pageSize),
+      gateway.exchangesPage(exchangesPage, pageSize),
+    ])
       .then(([nextSales, nextExchanges]) => {
-        setSales(nextSales);
-        setExchanges(nextExchanges);
+        if (cancelled) return;
+        setSales(nextSales.entities);
+        setExchanges(nextExchanges.entities);
+        setSalesPagination({
+          totalEntities: nextSales.totalEntities,
+          totalPages: nextSales.totalPages,
+        });
+        setExchangesPagination({
+          totalEntities: nextExchanges.totalEntities,
+          totalPages: nextExchanges.totalPages,
+        });
       })
-      .catch((cause) => setError(errorMessage(cause)))
-      .finally(() => setLoading(false));
-  }, [gateway]);
-  const advanceSale = (id: number, status: string) =>
-    setSales((items) =>
-      items.map((item) => (item.id === id ? { ...item, status } : item)),
-    );
-  const advanceExchange = (id: number, status: string) =>
-    setExchanges((items) =>
-      items.map((item) => (item.id === id ? { ...item, status } : item)),
-    );
+      .catch((cause) => {
+        if (!cancelled) setError(errorMessage(cause));
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [gateway, salesPage, exchangesPage]);
+  async function refresh() {
+    const [nextSales, nextExchanges] = await Promise.all([
+      gateway.listPage(salesPage, pageSize),
+      gateway.exchangesPage(exchangesPage, pageSize),
+    ]);
+    setSales(nextSales.entities);
+    setExchanges(nextExchanges.entities);
+    setSalesPagination({
+      totalEntities: nextSales.totalEntities,
+      totalPages: nextSales.totalPages,
+    });
+    setExchangesPagination({
+      totalEntities: nextExchanges.totalEntities,
+      totalPages: nextExchanges.totalPages,
+    });
+  }
+  async function advanceSale(id: number, status: string) {
+    setUpdating(`sale-${id}`);
+    setError(null);
+    try {
+      if (status === "EM PROCESSAMENTO") await gateway.process(id);
+      else if (status === "PAGAMENTO REALIZADO") await gateway.confirmPayment(id);
+      else if (status === "EM TRANSITO") await gateway.dispatch(id);
+      else if (status === "ENTREGUE") await gateway.deliver(id);
+      await refresh();
+    } catch (cause) {
+      setError(errorMessage(cause));
+    } finally {
+      setUpdating(null);
+    }
+  }
+  async function advanceExchange(id: number) {
+    setUpdating(`exchange-${id}`);
+    setError(null);
+    try {
+      await gateway.markExchangeReceived(id);
+      await refresh();
+    } catch (cause) {
+      setError(errorMessage(cause));
+    } finally {
+      setUpdating(null);
+    }
+  }
   async function finishExchange(id: number) {
     setUpdating(`exchange-${id}`);
     setError(null);
     try {
-      const coupon = await gateway.receiveExchange(id, true, new Date().toISOString());
-      setExchanges((items) =>
-        items.map((item) =>
-          item.id === id
-            ? { ...item, status: "TROCA PROCESSADA", coupon, returnToStock: true }
-            : item,
-        ),
-      );
+      await gateway.receiveExchange(id, true, new Date().toISOString());
+      await refresh();
     } catch (cause) {
       setError(errorMessage(cause));
     } finally {
@@ -67,18 +127,7 @@ export function useSalesConnector() {
       if (review.decision === "ACCEPT")
         await gateway.authorizeExchange(review.exchange.id, observation);
       else await gateway.rejectExchange(review.exchange.id, observation);
-      setExchanges((items) =>
-        items.map((item) =>
-          item.id === review.exchange.id
-            ? {
-                ...item,
-                status:
-                  review.decision === "ACCEPT" ? "TROCA AUTORIZADA" : "TROCA NEGADA",
-                reviewObservation: observation,
-              }
-            : item,
-        ),
-      );
+      await refresh();
       setReview(null);
       setReviewObservation("");
     } catch (cause) {
@@ -87,7 +136,23 @@ export function useSalesConnector() {
       setUpdating(null);
     }
   }
+  function changeSalesPage(page: number) {
+    setLoading(true);
+    setError(null);
+    setSalesPage(page);
+  }
+  function changeExchangesPage(page: number) {
+    setLoading(true);
+    setError(null);
+    setExchangesPage(page);
+  }
   return {
+    salesPage,
+    setSalesPage: changeSalesPage,
+    exchangesPage,
+    setExchangesPage: changeExchangesPage,
+    salesPagination,
+    exchangesPagination,
     sales,
     exchanges,
     loading,
