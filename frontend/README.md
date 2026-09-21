@@ -1,16 +1,14 @@
-# Front-end Libra
+# Frontend Libra
 
-## Executar com o backend
+Execute `npm run start:dev` em `backend` e `npm run dev` em `frontend`.
+A API usa a porta 3001 e o frontend a porta 3000. `NEXT_PUBLIC_API_URL` define a API; `FRONTEND_ORIGIN` define a origem permitida no backend.
 
-1. Em `backend`, execute `npm run start:dev` (porta 3001).
-2. Em `frontend`, execute `npm run dev` (porta 3000).
+Todas as operações acessam o backend. O acesso direto a `/admin` e `/customer` inicia automaticamente uma sessão de demonstração para o operador (ID 2) ou Henry (ID 1), em sessões separadas. Esse acesso fixo é parte do ambiente de demonstração. O cadastro em `/sign-up` cria uma conta no backend e mantém sua sessão durante o preenchimento do perfil.
 
-`NEXT_PUBLIC_API_URL` configura a URL do backend (padrão `http://localhost:3001`). `FRONTEND_URL` no backend configura a origem permitida pelo CORS (padrão `http://localhost:3000`).
+O cliente usa `/users/:userId/customer` e `/customer/*`; o operador usa `/admin/*`. Não há criação de clientes pelo admin nem manutenção de livros, autores, categorias, editoras ou grupos de precificação. Esses dados permanecem como dependências dos fluxos.
 
-Cadastro e alteração de senha de usuários sempre chamam o backend, mesmo com `NEXT_PUBLIC_USE_MOCK=true`. O cadastro chama `POST /users`, define a senha via `PATCH /users/:id/password` e guarda o ID retornado na sessão mockada. A tela de alteração envia apenas `password` e `passwordConfirmation`, sem senha atual. As regras de força e confirmação dão retorno imediato no formulário; o histórico é validado pelo backend e seus erros aparecem na tela.
+As 100 capas estão em `public/images/books` e são servidas em `/images/books/...`, com cache de um dia e sem otimização remota. Os metadados de origem foram preservados no catálogo inicial do backend.
 
-Login e logout continuam mockados. Os acessos de demonstração representam o cliente de ID 1 e o atendente de ID 2. Sessões antigas sem ID precisam de novo login. Os demais módulos continuam seguindo `NEXT_PUBLIC_USE_MOCK`.
+Os repositórios do backend são em memória: reiniciar o processo restaura os dados iniciais. Validação e autorização de cartões usam adaptadores locais de demonstração; não processam cobranças reais. O assistente usa o catálogo do backend e o modelo local; a integração de IA externa é opcional.
 
-Os dados do backend ficam em memória e são reiniciados com o processo. A senha alterada não muda as credenciais fixas do login de demonstração.
-
-Validação: `npm run test:password`, `npm run lint`, `npm run build`.
+Verificações: `npm run build` nos dois projetos e `npm run test:e2e` no backend.
