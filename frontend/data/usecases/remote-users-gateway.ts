@@ -1,5 +1,5 @@
+import { requestJson } from "@/data/http/request-json";
 import { getPrototypeUser } from "@/data/auth/get-prototype-user";
-import { getBackendErrorMessage } from "@/data/http/get-backend-error-message";
 import { validatePassword } from "@/domain/rules/validate-password";
 
 export type PrototypeUser = {
@@ -12,13 +12,6 @@ export type PrototypeUser = {
 export class RemoteUsersGateway {
   public constructor(private readonly apiUrl: string) {}
 
-  public create(email: string, type: PrototypeUser["type"]): Promise<PrototypeUser> {
-    return this.request("/users", {
-      method: "POST",
-      body: JSON.stringify({ email, type }),
-    });
-  }
-
   public findById(id: number): Promise<PrototypeUser> {
     return this.request(`/users/${id}`);
   }
@@ -27,7 +20,7 @@ export class RemoteUsersGateway {
     password: string,
     passwordConfirmation: string,
   ): Promise<void> {
-    const { userId } = getPrototypeUser();
+    const { userId } = await getPrototypeUser();
     if (!userId || !Number.isSafeInteger(userId) || userId < 1) {
       throw new Error(
         "Esta conta ainda não está associada a um usuário do backend. Entre novamente.",
@@ -48,18 +41,10 @@ export class RemoteUsersGateway {
     });
   }
 
-  private async request<T>(path: string, init: RequestInit = {}): Promise<T> {
-    const response = await fetch(`${this.apiUrl}${path}`, {
-      ...init,
-      headers: init.body ? { "Content-Type": "application/json" } : {},
+  private request<T>(path: string, init: RequestInit = {}): Promise<T> {
+    return requestJson<T>(`${this.apiUrl}${path}`, init, {
+      role: "USER",
+      errorMessage: "Não foi possível concluir a operação com o usuário.",
     });
-    if (!response.ok)
-      throw new Error(
-        await getBackendErrorMessage(
-          response,
-          "Não foi possível concluir a operação com o usuário.",
-        ),
-      );
-    return response.status === 204 ? (undefined as T) : ((await response.json()) as T);
   }
 }
