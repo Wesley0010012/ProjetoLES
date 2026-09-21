@@ -64,6 +64,10 @@ export function LoginForm({
           type: accessType,
         }),
       );
+      sessionStorage.setItem(
+        `libra.authentication.${accessType}`,
+        storage.getItem("libra.authentication")!,
+      );
       setAuthenticationCookie(authentication, accessType, remember);
 
       router.replace(accessType === "USER" ? "/customer/account" : "/admin");
