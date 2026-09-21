@@ -1,4 +1,8 @@
 "use client";
+import { AddressTypeFields } from "@/presentation/components/molecules/address-type-fields";
+import type { CustomerOptions } from "@/data/usecases/get-customer-options";
+import { CustomerAddressTypeEnum } from "@/domain/models/customer";
+import { useCustomerOptions } from "@/main/connectors/use-customer-options";
 
 import { useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
@@ -11,6 +15,7 @@ import { makeStorefrontGateway } from "@/main/factories/make-storefront-gateway"
 
 export function CompleteCustomerProfile() {
   const router = useRouter();
+  const options = useCustomerOptions();
   const gateway = useMemo(() => makeStorefrontGateway(), []);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -19,6 +24,7 @@ export function CompleteCustomerProfile() {
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (options.loading || options.error) return;
     setSaving(true);
     setError(null);
     const form = new FormData(event.currentTarget);
@@ -63,31 +69,28 @@ export function CompleteCustomerProfile() {
           principal identifica sua residência e não poderá ser excluído.
         </p>
         {error && <p className="mt-5 text-sm text-destructive">{error}</p>}
+        {options.error && (
+          <p role="alert" className="mt-4 text-sm text-destructive">
+            {options.error}{" "}
+            <button type="button" onClick={options.retry} className="underline">
+              Tentar novamente
+            </button>
+          </p>
+        )}
         <form onSubmit={submit} className="mt-6 grid gap-7">
           <Section title="Dados pessoais">
             <Field name="name" label="Nome completo" />
             <Select
               name="gender"
               label="Gênero"
-              options={[
-                ["MAN", "Homem"],
-                ["WOMAN", "Mulher"],
-                ["NON_BINARY", "Não binário"],
-                ["SELF_DESCRIBED", "Autodescrito"],
-                ["NOT_INFORMED", "Prefiro não informar"],
-              ]}
+              options={options.genders.map(({ value, label }) => [value, label])}
             />
             <Field name="birthDate" label="Data de nascimento" type="date" />
             <Field name="document" label="CPF" />
             <Select
               name="phoneType"
               label="Tipo de telefone"
-              options={[
-                ["MOBILE", "Celular"],
-                ["HOME", "Residencial"],
-                ["WORK", "Trabalho"],
-                ["WHATSAPP", "WhatsApp"],
-              ]}
+              options={options.phoneTypes.map(({ value, label }) => [value, label])}
             />
             <Field name="phoneDdd" label="DDD" />
             <Field name="phoneNumber" label="Número" />
@@ -99,7 +102,7 @@ export function CompleteCustomerProfile() {
             </legend>
             <div className="grid gap-4">
               {Array.from({ length: addressCount }, (_, index) => (
-                <AddressFields key={index} index={index} />
+                <AddressFields key={index} index={index} options={options} />
               ))}
             </div>
             <div className="mt-4 flex gap-2">
@@ -162,7 +165,7 @@ export function CompleteCustomerProfile() {
           <Button
             type="submit"
             className="h-11 bg-[#59201f] text-white hover:bg-[#eb0907]"
-            disabled={saving}
+            disabled={saving || options.loading || Boolean(options.error)}
           >
             {saving && <Loader2 className="animate-spin" />}Salvar e continuar
           </Button>
@@ -213,7 +216,13 @@ function Select({
   return (
     <label className="grid gap-2 text-sm">
       <Label>{label}</Label>
-      <select name={name} required className="h-9 rounded border bg-white px-3">
+      <select
+        name={name}
+        disabled={options.length === 0}
+        required
+        className="h-9 rounded border bg-white px-3"
+      >
+        {options.length === 0 && <option value="">Aguardando opções da API…</option>}
         {options.map(([value, textValue]) => (
           <option key={value} value={value}>
             {textValue}
@@ -226,7 +235,7 @@ function Select({
 function text(form: FormData, name: string) {
   return String(form.get(name) ?? "");
 }
-function AddressFields({ index }: { index: number }) {
+function AddressFields({ index, options }: { index: number; options: CustomerOptions }) {
   const prefix = `address-${index}`;
   const title =
     index === 0
@@ -241,16 +250,7 @@ function AddressFields({ index }: { index: number }) {
       <h2 className="mb-4 font-semibold">{title}</h2>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field name={`${prefix}-name`} label="Identificação" placeholder="Ex.: Casa" />
-        <Field
-          name={`${prefix}-residenceType`}
-          label="Tipo de residência"
-          placeholder="Casa, apartamento..."
-        />
-        <Field
-          name={`${prefix}-streetType`}
-          label="Tipo de logradouro"
-          placeholder="Rua, avenida..."
-        />
+        <AddressTypeFields options={options} prefix={`${prefix}-`} />
         <Field name={`${prefix}-street`} label="Logradouro" />
         <Field name={`${prefix}-number`} label="Número" />
         <Field name={`${prefix}-district`} label="Bairro" />
@@ -303,8 +303,12 @@ function addressPayload(form: FormData, index: number) {
     state: text(form, `${prefix}-state`),
     country: text(form, `${prefix}-country`),
     observations: text(form, `${prefix}-observations`),
-    billing: index === 1,
-    delivery: index === 2,
+    type:
+      [
+        CustomerAddressTypeEnum.Primary,
+        CustomerAddressTypeEnum.Billing,
+        CustomerAddressTypeEnum.Delivery,
+      ][index] ?? CustomerAddressTypeEnum.Delivery,
   };
 }
 function cardPayload(form: FormData, index: number) {
