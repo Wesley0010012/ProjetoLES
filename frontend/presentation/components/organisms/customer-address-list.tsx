@@ -1,4 +1,5 @@
 "use client";
+import { CustomerAddressTypeEnum } from "@/domain/models/customer";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { MapPin, Pencil, Plus, Trash2 } from "lucide-react";
@@ -17,7 +18,10 @@ export function CustomerAddressList() {
     setProfile(await gateway.profile());
   }
   useEffect(() => {
-    gateway.profile().then(setProfile);
+    gateway
+      .profile()
+      .then(setProfile)
+      .catch((cause) => setMessage(errorMessage(cause)));
   }, [gateway]);
   async function remove(id: number) {
     if (!window.confirm("Deseja excluir este endereço?")) return;
@@ -29,7 +33,7 @@ export function CustomerAddressList() {
       setMessage(errorMessage(cause));
     }
   }
-  if (!profile) return <Loading />;
+  if (!profile) return message ? <Feedback message={message} /> : <Loading />;
   return (
     <div className="p-4">
       <AccountPageHeader
@@ -58,7 +62,7 @@ export function CustomerAddressList() {
           {profile.addresses?.map((address) => (
             <article
               key={address.id}
-              className={`rounded-2xl border bg-white/75 p-5 shadow-sm ${address.primary ? "border-primary/30 ring-2 ring-primary/5" : "border-white"}`}
+              className={`rounded-2xl border bg-white/75 p-5 shadow-sm ${address.type === CustomerAddressTypeEnum.Primary ? "border-primary/30 ring-2 ring-primary/5" : "border-white"}`}
             >
               <div className="flex items-start gap-3">
                 <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -67,7 +71,7 @@ export function CustomerAddressList() {
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <strong>{address.name}</strong>
-                    {address.primary && (
+                    {address.type === CustomerAddressTypeEnum.Primary && (
                       <small className="rounded-full bg-primary/10 px-2 py-0.5 font-semibold text-primary">
                         Principal
                       </small>
@@ -79,9 +83,12 @@ export function CustomerAddressList() {
                     {address.city}/{address.state}
                   </p>
                   <p className="mt-3 text-xs font-semibold text-primary">
-                    {address.primary
+                    {address.type === CustomerAddressTypeEnum.Primary
                       ? "Residencial · protegido"
-                      : [address.billing && "Cobrança", address.delivery && "Entrega"]
+                      : [
+                          address.type === CustomerAddressTypeEnum.Billing && "Cobrança",
+                          address.type === CustomerAddressTypeEnum.Delivery && "Entrega",
+                        ]
                           .filter(Boolean)
                           .join(" · ") || "Adicional"}
                   </p>
@@ -98,9 +105,9 @@ export function CustomerAddressList() {
                 <Button
                   variant="outline"
                   size="sm"
-                  disabled={address.primary}
+                  disabled={address.type === CustomerAddressTypeEnum.Primary}
                   title={
-                    address.primary
+                    address.type === CustomerAddressTypeEnum.Primary
                       ? "O endereço principal não pode ser excluído"
                       : undefined
                   }
