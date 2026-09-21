@@ -1,6 +1,4 @@
-import { getAuthenticationToken } from "@/data/http/get-authentication-token";
-import { getBackendErrorMessage } from "@/data/http/get-backend-error-message";
-import { redirectOnAuthenticationError } from "@/data/http/redirect-on-authentication-error";
+import { requestJson } from "@/data/http/request-json";
 import type {
   Customer,
   CustomerAddress,
@@ -20,13 +18,6 @@ export class RemoteCustomerGateway implements CustomerGateway {
 
   public findById(id: number): Promise<Customer> {
     return this.request(`/admin/customers/${id}`);
-  }
-
-  public create(payload: CustomerPayload): Promise<Customer> {
-    return this.request("/admin/customers", {
-      method: "POST",
-      body: JSON.stringify(payload),
-    });
   }
 
   public update(id: number, payload: CustomerPayload): Promise<Customer> {
@@ -92,30 +83,9 @@ export class RemoteCustomerGateway implements CustomerGateway {
     });
   }
 
-  private async request<Response>(
-    path: string,
-    init: RequestInit = {},
-  ): Promise<Response> {
-    const response = await fetch(`${this.apiUrl}${path}`, {
-      ...init,
-      headers: {
-        Authorization: `Bearer ${getAuthenticationToken()}`,
-        ...(init.body ? { "Content-Type": "application/json" } : {}),
-      },
+  private request<T>(path: string, init: RequestInit = {}): Promise<T> {
+    return requestJson<T>(`${this.apiUrl}${path}`, init, {
+      errorMessage: "Não foi possível concluir a operação com o cliente.",
     });
-
-    if (!response.ok) {
-      redirectOnAuthenticationError(response);
-      throw new Error(
-        await getBackendErrorMessage(
-          response,
-          "Não foi possível concluir a operação com o cliente.",
-        ),
-      );
-    }
-
-    return response.status === 204
-      ? (undefined as Response)
-      : ((await response.json()) as Response);
   }
 }
