@@ -16,17 +16,36 @@ import { RecommendationStrip } from "@/presentation/components/molecules/recomme
 
 export function CustomerAccount() {
   const gateway = useMemo(() => makeStorefrontGateway(), []);
+  const [error, setError] = useState("");
   const [profile, setProfile] = useState<SelfProfile | null>(null);
   const [recommendations, setRecommendations] = useState<StoreProduct[]>([]);
   useEffect(() => {
-    Promise.all([gateway.profile(), gateway.recommendations("ACCOUNT")]).then(
-      ([value, suggested]) => {
-        setProfile(value);
-        setRecommendations(suggested);
-      },
-    );
+    gateway.profile()
+      .then(setProfile)
+      .catch((cause) =>
+        setError(
+          cause instanceof Error ? cause.message : "Não foi possível carregar sua conta.",
+        ),
+      );
+    gateway.recommendations("ACCOUNT")
+      .then(setRecommendations)
+      .catch(() => setRecommendations([]));
   }, [gateway]);
-  if (!profile?.complete || !profile.customer) return <Loading />;
+  if (error)
+    return (
+      <p role="alert" className="p-6 text-destructive">
+        {error}
+      </p>
+    );
+  if (!profile) return <Loading />;
+  if (!profile.complete || !profile.customer)
+    return (
+      <div className="p-6">
+        <Link href="/customer/complete-profile" className="text-primary underline">
+          Complete seu cadastro para continuar
+        </Link>
+      </div>
+    );
   return (
     <div className="p-4">
       <section className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
