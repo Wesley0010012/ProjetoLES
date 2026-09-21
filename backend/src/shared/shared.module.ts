@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { MetadataController } from './presentation/controllers/MetadataController';
 import { APP_FILTER } from '@nestjs/core';
 import { ScryptAdapter } from './infrastructure/cryptography/ScryptAdapter';
 import { DefaultExceptionFilter } from './infrastructure/filters/DefaultExceptionFilter';
@@ -6,6 +7,7 @@ import { MESSAGE_TRANSLATOR } from './application/protocols/translations/Message
 import { DefaultMessageTranslator } from './infrastructure/translations/DefaultMessageTranslator';
 
 @Module({
+  controllers: [MetadataController],
   providers: [
     ScryptAdapter,
     {
