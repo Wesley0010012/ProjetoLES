@@ -54,13 +54,3 @@ export type Coupon = {
   active: boolean;
   createdAt: string;
 };
-
-export type CouponPayload = {
-  code?: string;
-  type: Coupon["type"];
-  discountType: Coupon["discountType"];
-  value: number;
-  customerId?: number;
-  expiresAt?: string;
-  singleUse: boolean;
-};
