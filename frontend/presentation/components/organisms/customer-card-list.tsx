@@ -17,7 +17,10 @@ export function CustomerCardList() {
     setProfile(await gateway.profile());
   }
   useEffect(() => {
-    gateway.profile().then(setProfile);
+    gateway
+      .profile()
+      .then(setProfile)
+      .catch((cause) => setMessage(errorMessage(cause)));
   }, [gateway]);
   async function remove(id: number) {
     if (!window.confirm("Deseja excluir este cartão?")) return;
@@ -31,7 +34,7 @@ export function CustomerCardList() {
       setMessage(errorMessage(cause));
     }
   }
-  if (!profile) return <Loading />;
+  if (!profile) return message ? <Feedback message={message} /> : <Loading />;
   return (
     <div className="p-4">
       <AccountPageHeader
