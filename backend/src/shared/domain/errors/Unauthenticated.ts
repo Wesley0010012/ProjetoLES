@@ -5,7 +5,7 @@ import { CustomError } from './CustomError';
 
 export class Unauthenticated extends CustomError {
   public constructor(
-    messageKey: MessageKeyEnum,
+    messageKey: MessageKeyEnum = MessageKeyEnum.AUTHENTICATION_REQUIRED,
     messageParams?: MessageParams,
   ) {
     super(messageKey, ErrorStatusEnum.UNAUTHENTICATED, messageParams);
