@@ -118,7 +118,9 @@ export function CustomerOrders() {
                     <Eye />
                     Ver resumo
                   </Button>
-                  {["EM_ABERTO", "EM_PROCESSAMENTO"].includes(order.status) && (
+                  {["EM_ABERTO", "EM_PROCESSAMENTO", "PAGAMENTO_REALIZADO"].includes(
+                    order.status,
+                  ) && (
                     <Button
                       variant="outline"
                       onClick={() =>
@@ -132,7 +134,7 @@ export function CustomerOrders() {
                       Cancelar pedido
                     </Button>
                   )}
-                  {["EM_TRANSITO", "EM TRÂNSITO"].includes(order.status) && (
+                  {["EM_TRANSPORTE"].includes(order.status) && (
                     <Button
                       onClick={() =>
                         void act(
@@ -151,7 +153,9 @@ export function CustomerOrders() {
                       Solicitar troca
                     </Button>
                   )}
-                  {["TROCA_SOLICITADA", "TROCA ACEITA"].includes(order.status) && (
+                  {order.exchanges?.some(
+                    (exchange) => exchange.status === "TROCA_AUTORIZADA",
+                  ) && (
                     <Button
                       onClick={() =>
                         void act(
@@ -381,7 +385,9 @@ function OrderSummary({
           </SummaryBlock>
         )}
         <footer className="mt-5 flex flex-wrap justify-end gap-2 border-t pt-5">
-          {["EM_ABERTO", "EM_PROCESSAMENTO"].includes(order.status) && (
+          {["EM_ABERTO", "EM_PROCESSAMENTO", "PAGAMENTO_REALIZADO"].includes(
+            order.status,
+          ) && (
             <Button variant="outline" onClick={onCancel}>
               <XCircle /> Solicitar cancelamento
             </Button>
