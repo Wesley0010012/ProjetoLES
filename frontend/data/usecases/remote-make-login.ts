@@ -3,6 +3,7 @@ import type { MakeLogin, MakeLoginParams } from "@/domain/usecases/make-login";
 import { getBackendErrorMessage } from "@/data/http/get-backend-error-message";
 
 type SignInResponse = {
+  userId: number;
   token: string;
   expiresAt: string;
 };
@@ -31,6 +32,7 @@ export class RemoteMakeLogin implements MakeLogin {
     const authentication = (await response.json()) as SignInResponse;
 
     return {
+      userId: authentication.userId,
       token: authentication.token,
       expiresAt: new Date(authentication.expiresAt),
     };
