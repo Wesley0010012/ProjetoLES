@@ -9,5 +9,6 @@ export interface UsersRepository
     AddRepository<User>,
     FindByIdRepository<User>,
     UpdateRepository<User> {
+  findByEmail(email: Email): Promise<User | null>;
   existsByEmail(email: Email): Promise<boolean>;
 }
