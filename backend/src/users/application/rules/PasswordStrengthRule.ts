@@ -1,10 +1,10 @@
 import { Rule } from 'src/shared/application/protocols/rules/Rule';
 import { BadRequest } from 'src/shared/domain/errors/BadRequest';
 import { MessageKeyEnum } from 'src/shared/domain/enums/MessageKeyEnum';
-import { UpdatePasswordData } from './UpdatePasswordData';
+import { PasswordData } from '../usecases/UpdatePassword';
 
-export class PasswordStrengthRule implements Rule<UpdatePasswordData> {
-  public validate({ input }: UpdatePasswordData): Promise<void> {
+export class PasswordStrengthRule implements Rule<PasswordData> {
+  public validate({ input }: PasswordData): Promise<void> {
     const password = input.password;
     if (
       password.length < 8 ||
