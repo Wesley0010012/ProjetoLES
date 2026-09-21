@@ -10,7 +10,6 @@ import type {
 export interface CustomerGateway {
   list(): Promise<Customer[]>;
   findById(id: number): Promise<Customer>;
-  create(payload: CustomerPayload): Promise<Customer>;
   update(id: number, payload: CustomerPayload): Promise<Customer>;
   delete(id: number): Promise<void>;
   listAddresses(customerId: number): Promise<CustomerAddress[]>;
