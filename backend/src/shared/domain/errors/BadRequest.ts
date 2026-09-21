@@ -5,7 +5,7 @@ import { CustomError } from './CustomError';
 
 export class BadRequest extends CustomError {
   public constructor(
-    messageKey: MessageKeyEnum,
+    messageKey: MessageKeyEnum = MessageKeyEnum.INVALID_REQUEST,
     messageParams?: MessageParams,
   ) {
     super(messageKey, ErrorStatusEnum.BAD_REQUEST, messageParams);
