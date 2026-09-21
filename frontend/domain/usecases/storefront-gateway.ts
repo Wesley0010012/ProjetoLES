@@ -12,7 +12,6 @@ export interface StorefrontGateway {
   products(query?: string, category?: string): Promise<StoreProduct[]>;
   product(id: number): Promise<StoreProduct | null>;
   categories(): Promise<string[]>;
-  publicRecommendations(context: string): Promise<StoreProduct[]>;
   recommendations(context: string): Promise<StoreProduct[]>;
   profile(): Promise<SelfProfile>;
   completeProfile(payload: Record<string, unknown>): Promise<void>;
