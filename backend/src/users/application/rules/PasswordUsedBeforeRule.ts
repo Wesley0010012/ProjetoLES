@@ -3,7 +3,7 @@ import { Validator } from 'src/shared/domain/protocols/cryptography/Validator';
 import { BadRequest } from 'src/shared/domain/errors/BadRequest';
 import { MessageKeyEnum } from 'src/shared/domain/enums/MessageKeyEnum';
 import { PasswordHistoryRepository } from '../../domain/repositories/PasswordHistoryRepository';
-import { UpdatePasswordData } from './UpdatePasswordData';
+import { UpdatePasswordData } from '../usecases/UpdatePassword';
 
 export class PasswordUsedBeforeRule implements Rule<UpdatePasswordData> {
   public constructor(
