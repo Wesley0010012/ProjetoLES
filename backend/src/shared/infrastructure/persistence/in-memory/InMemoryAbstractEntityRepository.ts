@@ -1,3 +1,4 @@
+import { compareValues } from '../compareValues';
 import { AbstractEntity } from 'src/shared/domain/entities/AbstractEntity';
 import { InternalError } from 'src/shared/domain/errors/InternalError';
 import { MessageKeyEnum } from 'src/shared/domain/enums/MessageKeyEnum';
@@ -117,7 +118,7 @@ export abstract class InMemoryAbstractEntityRepository<E extends AbstractEntity>
 
     return orderedEntities.sort(
       (first, second) =>
-        this.compareValues(
+        compareValues(
           this.getOrderValue(first, search.orderBy!),
           this.getOrderValue(second, search.orderBy!),
         ) * direction,
@@ -126,29 +127,5 @@ export abstract class InMemoryAbstractEntityRepository<E extends AbstractEntity>
 
   private getOrderValue(entity: E, field: string): unknown {
     return (entity as unknown as Record<string, unknown>)[field];
-  }
-
-  private compareValues(first: unknown, second: unknown): number {
-    if (first === second) {
-      return 0;
-    }
-
-    if (first === undefined || first === null) {
-      return 1;
-    }
-
-    if (second === undefined || second === null) {
-      return -1;
-    }
-
-    if (first instanceof Date && second instanceof Date) {
-      return first.getTime() - second.getTime();
-    }
-
-    if (typeof first === 'string' && typeof second === 'string') {
-      return first.localeCompare(second);
-    }
-
-    return first < second ? -1 : 1;
   }
 }
