@@ -1,4 +1,10 @@
+export enum CustomerAddressTypeEnum {
+  Billing = "Billing",
+  Delivery = "Delivery",
+  Primary = "Primary",
+}
 export type Customer = {
+  userId?: number;
   id: number;
   code: string;
   name: string;
@@ -42,8 +48,7 @@ export type CustomerAddress = {
   state: string;
   country: string;
   observations?: string;
-  billing: boolean;
-  delivery: boolean;
+  type: CustomerAddressTypeEnum;
 };
 
 export type CustomerCard = {
