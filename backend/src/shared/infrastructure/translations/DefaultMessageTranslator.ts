@@ -3,6 +3,8 @@ import { MessageKeyEnum } from 'src/shared/domain/enums/MessageKeyEnum';
 import { MessageParams } from 'src/shared/domain/messages/Message';
 
 const PT_BR_MESSAGES: Record<MessageKeyEnum, string> = {
+  [MessageKeyEnum.ASSISTANT_NOT_CONFIGURED]: 'O assistente não está configurado.',
+  [MessageKeyEnum.ASSISTANT_UNAVAILABLE]: 'O assistente está indisponível no momento. Tente novamente mais tarde.',
   [MessageKeyEnum.INTERNAL_SERVER_ERROR]:
     'Ocorreu um erro interno. Tente novamente mais tarde.',
   [MessageKeyEnum.RESOURCE_NOT_FOUND]:
