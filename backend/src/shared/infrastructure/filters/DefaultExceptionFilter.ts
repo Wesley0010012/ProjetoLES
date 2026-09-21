@@ -30,6 +30,7 @@ type NormalizedError = {
 };
 
 const HTTP_STATUS_BY_ERROR_STATUS: Record<ErrorStatusEnum, HttpStatus> = {
+  [ErrorStatusEnum.SERVICE_UNAVAILABLE]: HttpStatus.SERVICE_UNAVAILABLE,
   [ErrorStatusEnum.BAD_REQUEST]: HttpStatus.BAD_REQUEST,
   [ErrorStatusEnum.UNAUTHENTICATED]: HttpStatus.UNAUTHORIZED,
   [ErrorStatusEnum.UNAUTHORIZED]: HttpStatus.FORBIDDEN,
