@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { AlertCircle, Loader2, Plus, Search, Trash2, UserRound } from "lucide-react";
+import { AlertCircle, Loader2, Search, Trash2, UserRound } from "lucide-react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -62,13 +62,6 @@ export function CustomerList() {
             Cadastros pessoais e respectivos acessos de usuário.
           </p>
         </div>
-        <Link
-          href="/admin/customers/new"
-          className={buttonVariants({ className: "h-11 rounded-xl" })}
-        >
-          <Plus />
-          Cadastrar cliente
-        </Link>
       </header>
 
       <div className="relative mt-7 max-w-md">
