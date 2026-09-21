@@ -1,3 +1,4 @@
+import type { CustomerAddress } from "./customer";
 export type StoreProduct = {
   id: number;
   code: string;
@@ -86,17 +87,7 @@ export type SelfProfile = {
     email: string;
   };
   rankingPosition?: number;
-  addresses?: {
-    id: number;
-    name: string;
-    street: string;
-    number: string;
-    city: string;
-    state: string;
-    billing: boolean;
-    delivery: boolean;
-    primary: boolean;
-  }[];
+  addresses?: CustomerAddress[];
   cards?: {
     id: number;
     lastFourDigits: string;
