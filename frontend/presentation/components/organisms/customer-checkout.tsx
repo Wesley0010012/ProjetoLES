@@ -1,4 +1,5 @@
 "use client";
+import { CustomerAddressTypeEnum } from "@/domain/models/customer";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import Link from "next/link";
@@ -193,7 +194,7 @@ export function CustomerCheckout() {
               </Link>
             </div>
             {profile.addresses
-              ?.filter((address) => address.delivery && !address.primary)
+              ?.filter((address) => address.type === CustomerAddressTypeEnum.Delivery)
               .map((address, index) => (
                 <label key={address.id} className="flex gap-3 border-t py-3 text-sm">
                   <input
@@ -210,8 +211,9 @@ export function CustomerCheckout() {
                   </span>
                 </label>
               ))}
-            {(profile.addresses?.filter((address) => address.delivery && !address.primary)
-              .length ?? 0) === 0 && (
+            {(profile.addresses?.filter(
+              (address) => address.type === CustomerAddressTypeEnum.Delivery,
+            ).length ?? 0) === 0 && (
               <p className="rounded-xl border border-dashed p-4 text-sm text-muted-foreground">
                 Nenhum endereço de entrega cadastrado. Use “Novo endereço” para continuar.
               </p>
