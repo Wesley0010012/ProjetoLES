@@ -22,7 +22,17 @@ export function CustomerCardForm({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
-    if (cardId) gateway.profile().then(setProfile);
+    if (cardId)
+      gateway
+        .profile()
+        .then(setProfile)
+        .catch((cause) =>
+          setError(
+            cause instanceof Error
+              ? cause.message
+              : "Não foi possível carregar o perfil.",
+          ),
+        );
   }, [cardId, gateway]);
   const card = profile?.cards?.find((item) => item.id === cardId);
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -34,7 +44,7 @@ export function CustomerCardForm({
       if (cardId)
         await gateway.updateCard(cardId, {
           description: text(form, "description"),
-          preferred: form.get("preferred") === "on",
+          preferred: card?.preferred || form.get("preferred") === "on",
         });
       else
         await gateway.addCard({
@@ -43,7 +53,7 @@ export function CustomerCardForm({
           brand: text(form, "brand"),
           securityCode: text(form, "securityCode"),
           description: text(form, "description"),
-          preferred: form.get("preferred") === "on",
+          preferred: card?.preferred || form.get("preferred") === "on",
         });
       router.replace(returnTo);
     } catch (cause) {
@@ -53,6 +63,8 @@ export function CustomerCardForm({
       setSaving(false);
     }
   }
+  if (cardId && !profile && !error)
+    return <div className="p-8">Carregando cartão...</div>;
   if (cardId && profile && !card)
     return <div className="p-8 text-center">Cartão não encontrado.</div>;
   return (
@@ -126,7 +138,7 @@ export function CustomerCardForm({
           A conta mantém apenas um cartão preferencial. Ao selecionar esta opção, o
           preferencial anterior será substituído.
         </p>
-        <Button disabled={saving} className="h-11 sm:col-span-2">
+        <Button type="submit" disabled={saving} className="h-11 sm:col-span-2">
           {saving ? <Loader2 className="animate-spin" /> : <Save />}
           {cardId ? "Salvar alterações" : "Criar cartão"}
         </Button>
