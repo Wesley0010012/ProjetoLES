@@ -15,8 +15,13 @@ export class User extends AbstractEntity<UserProps> {
   public get password(): string | undefined {
     return this._props.password;
   }
-  public changePassword(password: string): void {
+  public set password(password: string) {
     this._props.password = password;
+    this.touch();
+  }
+
+  public set email(email: Email) {
+    this._props.email = email;
     this.touch();
   }
 
