@@ -1,17 +1,21 @@
-import { getAuthenticationToken } from "@/data/http/get-authentication-token";
-import { getBackendErrorMessage } from "@/data/http/get-backend-error-message";
-import { redirectOnAuthenticationError } from "@/data/http/redirect-on-authentication-error";
-import type {
-  Coupon,
-  CouponPayload,
-  Exchange,
-  Sale,
-  SalesSeries,
-} from "@/domain/models/sales";
-import type { SalesGateway } from "@/domain/usecases/sales-gateway";
+import { requestJson } from "@/data/http/request-json";
+import type { Exchange, Sale, SalesSeries } from "@/domain/models/sales";
+import type { SalesGateway, SalesPage } from "@/domain/usecases/sales-gateway";
 
 export class RemoteSalesGateway implements SalesGateway {
   public constructor(private readonly apiUrl: string) {}
+
+  public listPage(page: number, pageSize: number): Promise<SalesPage<Sale>> {
+    return this.request(
+      `/admin/sales?${new URLSearchParams({ page: String(page), pageSize: String(pageSize) })}`,
+    );
+  }
+
+  public exchangesPage(page: number, pageSize: number): Promise<SalesPage<Exchange>> {
+    return this.request(
+      `/admin/sales/exchanges?${new URLSearchParams({ page: String(page), pageSize: String(pageSize) })}`,
+    );
+  }
 
   public list(): Promise<Sale[]> {
     return this.request("/admin/sales");
@@ -19,6 +23,14 @@ export class RemoteSalesGateway implements SalesGateway {
 
   public listByCustomer(customerId: number): Promise<Sale[]> {
     return this.request(`/admin/sales/customer/${customerId}`);
+  }
+
+  public async process(id: number): Promise<void> {
+    await this.request(`/admin/sales/${id}/process`, { method: "POST" });
+  }
+
+  public async confirmPayment(id: number): Promise<void> {
+    await this.request(`/admin/sales/${id}/payment`, { method: "POST" });
   }
 
   public async dispatch(id: number): Promise<void> {
@@ -47,6 +59,9 @@ export class RemoteSalesGateway implements SalesGateway {
     });
   }
 
+  public async markExchangeReceived(id: number): Promise<void> {
+    await this.request(`/admin/sales/exchanges/${id}/arrival`, { method: "POST" });
+  }
   public receiveExchange(
     id: number,
     returnToStock: boolean,
@@ -67,43 +82,9 @@ export class RemoteSalesGateway implements SalesGateway {
     return this.request(`/admin/sales/analysis?${query}`);
   }
 
-  public coupons(): Promise<Coupon[]> {
-    return this.request("/admin/sales/coupons");
-  }
-
-  public createCoupon(payload: CouponPayload): Promise<{ id: number; code: string }> {
-    return this.request("/admin/sales/coupons", {
-      method: "POST",
-      body: JSON.stringify(payload),
+  private request<T>(path: string, init: RequestInit = {}): Promise<T> {
+    return requestJson<T>(`${this.apiUrl}${path}`, init, {
+      errorMessage: "Não foi possível concluir a operação de venda.",
     });
-  }
-
-  public async deactivateCoupon(id: number): Promise<void> {
-    await this.request(`/admin/sales/coupons/${id}`, { method: "DELETE" });
-  }
-
-  private async request<Response>(
-    path: string,
-    init: RequestInit = {},
-  ): Promise<Response> {
-    const response = await fetch(`${this.apiUrl}${path}`, {
-      ...init,
-      headers: {
-        Authorization: `Bearer ${getAuthenticationToken()}`,
-        ...(init.body ? { "Content-Type": "application/json" } : {}),
-      },
-    });
-    if (!response.ok) {
-      redirectOnAuthenticationError(response);
-      throw new Error(
-        await getBackendErrorMessage(
-          response,
-          "Não foi possível concluir a operação de venda.",
-        ),
-      );
-    }
-    return response.status === 204
-      ? (undefined as Response)
-      : ((await response.json()) as Response);
   }
 }
