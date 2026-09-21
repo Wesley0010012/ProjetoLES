@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   ArrowRight,
-  Boxes,
   CircleDollarSign,
   LoaderCircle,
   RefreshCw,
@@ -16,16 +15,13 @@ import {
 import type { Book } from "@/domain/models/catalog";
 import type { Customer } from "@/domain/models/customer";
 import type { Exchange, Sale } from "@/domain/models/sales";
-import type { StockItem } from "@/domain/models/stock";
 import { makeCatalogGateway } from "@/main/factories/make-catalog-gateway";
 import { makeCustomerGateway } from "@/main/factories/make-customer-gateway";
 import { makeSalesGateway } from "@/main/factories/make-sales-gateway";
-import { makeStockGateway } from "@/main/factories/make-stock-gateway";
 
 type DashboardData = {
   sales: Sale[];
   exchanges: Exchange[];
-  stock: StockItem[];
   customers: Customer[];
   books: Book[];
 };
@@ -33,7 +29,6 @@ type DashboardData = {
 const emptyData: DashboardData = {
   sales: [],
   exchanges: [],
-  stock: [],
   customers: [],
   books: [],
 };
@@ -42,7 +37,6 @@ export function OperationOverview() {
   const gateways = useMemo(
     () => ({
       sales: makeSalesGateway(),
-      stock: makeStockGateway(),
       customers: makeCustomerGateway(),
       catalog: makeCatalogGateway(),
     }),
@@ -58,14 +52,13 @@ export function OperationOverview() {
       setLoading(true);
       setError("");
       try {
-        const [sales, exchanges, stock, customers, books] = await Promise.all([
+        const [sales, exchanges, customers, books] = await Promise.all([
           gateways.sales.list(),
           gateways.sales.exchanges(),
-          gateways.stock.list(),
           gateways.customers.list(),
           gateways.catalog.list("books"),
         ]);
-        setData({ sales, exchanges, stock, customers, books: books as Book[] });
+        setData({ sales, exchanges, customers, books: books as Book[] });
       } catch (cause) {
         setError(
           cause instanceof Error
@@ -87,13 +80,6 @@ export function OperationOverview() {
   const totalUnits = validSales
     .flatMap((sale) => sale.items)
     .reduce((total, item) => total + item.quantity, 0);
-  const lowStock = [...data.stock]
-    .filter((item) => item.availableQuantity <= 5)
-    .sort((first, second) => first.availableQuantity - second.availableQuantity);
-  const blockedUnits = data.stock.reduce(
-    (total, item) => total + (item.blockedQuantity ?? 0),
-    0,
-  );
   const monthly = monthlyRevenue(validSales);
   const status = statusDistribution(data.sales);
   const topBooks = bestSellers(validSales);
@@ -112,7 +98,7 @@ export function OperationOverview() {
             Visão geral
           </h1>
           <p className="mt-2 text-sm text-black/55">
-            Indicadores consolidados de vendas, clientes, catálogo e estoque.
+            Indicadores consolidados de vendas, clientes e catálogo.
           </p>
         </div>
         <button
@@ -166,15 +152,6 @@ export function OperationOverview() {
               detail={`${data.books.length} livros no catálogo`}
               icon={<UsersRound />}
               accent="#59201f"
-            />
-            <MetricCard
-              label="Estoque disponível"
-              value={String(
-                data.stock.reduce((total, item) => total + item.availableQuantity, 0),
-              )}
-              detail={`${blockedUnits} unidades reservadas`}
-              icon={<Boxes />}
-              accent="#d47b2e"
             />
           </section>
 
@@ -286,12 +263,7 @@ export function OperationOverview() {
               title="Atenção operacional"
               description="Itens que exigem acompanhamento da equipe."
             >
-              <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                <Attention
-                  label="Estoque crítico"
-                  value={lowStock.length}
-                  tone={lowStock.length > 0 ? "danger" : "normal"}
-                />
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <Attention
                   label="Trocas abertas"
                   value={
@@ -304,28 +276,19 @@ export function OperationOverview() {
                   }
                   tone="warning"
                 />
-                <Attention label="Reservas" value={blockedUnits} tone="normal" />
+                <Attention
+                  label="Pedidos em andamento"
+                  value={
+                    data.sales.filter(
+                      (sale) =>
+                        !["ENTREGUE", "CANCELADO"].includes(
+                          normalizedStatus(sale.status),
+                        ),
+                    ).length
+                  }
+                  tone="normal"
+                />
               </div>
-              <div className="mt-5 divide-y border-y border-black/10">
-                {lowStock.length === 0 ? (
-                  <p className="py-5 text-sm text-black/50">
-                    Nenhum livro abaixo do nível de atenção.
-                  </p>
-                ) : (
-                  lowStock.slice(0, 4).map((item) => (
-                    <div
-                      key={item.bookId}
-                      className="flex items-center justify-between gap-3 py-3 text-sm"
-                    >
-                      <span className="min-w-0 truncate">{item.title}</span>
-                      <strong className="shrink-0 text-[#eb0907]">
-                        {item.availableQuantity} disponíveis
-                      </strong>
-                    </div>
-                  ))
-                )}
-              </div>
-              <PanelLink href="/admin/stock" text="Gerenciar estoque" />
             </DashboardPanel>
           </section>
 
@@ -543,7 +506,6 @@ function bestSellers(sales: Sale[]) {
 function readableStatus(status: string) {
   const labels: Record<string, string> = {
     APPROVED: "Aprovada",
-    APROVADA: "Aprovada",
     IN_TRANSIT: "Em transporte",
     EM_TRANSPORTE: "Em transporte",
     DELIVERED: "Entregue",
@@ -560,6 +522,10 @@ function readableStatus(status: string) {
       .toLocaleLowerCase("pt-BR")
       .replace(/^./, (letter) => letter.toLocaleUpperCase("pt-BR"))
   );
+}
+
+function normalizedStatus(status: string) {
+  return status.trim().toLocaleUpperCase("pt-BR").replaceAll("_", " ");
 }
 
 function money(value: number) {
