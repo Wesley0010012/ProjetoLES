@@ -158,6 +158,10 @@ export function CustomerCart() {
         <RecommendationStrip
           title="Clientes que compraram itens no seu carrinho também compraram"
           products={recommendations}
+          onCartUpdated={(updatedCart) => {
+            setCart(updatedCart);
+            setError(null);
+          }}
         />
       </div>
     </div>
