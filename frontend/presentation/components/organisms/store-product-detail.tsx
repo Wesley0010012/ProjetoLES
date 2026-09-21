@@ -21,7 +21,7 @@ export function StoreProductDetail({ productId }: { productId: number }) {
     async function load() {
       const [item, suggested] = await Promise.all([
         gateway.product(productId),
-        gateway.publicRecommendations("PRODUCT"),
+        gateway.products(),
       ]);
       setProduct(item);
       setRecommendations(suggested.filter((candidate) => candidate.id !== productId));
