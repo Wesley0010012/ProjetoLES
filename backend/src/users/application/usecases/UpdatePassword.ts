@@ -5,8 +5,17 @@ import { RulesMap } from 'src/shared/application/protocols/rules/RulesMap';
 import { PasswordHistory } from '../../domain/entities/PasswordHistory';
 import { PasswordHistoryRepository } from '../../domain/repositories/PasswordHistoryRepository';
 import { UsersRepository } from '../../domain/repositories/UsersRepository';
-import { UpdatePasswordData } from '../rules/UpdatePasswordData';
 import { UpdatePasswordDto } from '../dto/UpdatePasswordDto';
+import { User } from '../../domain/entities/User';
+
+export type PasswordData = {
+  input: { password: string; passwordConfirmation: string };
+};
+
+export type UpdatePasswordData = {
+  user: User;
+  input: UpdatePasswordDto;
+};
 
 export class UpdatePassword {
   public constructor(
@@ -30,7 +39,8 @@ export class UpdatePassword {
         new PasswordHistory({ user, password: user.password }),
       );
     }
-    user.changePassword(password);
+
+    user.password = password;
     await this.repository.update(user);
   }
 }
