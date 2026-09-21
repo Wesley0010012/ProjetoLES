@@ -12,6 +12,13 @@ export class InMemoryUsersRepository
     this._entities.push(...createUsersSeed());
   }
 
+  public findByEmail(email: Email): Promise<User | null> {
+    return Promise.resolve(
+      this._entities.find((user) => user.email.address === email.address) ??
+        null,
+    );
+  }
+
   public existsByEmail(email: Email): Promise<boolean> {
     return Promise.resolve(
       this._entities.some((user) => user.email.address === email.address),
