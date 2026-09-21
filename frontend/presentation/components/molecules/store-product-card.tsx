@@ -3,21 +3,38 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import type { StoreProduct } from "@/domain/models/storefront";
+import type { CustomerCart, StoreProduct } from "@/domain/models/storefront";
 import { makeStorefrontGateway } from "@/main/factories/make-storefront-gateway";
 
-export function StoreProductCard({ product }: { product: StoreProduct }) {
+export function StoreProductCard({
+  product,
+  onCartUpdated,
+}: {
+  product: StoreProduct;
+  onCartUpdated?: (cart: CustomerCart) => void;
+}) {
   const router = useRouter();
+  const [adding, setAdding] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function add() {
+    if (adding) return;
+    setAdding(true);
+    setError(null);
     try {
-      await makeStorefrontGateway().addToCart(product.id, 1);
-      router.push("/customer/cart");
-    } catch {
-      router.push("/customer/catalog");
+      const cart = await makeStorefrontGateway().addToCart(product.id, 1);
+      if (onCartUpdated) onCartUpdated(cart);
+      else router.push("/customer/cart");
+    } catch (cause) {
+      setError(
+        cause instanceof Error ? cause.message : "Não foi possível adicionar o livro.",
+      );
+    } finally {
+      setAdding(false);
     }
   }
 
@@ -57,12 +74,17 @@ export function StoreProductCard({ product }: { product: StoreProduct }) {
       </div>
       <Button
         onClick={add}
-        disabled={!product.available}
+        disabled={!product.available || adding}
         className="mt-3 rounded-full bg-[#59201f] text-white hover:bg-[#eb0907]"
       >
         <ShoppingCart />
-        Adicionar ao carrinho
+        {adding ? "Adicionando…" : "Adicionar ao carrinho"}
       </Button>
+      {error && (
+        <p role="alert" className="mt-2 text-xs text-destructive">
+          {error}
+        </p>
+      )}
     </article>
   );
 }
