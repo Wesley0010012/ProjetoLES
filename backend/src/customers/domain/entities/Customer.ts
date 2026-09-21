@@ -64,4 +64,9 @@ export class Customer extends AbstractEntity<CustomerProps> {
   public get user(): User {
     return this._props.user;
   }
+
+  public deactivate(): void {
+    this._props['user'].deactivate();
+    super.deactivate();
+  }
 }
