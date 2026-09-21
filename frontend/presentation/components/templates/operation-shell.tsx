@@ -12,9 +12,6 @@ export function OperationShell({ children }: { children: ReactNode }) {
       <aside className="border-b border-white/15 bg-[linear-gradient(160deg,rgba(15,0,0,.96),rgba(89,32,31,.92))] px-4 py-4 text-white shadow-2xl backdrop-blur-2xl lg:sticky lg:top-0 lg:m-3 lg:h-[calc(100svh-24px)] lg:rounded-[2rem] lg:border lg:px-5 lg:py-6">
         <div className="flex items-center justify-between lg:block">
           <BrandMark inverse />
-          <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/60 backdrop-blur-xl lg:mt-6 lg:inline-flex">
-            Console administrativo
-          </span>
         </div>
 
         <nav className="mt-5 flex gap-1.5 overflow-x-auto border-t border-white/10 pt-4 lg:mt-8 lg:grid lg:overflow-visible">
