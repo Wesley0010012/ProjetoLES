@@ -55,6 +55,10 @@ export function SignUpForm({ makeSignUp }: SignUpFormProps) {
           type: AccessType.USER,
         }),
       );
+      sessionStorage.setItem(
+        "libra.authentication.USER",
+        sessionStorage.getItem("libra.authentication")!,
+      );
       setAuthenticationCookie(authentication, AccessType.USER, false);
 
       router.replace("/customer/complete-profile");
