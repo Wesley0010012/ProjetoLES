@@ -1,4 +1,8 @@
 "use client";
+import { AddressTypeFields } from "@/presentation/components/molecules/address-type-fields";
+
+import { CustomerAddressTypeEnum } from "@/domain/models/customer";
+import { useCustomerOptions } from "@/main/connectors/use-customer-options";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import {
@@ -27,6 +31,7 @@ import { makeCustomerGateway } from "@/main/factories/make-customer-gateway";
 import { makeSalesGateway } from "@/main/factories/make-sales-gateway";
 
 export function CustomerProfile({ customerId }: { customerId: number }) {
+  const options = useCustomerOptions();
   const customers = useMemo(() => makeCustomerGateway(), []);
   const salesGateway = useMemo(() => makeSalesGateway(), []);
   const [addresses, setAddresses] = useState<CustomerAddress[]>([]);
@@ -38,13 +43,27 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
   const [error, setError] = useState<string | null>(null);
   const [editingAddress, setEditingAddress] = useState<CustomerAddress | null>(null);
   const [editingCustomer, setEditingCustomer] = useState(false);
+  const [pages, setPages] = useState({ ADDRESSES: 1, CARDS: 1, TRANSACTIONS: 1 });
+  const [pageSizes, setPageSizes] = useState({ ADDRESSES: 5, CARDS: 5, TRANSACTIONS: 5 });
+  const totalItems =
+    tab === "ADDRESSES"
+      ? addresses.length
+      : tab === "CARDS"
+        ? cards.length
+        : sales.length;
+  const pageSize = pageSizes[tab];
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  const page = Math.min(pages[tab], totalPages);
+  const offset = (page - 1) * pageSize;
 
   async function saveAddress(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!editingAddress) return;
+    if (!editingAddress || options.loading || options.error) return;
     const form = new FormData(event.currentTarget);
     const payload = {
       ...editingAddress,
+      residenceType: String(form.get("residenceType")),
+      streetType: String(form.get("streetType")),
       name: String(form.get("name")),
       street: String(form.get("street")),
       number: String(form.get("number")),
@@ -61,12 +80,22 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
     event.preventDefault();
     if (!customer) return;
     const form = new FormData(event.currentTarget);
+    const gender = options.genders.find(
+      ({ value }) => value === form.get("gender"),
+    )?.value;
+    if (
+      !gender ||
+      !options.phoneTypes.some(({ value }) => value === form.get("phoneType"))
+    ) {
+      setError("Selecione um gênero e um tipo de telefone válidos.");
+      return;
+    }
     const payload: CustomerPayload = {
       name: String(form.get("name")),
-      gender: String(form.get("gender")),
+      gender,
       birthDate: String(form.get("birthDate")),
       document: String(form.get("document")),
-      phoneType: customer.phone.type,
+      phoneType: String(form.get("phoneType")),
       phoneDdd: String(form.get("phoneDdd")),
       phoneNumber: String(form.get("phoneNumber")),
       email: String(form.get("email")),
@@ -76,6 +105,7 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
   }
 
   useEffect(() => {
+    let current = true;
     async function initialize() {
       try {
         const [customerItem, addressItems, cardItems, saleItems] = await Promise.all([
@@ -84,17 +114,22 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
           customers.listCards(customerId),
           salesGateway.listByCustomer(customerId),
         ]);
+        if (!current) return;
         setCustomer(customerItem);
         setAddresses(addressItems);
         setCards(cardItems);
         setSales(saleItems);
+        setPages({ ADDRESSES: 1, CARDS: 1, TRANSACTIONS: 1 });
       } catch (cause) {
-        setError(messageFrom(cause));
+        if (current) setError(messageFrom(cause));
       } finally {
-        setLoading(false);
+        if (current) setLoading(false);
       }
     }
     void initialize();
+    return () => {
+      current = false;
+    };
   }, [customerId, customers, salesGateway]);
 
   return (
@@ -169,7 +204,7 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
         </div>
       ) : tab === "ADDRESSES" ? (
         <div className="mt-6 grid gap-3">
-          {addresses.map((address) => (
+          {addresses.slice(offset, offset + pageSize).map((address) => (
             <article key={address.id} className="rounded border bg-white p-5">
               <div className="flex items-center justify-between">
                 <strong>{address.name}</strong>
@@ -190,16 +225,19 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
                 {address.city}/{address.state} · {address.zipCode}
               </p>
               <p className="mt-2 text-xs">
-                {address.billing && "Cobrança"}{" "}
-                {address.billing && address.delivery && "·"}{" "}
-                {address.delivery && "Entrega"}
+                {address.type === CustomerAddressTypeEnum.Billing && "Cobrança"}{" "}
+                {false && "·"}{" "}
+                {address.type === CustomerAddressTypeEnum.Delivery && "Entrega"}
               </p>
             </article>
           ))}
+          {addresses.length === 0 && (
+            <p className="text-sm text-muted-foreground">Nenhum endereço encontrado.</p>
+          )}
         </div>
       ) : tab === "CARDS" ? (
         <div className="mt-6 grid gap-3">
-          {cards.map((card) => (
+          {cards.slice(offset, offset + pageSize).map((card) => (
             <article key={card.id} className="rounded border bg-white p-5">
               <strong>
                 {card.brand} ·•••• {card.lastFourDigits}
@@ -212,10 +250,13 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
               )}
             </article>
           ))}
+          {cards.length === 0 && (
+            <p className="text-sm text-muted-foreground">Nenhum cartão encontrado.</p>
+          )}
         </div>
       ) : (
         <div className="mt-6 grid gap-3">
-          {sales.map((sale) => (
+          {sales.slice(offset, offset + pageSize).map((sale) => (
             <article key={sale.id} className="rounded border bg-white p-5">
               <div className="flex justify-between">
                 <strong>{sale.code}</strong>
@@ -232,6 +273,60 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
           )}
         </div>
       )}
+      {!loading && totalItems > 0 && (
+        <nav
+          aria-label={`Paginação de ${tab === "ADDRESSES" ? "endereços" : tab === "CARDS" ? "cartões" : "transações"}`}
+          className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-xl border bg-white p-4"
+        >
+          <div className="flex flex-wrap items-center gap-4">
+            <p aria-live="polite" className="text-sm text-muted-foreground">
+              {offset + 1}–{Math.min(offset + pageSize, totalItems)} de {totalItems}{" "}
+              registros
+            </p>
+            <label className="flex items-center gap-2 text-sm text-muted-foreground">
+              Por página
+              <select
+                value={pageSize}
+                onChange={(event) => {
+                  setPageSizes((current) => ({
+                    ...current,
+                    [tab]: Number(event.target.value),
+                  }));
+                  setPages((current) => ({ ...current, [tab]: 1 }));
+                }}
+                className="rounded-lg border bg-white text-sm"
+              >
+                {[5, 10, 20].map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={page <= 1}
+              onClick={() => setPages((current) => ({ ...current, [tab]: page - 1 }))}
+            >
+              Anterior
+            </Button>
+            <span className="text-sm text-muted-foreground">
+              Página {page} de {totalPages}
+            </span>
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={page >= totalPages}
+              onClick={() => setPages((current) => ({ ...current, [tab]: page + 1 }))}
+            >
+              Próxima
+            </Button>
+          </div>
+        </nav>
+      )}
       {editingAddress && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/50 p-4">
           <form
@@ -239,6 +334,20 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
             className="grid w-full max-w-xl gap-4 rounded-2xl bg-white p-6 sm:grid-cols-2"
           >
             <h2 className="text-xl font-bold sm:col-span-2">Editar endereço</h2>
+            {options.error && (
+              <p role="alert" className="text-sm text-destructive sm:col-span-2">
+                {options.error}{" "}
+                <button type="button" onClick={options.retry} className="underline">
+                  Tentar novamente
+                </button>
+              </p>
+            )}
+            <AddressTypeFields
+              options={options}
+              residenceType={editingAddress.residenceType}
+              streetType={editingAddress.streetType}
+              disabled={options.loading || Boolean(options.error)}
+            />
             {[
               ["name", "Identificação"],
               ["street", "Logradouro"],
@@ -267,7 +376,9 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
               >
                 Cancelar
               </Button>
-              <Button type="submit">Salvar endereço</Button>
+              <Button type="submit" disabled={options.loading || Boolean(options.error)}>
+                Salvar endereço
+              </Button>
             </div>
           </form>
         </div>
@@ -288,6 +399,31 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
               value={customer.birthDate.slice(0, 10)}
               type="date"
             />
+            {options.error && (
+              <p role="alert" className="text-sm text-destructive sm:col-span-2">
+                {options.error}{" "}
+                <button type="button" onClick={options.retry} className="underline">
+                  Tentar novamente
+                </button>
+              </p>
+            )}
+            <label className="grid gap-2 text-sm">
+              Tipo de telefone
+              <select
+                name="phoneType"
+                key={`phone-${options.loading}`}
+                defaultValue={customer.phone.type}
+                disabled={options.loading || Boolean(options.error)}
+                required
+                className="h-9 rounded border px-3"
+              >
+                {options.phoneTypes.map(({ value, label }) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </label>
             <EditField name="phoneDdd" label="DDD" value={customer.phone.ddd} />
             <EditField
               name="phoneNumber"
@@ -298,13 +434,16 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
               <Label>Gênero</Label>
               <select
                 name="gender"
+                key={`gender-${options.loading}`}
                 defaultValue={customer.gender}
+                disabled={options.loading || Boolean(options.error)}
                 className="h-9 rounded border px-3"
               >
-                <option value="MAN">Homem</option>
-                <option value="WOMAN">Mulher</option>
-                <option value="NON_BINARY">Não binário</option>
-                <option value="NOT_INFORMED">Prefiro não informar</option>
+                {options.genders.map(({ value, label }) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
               </select>
             </label>
             <div className="flex items-end justify-end gap-2">
@@ -315,7 +454,9 @@ export function CustomerProfile({ customerId }: { customerId: number }) {
               >
                 Cancelar
               </Button>
-              <Button type="submit">Salvar dados</Button>
+              <Button type="submit" disabled={options.loading || Boolean(options.error)}>
+                Salvar dados
+              </Button>
             </div>
           </form>
         </div>
