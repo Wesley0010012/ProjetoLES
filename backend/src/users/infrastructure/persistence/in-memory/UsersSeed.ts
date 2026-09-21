@@ -21,5 +21,16 @@ export function createUsersSeed(): User[] {
       { email: new Email('alan.turing@libra.com.br'), type: UserType.USER },
       4,
     ),
+    new User(
+      { email: new Email('grace.hopper@libra.com.br'), type: UserType.USER },
+      5,
+    ),
+    new User(
+      {
+        email: new Email('margaret.hamilton@libra.com.br'),
+        type: UserType.USER,
+      },
+      6,
+    ),
   ];
 }
