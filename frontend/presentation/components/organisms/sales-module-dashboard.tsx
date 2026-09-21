@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Loader2, PackageCheck, Repeat2, TicketPercent } from "lucide-react";
+import { ArrowRight, Loader2, PackageCheck, Repeat2 } from "lucide-react";
 
 import type { Exchange, Sale } from "@/domain/models/sales";
 import { makeSalesGateway } from "@/main/factories/make-sales-gateway";
@@ -11,14 +11,12 @@ export function SalesModuleDashboard() {
   const gateway = useMemo(() => makeSalesGateway(), []);
   const [sales, setSales] = useState<Sale[]>([]);
   const [exchanges, setExchanges] = useState<Exchange[]>([]);
-  const [couponCount, setCouponCount] = useState<number | null>(null);
 
   useEffect(() => {
-    Promise.all([gateway.list(), gateway.exchanges(), gateway.coupons()]).then(
-      ([saleItems, exchangeItems, couponItems]) => {
+    Promise.all([gateway.list(), gateway.exchanges()]).then(
+      ([saleItems, exchangeItems]) => {
         setSales(saleItems);
         setExchanges(exchangeItems);
-        setCouponCount(couponItems.length);
       },
     );
   }, [gateway]);
@@ -61,14 +59,6 @@ export function SalesModuleDashboard() {
           metric={exchanges.length ? `${openExchanges} aguardando ação` : undefined}
         >
           Autorize solicitações e acompanhe o recebimento dos itens.
-        </ModuleLink>
-        <ModuleLink
-          href="/admin/sales/coupons"
-          icon={TicketPercent}
-          title="Cupons"
-          metric={couponCount === null ? undefined : `${couponCount} cadastrados`}
-        >
-          Crie cupons promocionais ou de troca e gerencie sua disponibilidade.
         </ModuleLink>
       </section>
     </div>
