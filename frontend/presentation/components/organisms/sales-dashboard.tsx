@@ -10,6 +10,12 @@ import { useSalesConnector } from "@/main/connectors/use-sales-connector";
 
 export function SalesDashboard({ section }: { section: "SALES" | "EXCHANGES" }) {
   const {
+    salesPage,
+    setSalesPage,
+    exchangesPage,
+    setExchangesPage,
+    salesPagination,
+    exchangesPagination,
     sales,
     exchanges,
     loading,
@@ -27,6 +33,10 @@ export function SalesDashboard({ section }: { section: "SALES" | "EXCHANGES" }) 
     openReview,
     submitReview,
   } = useSalesConnector();
+
+  const page = section === "SALES" ? salesPage : exchangesPage;
+  const setPage = section === "SALES" ? setSalesPage : setExchangesPage;
+  const pagination = section === "SALES" ? salesPagination : exchangesPagination;
 
   return (
     <div>
@@ -163,8 +173,8 @@ export function SalesDashboard({ section }: { section: "SALES" | "EXCHANGES" }) 
                     </Button>
                   </>
                 )}
-                {isStatus(exchange.status, "ITEM ENVIADO") && (
-                  <Button onClick={() => advanceExchange(exchange.id, "ITEM RECEBIDO")}>
+                {isStatus(exchange.status, "EM DEVOLUCAO") && (
+                  <Button onClick={() => advanceExchange(exchange.id)}>
                     Marcar item recebido
                   </Button>
                 )}
@@ -184,6 +194,35 @@ export function SalesDashboard({ section }: { section: "SALES" | "EXCHANGES" }) 
           ))}
         </section>
       )}
+      <nav
+        aria-label="Paginação"
+        className="mt-6 flex items-center justify-between gap-3"
+      >
+        <span className="text-sm text-muted-foreground">
+          {pagination.totalEntities} registros · Página {page} de{" "}
+          {Math.max(1, pagination.totalPages)}
+        </span>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            disabled={loading || updating !== null || page <= 1}
+            onClick={() => setPage(page - 1)}
+          >
+            Anterior
+          </Button>
+          <Button
+            variant="outline"
+            disabled={loading || updating !== null || page >= pagination.totalPages}
+            onClick={() => setPage(page + 1)}
+          >
+            Próxima
+          </Button>
+        </div>
+      </nav>
+      {!loading && !error && pagination.totalEntities === 0 && (
+        <p className="mt-4 text-sm text-muted-foreground">Nenhum registro encontrado.</p>
+      )}
+
       {selectedSale && (
         <AdminOrderSummary sale={selectedSale} onClose={() => setSelectedSale(null)} />
       )}
@@ -327,9 +366,8 @@ function money(value: number) {
 const nextSaleStatus: Record<string, string> = {
   "EM ABERTO": "EM PROCESSAMENTO",
   "EM PROCESSAMENTO": "PAGAMENTO REALIZADO",
-  "PAGAMENTO REALIZADO": "EM TRÂNSITO",
-  "EM TRÂNSITO": "ENTREGUE",
-  "EM TRANSPORTE": "ENTREGUE",
+  "PAGAMENTO REALIZADO": "EM TRANSITO",
+  "EM TRANSITO": "ENTREGUE",
 };
 
 function normalizeStatus(value: string) {
