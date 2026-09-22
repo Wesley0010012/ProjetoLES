@@ -10,7 +10,7 @@ O sistema tratava apenas o cupom de troca como entidade. O cupom promocional `LI
 
 | Tipo | Finalidade |
 |---|---|
-| `EXCHANGE` | Crédito devolvido ao cliente por troca ou sobra de outros cupons |
+| `EXCHANGE` | Crédito devolvido ao cliente por troca, consumido parcialmente até zerar |
 | `PROMOTIONAL` | Campanha criada pela operação para conceder desconto |
 
 O desconto possui modalidade própria:
@@ -41,7 +41,7 @@ Principais atributos:
 5. Cupom vencido, inativo, consumido ou pertencente a outro cliente é inválido.
 6. Apenas um cupom promocional pode ser aplicado por compra, conforme RN0033.
 7. Vários cupons de troca podem ser combinados, respeitando a regra que impede excesso desnecessário.
-8. Se cupons válidos superarem o total necessário, a sobra retorna como novo cupom de troca.
+8. Cupons de troca funcionam como crédito: a compra debita do próprio cupom apenas o valor utilizado e o saldo permanece disponível no mesmo código. Quando o saldo chega a zero, o cupom é marcado como consumido e desativado. O cupom promocional é aplicado antes dos cupons de troca, e estes são debitados na ordem informada. Nenhum cupom novo é gerado com a sobra.
 9. Cupons somente são consumidos depois da aprovação do pagamento.
 10. A desativação é lógica e preserva o histórico.
 
@@ -49,7 +49,7 @@ Principais atributos:
 
 ### Troca
 
-O recebimento de uma troca autorizada ou uma sobra no checkout cria automaticamente um `Coupon` do tipo `EXCHANGE`.
+O recebimento de uma troca autorizada cria automaticamente um `Coupon` do tipo `EXCHANGE`.
 
 ### Criação administrativa
 
