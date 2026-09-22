@@ -32,12 +32,17 @@ export function CustomerOrders() {
         setOrders(items);
         setRecommendations(suggested);
       })
+      .catch((cause) => setMessage(cause instanceof Error ? cause.message : "Não foi possível carregar os pedidos."))
       .finally(() => setLoading(false));
   }, [gateway]);
   async function act(action: () => Promise<void>, success: string) {
-    await action();
-    await reload();
-    setMessage(success);
+    try {
+      await action();
+      await reload();
+      setMessage(success);
+    } catch (cause) {
+      setMessage(cause instanceof Error ? cause.message : "Não foi possível atualizar o pedido.");
+    }
   }
   function openExchange(order: CustomerOrder) {
     setExchangeOrder(order);
@@ -57,12 +62,16 @@ export function CustomerOrders() {
       setMessage("Descreva o motivo da troca com pelo menos 10 caracteres.");
       return;
     }
+    try {
     const result = await gateway.requestExchange(exchangeOrder.id, items, reason.trim());
     setExchangeOrder(null);
     setQuantities({});
     setReason("");
     await reload();
     setMessage(`Solicitação ${result.code} enviada.`);
+    } catch (cause) {
+      setMessage(cause instanceof Error ? cause.message : "Não foi possível solicitar a troca.");
+    }
   }
   if (loading)
     return (
@@ -134,7 +143,7 @@ export function CustomerOrders() {
                       Cancelar pedido
                     </Button>
                   )}
-                  {["EM_TRANSPORTE"].includes(order.status) && (
+                  {["EM_TRANSITO"].includes(order.status) && (
                     <Button
                       onClick={() =>
                         void act(
@@ -179,7 +188,7 @@ export function CustomerOrders() {
       </div>
       {exchangeOrder && (
         <div className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/55 p-4">
-          <section className="my-6 w-full max-w-xl rounded-2xl bg-white p-6">
+          <section role="dialog" aria-modal="true" aria-label="Solicitar troca" data-testid="exchange-dialog" className="my-6 w-full max-w-xl rounded-2xl bg-white p-6">
             <h2 className="text-xl font-bold">Selecionar quantidades para troca</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               Pedido {exchangeOrder.code}. Você pode devolver apenas parte das unidades
