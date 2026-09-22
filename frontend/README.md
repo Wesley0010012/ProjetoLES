@@ -1,5 +1,7 @@
 # Frontend Libra
 
+Para executar toda a aplicação com Nginx e Docker, veja o [README da raiz](../README.md).
+
 Execute `npm run start:dev` em `backend` e `npm run dev` em `frontend`.
 A API usa a porta 3001 e o frontend a porta 3000. `NEXT_PUBLIC_API_URL` define a API; `FRONTEND_ORIGIN` define a origem permitida no backend.
 
