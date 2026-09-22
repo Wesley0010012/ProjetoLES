@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { clearAuthentication } from "@/data/auth/clear-authentication";
 import { useEffect, useMemo, useState } from "react";
 import {
   CreditCard,
@@ -31,6 +33,16 @@ export function CustomerAccount() {
       .then(setRecommendations)
       .catch(() => setRecommendations([]));
   }, [gateway]);
+  async function inactivate() {
+    if (!window.confirm("Deseja inativar sua conta? Seu acesso será bloqueado.")) return;
+    try {
+      await gateway.inactivateProfile();
+      clearAuthentication();
+      window.location.assign("/");
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Não foi possível inativar sua conta.");
+    }
+  }
   if (error)
     return (
       <p role="alert" className="p-6 text-destructive">
@@ -87,6 +99,7 @@ export function CustomerAccount() {
           </AccountLink>
         </div>
       </section>
+      <Button variant="outline" className="mt-4" onClick={() => void inactivate()}>Inativar minha conta</Button>
       <div className="mt-4">
         <RecommendationStrip title="Recomendados para você" products={recommendations} />
       </div>
