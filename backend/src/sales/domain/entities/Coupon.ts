@@ -73,4 +73,32 @@ export class Coupon extends AbstractEntity<CouponProps> {
       this.touch();
     }
   }
+
+  /**
+   * Cupons de troca são crédito: consomem apenas o valor aplicado na compra e
+   * mantêm o saldo restante. Ao zerar, o cupom é consumido e desativado.
+   * Cupons promocionais mantêm a regra de uso único.
+   */
+  public consume(amount: number): void {
+    if (!this.isCredit()) {
+      this.use();
+      return;
+    }
+    const remaining = Math.round((this.value - amount) * 100) / 100;
+    if (remaining > 0) {
+      this._props.value = remaining;
+      this.touch();
+      return;
+    }
+    this._props.value = 0;
+    this._props.used = true;
+    this.deactivate();
+  }
+
+  public isCredit(): boolean {
+    return (
+      this.type === CouponType.EXCHANGE &&
+      this.discountType === CouponDiscountType.FIXED
+    );
+  }
 }
