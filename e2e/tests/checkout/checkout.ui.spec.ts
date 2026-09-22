@@ -77,7 +77,7 @@ describe('Checkout — interface', () => {
   ([
     ['0,00', 'valor maior que zero'],
     ['5,00', 'ao menos R$ 10,00'],
-    ['999999,00', 'valor maior que zero'],
+    ['999999,00', 'Reduza os valores ou desmarque um cartão'],
   ] as const).forEach(([amount, error]) => {
     it(`recusa distribuição de pagamento inválida: ${amount}`, () => {
       cy.prepareCart(user);
