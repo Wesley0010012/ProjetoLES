@@ -30,6 +30,9 @@ export class CheckoutRequest extends Request {
       }
       return { cardId, amount };
     });
+    if (new Set(cardPayments.map(payment => payment.cardId)).size !== cardPayments.length) {
+      this.invalid('cardPayments');
+    }
     if (!rawCoupons.every((value) => typeof value === 'string')) {
       this.invalid('couponCodes');
     }
