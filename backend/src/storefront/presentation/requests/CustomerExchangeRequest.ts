@@ -31,8 +31,10 @@ export class CustomerExchangeRequest extends Request {
     });
     if (new Set(items.map((item) => item.bookId)).size !== items.length)
       this.invalid('items');
+    const reason = this.string('reason').trim();
+    if (reason.length < 10 || reason.length > 500) this.invalid('reason');
     this.input = {
-      reason: this.string('reason'),
+      reason,
       saleId: this.positiveInteger('saleId'),
       items,
     };
