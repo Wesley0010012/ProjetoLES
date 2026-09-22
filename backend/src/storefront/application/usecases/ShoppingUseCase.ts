@@ -2,6 +2,7 @@ import { BookRepository } from 'src/books/domain/repositories/BookRepository';
 import { CustomerAddressRepository } from 'src/customers/domain/repositories/CustomerAddressRepository';
 import { CustomerCreditCardRepository } from 'src/customers/domain/repositories/CustomerCreditCardRepository';
 import { CustomerRepository } from 'src/customers/domain/repositories/CustomerRepository';
+import { Coupon } from 'src/sales/domain/entities/Coupon';
 import { CouponType } from 'src/sales/domain/enums/CouponType';
 import { Sale } from 'src/sales/domain/entities/Sale';
 import { CouponRepository } from 'src/sales/domain/repositories/CouponRepository';
@@ -23,6 +24,8 @@ import { PaymentService } from '../protocols/PaymentService';
 import { ShoppingCartMapper } from '../mappers/ShoppingCartMapper';
 import { StorefrontSaleMapper } from '../mappers/StorefrontSaleMapper';
 import { RecommendBooks } from './RecommendBooks';
+
+export type CouponConsumption = { coupon: Coupon; amount: number };
 
 export type ShoppingRules = {
   cancellableSale: Rule<Sale>;
@@ -107,15 +110,15 @@ export abstract class ShoppingUseCase {
     customerId: number,
     codes: string[],
     total: number,
-  ): Promise<{ value: number; excess: number }> {
+  ): Promise<{ value: number; consumptions: CouponConsumption[] }> {
     const normalizedCodes = codes.map((code) => code.trim().toUpperCase());
     if (new Set(normalizedCodes).size !== normalizedCodes.length) {
       throw new BadRequest(MessageKeyEnum.INVALID_PARAM, {
         param: 'couponCodes',
       });
     }
-    const promotionalValues: number[] = [];
-    const exchangeValues: number[] = [];
+    const promotional: CouponConsumption[] = [];
+    const exchange: CouponConsumption[] = [];
     for (const code of codes) {
       const coupon = await this._coupons.findByCode(code);
       if (!coupon || !coupon.canBeUsedBy(customerId)) {
@@ -123,42 +126,50 @@ export abstract class ShoppingUseCase {
           param: 'couponCodes',
         });
       }
-      const value = coupon.discountFor(total);
+      const entry = { coupon, amount: coupon.discountFor(total) };
       if (coupon.type === CouponType.PROMOTIONAL) {
-        promotionalValues.push(value);
+        promotional.push(entry);
       } else {
-        exchangeValues.push(value);
+        exchange.push(entry);
       }
     }
-    if (promotionalValues.length > 1) {
+    if (promotional.length > 1) {
       throw new BadRequest(MessageKeyEnum.INVALID_PARAM, {
         param: 'couponCodes',
       });
     }
-    const rawValue =
-      (promotionalValues[0] ?? 0) +
-      exchangeValues.reduce((sum, value) => sum + value, 0);
+    const rawValue = [...promotional, ...exchange].reduce(
+      (sum, item) => sum + item.amount,
+      0,
+    );
     if (
       rawValue > total &&
-      exchangeValues.some((value) => rawValue - value >= total)
+      exchange.some((item) => rawValue - item.amount >= total)
     ) {
       throw new BadRequest(MessageKeyEnum.INVALID_PARAM, {
         param: 'couponCodes',
       });
     }
+    // O promocional é aplicado primeiro; os cupons de troca cobrem o restante
+    // na ordem informada e só têm debitado o valor efetivamente utilizado.
+    let remaining = total;
+    const consumptions = [...promotional, ...exchange].map(
+      ({ coupon, amount }) => {
+        const applied = Math.round(Math.min(remaining, amount) * 100) / 100;
+        remaining = Math.round((remaining - applied) * 100) / 100;
+        return { coupon, amount: applied };
+      },
+    );
     return {
-      value: Math.round(Math.min(total, rawValue) * 100) / 100,
-      excess: Math.round(Math.max(0, rawValue - total) * 100) / 100,
+      value: Math.round((total - remaining) * 100) / 100,
+      consumptions,
     };
   }
 
-  protected async useCoupons(codes: string[]): Promise<void> {
-    for (const code of codes) {
-      const coupon = await this._coupons.findByCode(code);
-      if (coupon) {
-        coupon.use();
-        await this._coupons.update(coupon);
-      }
+  protected async useCoupons(consumptions: CouponConsumption[]): Promise<void> {
+    for (const { coupon, amount } of consumptions) {
+      coupon.consume(amount);
+      await this._coupons.update(coupon);
     }
   }
 

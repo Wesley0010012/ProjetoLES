@@ -1,9 +1,6 @@
 import { CustomerAddressTypeEnum } from 'src/customers/domain/enums/CustomerAddressTypeEnum';
-import { Coupon } from 'src/sales/domain/entities/Coupon';
 import { Sale } from 'src/sales/domain/entities/Sale';
 import { SaleItem } from 'src/sales/domain/entities/SaleItem';
-import { CouponDiscountType } from 'src/sales/domain/enums/CouponDiscountType';
-import { CouponType } from 'src/sales/domain/enums/CouponType';
 import { SaleStatus } from 'src/sales/domain/enums/SaleStatus';
 import { MessageKeyEnum } from 'src/shared/domain/enums/MessageKeyEnum';
 import { BadRequest } from 'src/shared/domain/errors/BadRequest';
@@ -100,13 +97,8 @@ export class Checkout extends ShoppingUseCase {
 
     await this._sales.add(sale);
     await this.finishReservations(cart, approved);
-    if (approved) await this.useCoupons(input.couponCodes);
+    if (approved) await this.useCoupons(couponApplication.consumptions);
 
-    const generatedCoupon = await this.createExcessCoupon(
-      customer,
-      couponApplication.excess,
-      approved,
-    );
     cart.items = [];
     cart.lastItemAddedAt = undefined;
     await this._carts.update(cart);
@@ -119,27 +111,14 @@ export class Checkout extends ShoppingUseCase {
       freight,
       couponValue: couponApplication.value,
       total,
-      generatedCoupon,
+      appliedCoupons: couponApplication.consumptions.map(
+        ({ coupon, amount }) => ({
+          code: coupon.code,
+          applied: amount,
+          remaining: coupon.isCredit() && approved ? coupon.value : undefined,
+          active: coupon.isActive(),
+        }),
+      ),
     };
-  }
-
-  private async createExcessCoupon(
-    customer: Awaited<ReturnType<ShoppingUseCase['customer']>>,
-    excess: number,
-    approved: boolean,
-  ): Promise<{ code: string; value: number } | undefined> {
-    if (!approved || excess <= 0) return undefined;
-
-    const coupon = new Coupon({
-      code: this._coupons.nextCode(CouponType.EXCHANGE),
-      type: CouponType.EXCHANGE,
-      discountType: CouponDiscountType.FIXED,
-      customer,
-      value: excess,
-      singleUse: true,
-      used: false,
-    });
-    await this._coupons.add(coupon);
-    return { code: coupon.code, value: coupon.value };
   }
 }
