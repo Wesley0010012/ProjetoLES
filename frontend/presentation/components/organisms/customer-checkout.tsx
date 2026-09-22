@@ -91,13 +91,14 @@ export function CustomerCheckout() {
 
   async function checkout(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!profile || !cart) return;
+    if (error && !cart) return <p role="alert" className="p-6 text-destructive">{error}</p>;
+  if (!profile || !cart) return;
     setSaving(true);
     setError(null);
     const form = new FormData(event.currentTarget);
     const couponCodes = selectedCoupons;
     const cards = (profile.cards ?? []).filter((card) => selectedCards.includes(card.id));
-    if (cards.length === 0) {
+    if (payableTotal > 0 && cards.length === 0) {
       setError("Selecione ao menos um cartão para pagamento.");
       setSaving(false);
       return;
@@ -107,7 +108,7 @@ export function CustomerCheckout() {
       .slice(1)
       .reduce((sum, cardId) => sum + Number(cardAmounts[cardId] ?? 0), 0);
     const primaryAmount = Math.round((payableTotal - additionalTotal) * 100) / 100;
-    const cardPayments = cards.map((card) => ({
+    const cardPayments = (payableTotal === 0 ? [] : cards).map((card) => ({
       cardId: card.id,
       amount:
         card.id === primaryCardId ? primaryAmount : Number(cardAmounts[card.id] ?? 0),
@@ -149,6 +150,7 @@ export function CustomerCheckout() {
     }
   }
 
+  if (error && !cart) return <p role="alert" className="p-6 text-destructive">{error}</p>;
   if (!profile || !cart)
     return (
       <div className="flex min-h-96 items-center justify-center">
@@ -329,7 +331,7 @@ export function CustomerCheckout() {
           <Button
             form="checkout-form"
             type="submit"
-            disabled={saving || !profile.cards?.length}
+            disabled={saving || (payableTotal > 0 && !profile.cards?.length)}
             className="w-full rounded-full bg-[#59201f] text-white hover:bg-[#eb0907]"
           >
             {saving && <Loader2 className="animate-spin" />}Confirmar pedido
