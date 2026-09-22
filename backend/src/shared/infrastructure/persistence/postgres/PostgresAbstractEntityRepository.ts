@@ -27,8 +27,17 @@ export abstract class PostgresAbstractEntityRepository<
   }
 
   public async add(entity: E): Promise<void> {
-    if (!entity.id) entity.id = await this.getNextId();
-    await this.persist(entity);
+    await this.records.manager.transaction(async (manager) => {
+      // Serialize id allocation per entity kind across concurrent requests/processes.
+      await manager.query('SELECT pg_advisory_xact_lock(hashtext($1))', [this.kind]);
+      const records = manager.getRepository(PersistedDomainEntity);
+      if (!entity.id) entity.id = await this.getNextId(records);
+      await records.insert({
+        kind: this.kind,
+        domainId: entity.id,
+        payload: this.codec.encodeEntity(entity) as Record<string, unknown>,
+      });
+    });
   }
 
   public async update(entity: E): Promise<void> {
@@ -88,8 +97,8 @@ export abstract class PostgresAbstractEntityRepository<
     return (await this.records.count({ where: { kind: this.kind } })) === 0;
   }
 
-  protected async getNextId(): Promise<number> {
-    const result = await this.records
+  protected async getNextId(records = this.records): Promise<number> {
+    const result = await records
       .createQueryBuilder('entity')
       .select('COALESCE(MAX(entity.domainId), 0)', 'max')
       .where('entity.kind = :kind', { kind: this.kind })
