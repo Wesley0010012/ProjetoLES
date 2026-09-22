@@ -3,6 +3,7 @@ import { GenderEnum } from 'src/shared/domain/enums/GenderEnum';
 import { MessageKeyEnum } from 'src/shared/domain/enums/MessageKeyEnum';
 import { PhoneTypeEnum } from 'src/shared/domain/enums/PhoneTypeEnum';
 import { BadRequest } from 'src/shared/domain/errors/BadRequest';
+import { CPF } from 'src/shared/domain/vo/documents/CPF';
 import { Request } from 'src/shared/presentation/requests/Request';
 
 export class UpdateCustomerRequest extends Request {
@@ -18,7 +19,9 @@ export class UpdateCustomerRequest extends Request {
     const password = this.optionalString('password');
     const passwordConfirmation = this.optionalString('passwordConfirmation');
 
-    if (!/^\d{11}$/.test(document)) {
+    try {
+      new CPF(document);
+    } catch {
       this.invalid('document');
     }
     if (!/^\d{2}$/.test(ddd)) {
