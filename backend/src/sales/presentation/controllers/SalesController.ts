@@ -1,3 +1,4 @@
+import { ReviewExchangeRequest } from '../requests/ReviewExchangeRequest';
 import { SalesListRequest } from '../requests/SalesListRequest';
 import {
   Body,
@@ -69,11 +70,11 @@ export class SalesController {
   @HttpCode(204)
   public async authorize(
     @Param() params: unknown,
-    @Body() body: { observation?: string },
+    @Body() body: unknown,
   ): Promise<void> {
     await this._useCases.authorizeExchange(
       new SalesIdRequest(params).id,
-      String(body?.observation ?? ''),
+      new ReviewExchangeRequest(body).observation,
     );
   }
 
@@ -81,11 +82,11 @@ export class SalesController {
   @HttpCode(204)
   public reject(
     @Param() params: unknown,
-    @Body() body: { observation?: string },
+    @Body() body: unknown,
   ) {
     return this._useCases.rejectExchange(
       new SalesIdRequest(params).id,
-      String(body?.observation ?? ''),
+      new ReviewExchangeRequest(body).observation,
     );
   }
 
