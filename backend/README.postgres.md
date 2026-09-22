@@ -3,8 +3,12 @@
 Inicie a base local a partir da raiz do repositório:
 
 ```bash
-docker compose up -d postgres
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d postgres
 ```
+
+O override `docker-compose.dev.yml` publica o banco em `127.0.0.1:5432` para
+desenvolvimento com a API no host. Para a stack completa, use as instruções
+do [README da raiz](../README.md).
 
 Copie `.env.example` para `.env` e mantenha os valores `DB_*` ou informe
 `DATABASE_URL`. A API cria a tabela `domain_entities` quando
