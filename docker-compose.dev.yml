@@ -1,0 +1,5 @@
+# Use junto com docker-compose.yml para desenvolver com a API no host.
+services:
+  postgres:
+    ports:
+      - "127.0.0.1:5432:5432"
