@@ -126,7 +126,14 @@ export interface Sale {
   code: string;
   status: SaleStatus;
   product: Book;
-  generatedCoupon?: Coupon;
+  appliedCoupons?: AppliedCoupon[];
+}
+
+export interface AppliedCoupon {
+  code: string;
+  applied: number;
+  remaining?: number;
+  active: boolean;
 }
 
 export type AdvanceStep = 'process' | 'payment' | 'dispatch' | 'deliver';
