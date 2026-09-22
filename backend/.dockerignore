@@ -1,5 +1,8 @@
 node_modules
+.next
 dist
 coverage
-.env
+.git
+.env*
 *.log
+*.tsbuildinfo
