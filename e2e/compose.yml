@@ -1,0 +1,50 @@
+services:
+  nginx:
+    ports: !override
+      - "127.0.0.1:8088:80"
+  backend:
+    environment:
+      FRONTEND_ORIGIN: http://nginx
+      DB_NAME: libra_e2e
+      DB_USER: libra_e2e
+      DB_PASSWORD: libra_e2e
+      DB_SYNCHRONIZE: "true"
+      SALES_SEED_COUNT: "30"
+      EXCHANGES_SEED_COUNT: "0"
+      GEMINI_API_KEY: test-only-key
+      GEMINI_MODEL: test-model
+      GEMINI_BASE_URL: http://gemini:8081
+    depends_on:
+      gemini:
+        condition: service_healthy
+  postgres:
+    environment:
+      POSTGRES_DB: libra_e2e
+      POSTGRES_USER: libra_e2e
+      POSTGRES_PASSWORD: libra_e2e
+  gemini:
+    image: node:22-alpine
+    command: ["node", "/mock/server.cjs"]
+    volumes:
+      - ./e2e/gemini-mock.cjs:/mock/server.cjs:ro
+    ports:
+      - "127.0.0.1:8089:8081"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8081/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 2s
+      timeout: 3s
+      retries: 10
+  cypress:
+    image: cypress/included:16.1.0
+    profiles: [test]
+    working_dir: /e2e
+    entrypoint: ["cypress", "run", "--browser", "electron"]
+    environment:
+      CYPRESS_BASE_URL: http://nginx
+      GEMINI_MOCK_URL: http://gemini:8081
+    volumes:
+      - ./e2e:/e2e
+    shm_size: 1gb
+    depends_on:
+      nginx:
+        condition: service_healthy
