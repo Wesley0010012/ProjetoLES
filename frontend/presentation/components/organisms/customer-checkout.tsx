@@ -27,6 +27,9 @@ export function CustomerCheckout() {
   const [selectedCoupons, setSelectedCoupons] = useState<string[]>([]);
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
   const [cardAmounts, setCardAmounts] = useState<Record<number, number>>({});
+  // Texto em edição de cada cartão; formatado apenas ao sair do campo para não
+  // reposicionar o cursor a cada tecla.
+  const [amountDrafts, setAmountDrafts] = useState<Record<number, string>>({});
 
   function toggleCoupon(coupon: CustomerCoupon, checked: boolean) {
     setSelectedCoupons((current) => {
@@ -59,7 +62,17 @@ export function CustomerCheckout() {
         return next;
       });
     }
+    clearAmountDraft(cardId);
     setError(null);
+  }
+
+  function clearAmountDraft(cardId: number) {
+    setAmountDrafts((current) => {
+      if (!(cardId in current)) return current;
+      const next = { ...current };
+      delete next[cardId];
+      return next;
+    });
   }
 
   useEffect(() => {
@@ -273,12 +286,19 @@ export function CustomerCheckout() {
                       type="text"
                       inputMode="decimal"
                       disabled={!selected || primary}
-                      value={decimalMoney(amount)}
+                      value={
+                        selected && !primary && card.id in amountDrafts
+                          ? amountDrafts[card.id]
+                          : decimalMoney(amount)
+                      }
                       onFocus={(event) => event.currentTarget.select()}
+                      onBlur={() => clearAmountDraft(card.id)}
                       onChange={(event) => {
+                        const value = event.target.value;
+                        setAmountDrafts((current) => ({ ...current, [card.id]: value }));
                         setCardAmounts((current) => ({
                           ...current,
-                          [card.id]: parseMoney(event.target.value),
+                          [card.id]: parseMoney(value),
                         }));
                         setError(null);
                       }}
