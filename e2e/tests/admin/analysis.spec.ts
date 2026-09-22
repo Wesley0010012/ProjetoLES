@@ -53,6 +53,7 @@ describe('Admin — análise de vendas (interface)', () => {
   it('mostra período sem vendas', () => {
     cy.visitAs('/admin/analysis', operator);
     cy.get('input[type="date"]').last().clear().type('2099-12-31');
+    cy.get('input[type="date"]').first().clear().type('2099-01-01');
     cy.contains('Nenhuma venda encontrada.').should('be.visible');
   });
 
