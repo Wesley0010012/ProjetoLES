@@ -52,6 +52,7 @@ export function CustomerCart() {
     }
   }
 
+  if (error && !cart) return <p role="alert" className="p-6 text-destructive">{error}</p>;
   if (!cart)
     return (
       <div className="flex min-h-96 items-center justify-center">
