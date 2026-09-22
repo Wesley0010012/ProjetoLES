@@ -8,11 +8,13 @@ import { makeStorefrontGateway } from "@/main/factories/make-storefront-gateway"
 export function CustomerCoupons() {
   const gateway = useMemo(() => makeStorefrontGateway(), []);
   const [coupons, setCoupons] = useState<CustomerCoupon[]>([]);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     gateway
       .coupons()
       .then(setCoupons)
+      .catch((cause) => setError(cause instanceof Error ? cause.message : "Não foi possível carregar os cupons."))
       .finally(() => setLoading(false));
   }, [gateway]);
   return (
@@ -25,6 +27,8 @@ export function CustomerCoupons() {
         <p className="mt-2 text-sm text-muted-foreground">
           Consulte cupons promocionais e créditos recebidos por trocas.
         </p>
+        {error && <p role="alert" className="mt-4 text-destructive">{error}</p>}
+        {!loading && !error && coupons.length === 0 && <p className="mt-4">Nenhum cupom disponível.</p>}
         {loading ? (
           <div className="grid min-h-52 place-items-center">
             <Loader2 className="animate-spin" />
