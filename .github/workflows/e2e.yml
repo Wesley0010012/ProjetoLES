@@ -1,0 +1,26 @@
+name: Cypress E2E
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Executar stack isolada e Cypress
+        run: bash e2e/scripts/run-docker.sh
+      - name: Preservar relatórios, screenshots e vídeos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-e2e
+          path: |
+            e2e/results
+            e2e/cypress/screenshots
+            e2e/cypress/videos
+          retention-days: 14
