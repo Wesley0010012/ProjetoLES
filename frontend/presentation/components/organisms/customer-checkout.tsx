@@ -31,21 +31,65 @@ export function CustomerCheckout() {
   // reposicionar o cursor a cada tecla.
   const [amountDrafts, setAmountDrafts] = useState<Record<number, string>>({});
 
+  function payableFor(codes: string[]) {
+    if (!cart) return 0;
+    const total = cart.subtotal + cart.estimatedFreight;
+    const discount = couponDiscount(
+      total,
+      coupons.filter((coupon) => codes.includes(coupon.code)),
+    );
+    return Math.max(0, Math.round((total - discount) * 100) / 100);
+  }
+
+  function additionalCardsSum(cardIds: number[]) {
+    return cardIds
+      .slice(1)
+      .reduce((sum, cardId) => sum + Number(cardAmounts[cardId] ?? 0), 0);
+  }
+
+  function keepOnlyPrimaryCard() {
+    setSelectedCards((current) => current.slice(0, 1));
+    setCardAmounts({});
+    setAmountDrafts({});
+  }
+
   function toggleCoupon(coupon: CustomerCoupon, checked: boolean) {
-    setSelectedCoupons((current) => {
-      if (!checked) return current.filter((code) => code !== coupon.code);
-      if (coupon.type === "PROMOTIONAL") {
-        const promotionalCodes = new Set(
-          coupons.filter((item) => item.type === "PROMOTIONAL").map((item) => item.code),
-        );
-        return [...current.filter((code) => !promotionalCodes.has(code)), coupon.code];
-      }
-      return current.includes(coupon.code) ? current : [...current, coupon.code];
-    });
+    let next: string[];
+    if (!checked) {
+      next = selectedCoupons.filter((code) => code !== coupon.code);
+    } else if (coupon.type === "PROMOTIONAL") {
+      const promotionalCodes = new Set(
+        coupons.filter((item) => item.type === "PROMOTIONAL").map((item) => item.code),
+      );
+      next = [...selectedCoupons.filter((code) => !promotionalCodes.has(code)), coupon.code];
+    } else {
+      next = selectedCoupons.includes(coupon.code)
+        ? selectedCoupons
+        : [...selectedCoupons, coupon.code];
+    }
+    setSelectedCoupons(next);
+    // Se o novo total não comporta mais os valores já informados nos cartões
+    // adicionais, volta a cobrar tudo no cartão principal em vez de deixá-lo
+    // zerado (e com saldo negativo oculto).
+    if (selectedCards.length > 1 && additionalCardsSum(selectedCards) >= payableFor(next)) {
+      keepOnlyPrimaryCard();
+    }
+    setError(null);
   }
 
   function toggleCard(cardId: number, checked: boolean) {
     if (checked && selectedCards.length > 0) {
+      const payable = payableFor(selectedCoupons);
+      if (payable === 0) {
+        setError("O total já está coberto pelos cupons; nenhum cartão será cobrado.");
+        return;
+      }
+      if (payable - additionalCardsSum(selectedCards) - 10 <= 0) {
+        setError(
+          `Não é possível dividir ${money(payable)} entre mais cartões: cada cartão adicional precisa de ao menos R$ 10,00 e o principal precisa de saldo.`,
+        );
+        return;
+      }
       setCardAmounts((current) => ({ ...current, [cardId]: 10 }));
     }
     setSelectedCards((current) =>
@@ -121,6 +165,13 @@ export function CustomerCheckout() {
       .slice(1)
       .reduce((sum, cardId) => sum + Number(cardAmounts[cardId] ?? 0), 0);
     const primaryAmount = Math.round((payableTotal - additionalTotal) * 100) / 100;
+    if (payableTotal > 0 && cards.length > 1 && primaryAmount <= 0) {
+      setError(
+        `Os cartões adicionais somam ${money(additionalTotal)}, mas o total a pagar é ${money(payableTotal)}. Reduza os valores ou desmarque um cartão.`,
+      );
+      setSaving(false);
+      return;
+    }
     const cardPayments = (payableTotal === 0 ? [] : cards).map((card) => ({
       cardId: card.id,
       amount:
@@ -246,6 +297,12 @@ export function CustomerCheckout() {
                 <Plus /> Novo cartão
               </Link>
             </div>
+            {payableTotal === 0 && selectedCoupons.length > 0 && (
+              <p className="mb-3 rounded border border-[#007600]/20 bg-[#007600]/5 p-3 text-xs text-[#007600]">
+                O total está coberto pelos cupons selecionados; nenhum cartão será
+                cobrado. Cupons de troca terão debitado apenas o valor utilizado.
+              </p>
+            )}
             {(profile.cards ?? []).map((card) => {
               const selected = selectedCards.includes(card.id);
               const primary = selected && card.id === primaryCardId;
