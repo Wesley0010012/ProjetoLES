@@ -1,0 +1,15 @@
+{
+  "name": "libra-e2e",
+  "private": true,
+  "scripts": {
+    "test": "cypress run --browser electron",
+    "open": "cypress open",
+    "test:docker": "bash scripts/run-docker.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "cypress": "16.1.0",
+    "typescript": "^7.0.2"
+  }
+}
