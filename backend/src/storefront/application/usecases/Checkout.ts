@@ -43,6 +43,8 @@ export class Checkout extends ShoppingUseCase {
     const amountOnCards =
       Math.round(Math.max(0, total - couponApplication.value) * 100) / 100;
     const cards = await this._cards.findByCustomerId(customer.id);
+    const belowMinimum = input.cardPayments.filter(payment => payment.amount < 10);
+    const hasResidualCouponPayment = couponApplication.value > 0 && belowMinimum.length === 1;
     const allocations = input.cardPayments.map((payment) => {
       const card = cards.find((item) => item.id === payment.cardId);
       if (!card) {
@@ -50,7 +52,7 @@ export class Checkout extends ShoppingUseCase {
       }
       if (
         payment.amount < 10 &&
-        !(couponApplication.value > 0 && amountOnCards < 10)
+        !hasResidualCouponPayment
       ) {
         throw new BadRequest(MessageKeyEnum.INVALID_PARAM, {
           param: 'cardPayment.amount',
