@@ -1,3 +1,4 @@
+import { ExchangeSearch } from 'src/sales/application/ExchangeSearch';
 import { ExchangeInput } from '../ShoppingInputs';
 import { ExchangeRequest } from 'src/sales/domain/entities/ExchangeRequest';
 import { SaleItem } from 'src/sales/domain/entities/SaleItem';
@@ -20,12 +21,20 @@ export class RequestCustomerExchange extends ShoppingUseCase {
       throw new BadRequest(MessageKeyEnum.INVALID_PARAM, { param: 'saleId' });
     }
 
+    const previous = (await this._exchanges.findAll(new ExchangeSearch({ saleId: sale.id }))).entities;
+    const reserved = new Map<number, number>();
+    for (const exchange of previous) {
+      if (exchange.status === ExchangeStatus.REJECTED) continue;
+      for (const item of exchange.items) {
+        reserved.set(item.book.id, (reserved.get(item.book.id) ?? 0) + item.quantity);
+      }
+    }
     const items = input.items.map((requested) => {
       const saleItem = sale.items.find(
         (candidate) =>
           candidate.book.id === requested.bookId &&
           requested.quantity > 0 &&
-          requested.quantity <= candidate.quantity,
+          requested.quantity <= candidate.quantity - (reserved.get(requested.bookId) ?? 0),
       );
 
       if (!saleItem) {
